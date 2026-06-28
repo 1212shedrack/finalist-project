@@ -1,0 +1,120 @@
+{
+    "health": {
+        "title": "Healthy Amaranthus Plant",
+
+        "summary": "The uploaded Amaranthus leaf appears healthy with no visible symptoms of major disease infection.",
+
+        "possible_cause": "Proper crop management, balanced nutrition, and favorable environmental conditions.",
+
+        "risk_level": "Low",
+
+        "recommended_action": [
+            "Continue regular crop monitoring.",
+            "Maintain proper irrigation practices.",
+            "Apply balanced fertilizers when necessary.",
+            "Remove weeds surrounding the crop.",
+            "Maintain good field sanitation."
+        ],
+
+        "prevention": [
+            "Use certified quality seeds.",
+            "Avoid excessive moisture in the field.",
+            "Practice crop rotation.",
+            "Monitor plants frequently for early disease symptoms."
+        ],
+
+        "treatment": [
+            "No treatment required at this stage."
+        ]
+    },
+
+    "spot_leaf": {
+        "title": "Amaranthus Leaf Spot Disease",
+
+        "summary": "The leaf shows symptoms associated with leaf spot disease, including dark lesions or necrotic spots that may reduce plant growth and yield.",
+
+        "possible_cause": "Fungal infection favored by high humidity, excessive moisture, poor air circulation, and infected plant debris.",
+
+        "risk_level": "Medium to High",
+
+        "recommended_action": [
+            "Remove and destroy infected leaves immediately.",
+            "Reduce overhead irrigation.",
+            "Improve field ventilation and spacing.",
+            "Avoid water stagnation in the field.",
+            "Monitor neighboring plants for infection spread."
+        ],
+
+        "prevention": [
+            "Practice crop rotation.",
+            "Use disease-free seeds.",
+            "Disinfect farming tools regularly.",
+            "Avoid overcrowding plants.",
+            "Maintain proper field hygiene."
+        ],
+
+        "treatment": [
+            "Apply recommended fungicides according to agricultural guidelines.",
+            "Use copper-based fungicide if appropriate.",
+            "Consult local agricultural experts for severe infections."
+        ]
+    },
+
+    "white_rust": {
+        "title": "Amaranthus White Rust Disease",
+
+        "summary": "The leaf exhibits symptoms consistent with white rust disease, commonly identified by white pustules or patches on leaf surfaces.",
+
+        "possible_cause": "White rust is caused by pathogen infection under cool and humid environmental conditions.",
+
+        "risk_level": "High",
+
+        "recommended_action": [
+            "Remove infected plants or leaves immediately.",
+            "Avoid excessive irrigation and moisture.",
+            "Isolate infected plants if possible.",
+            "Improve drainage in the cultivation area.",
+            "Monitor disease spread continuously."
+        ],
+
+        "prevention": [
+            "Use resistant or certified seeds.",
+            "Maintain proper plant spacing.",
+            "Avoid prolonged leaf wetness.",
+            "Rotate crops between growing seasons.",
+            "Keep the cultivation area clean."
+        ],
+
+        "treatment": [
+            "Apply suitable fungicides as recommended.",
+            "Use copper-based fungicide where applicable.",
+            "Repeat treatment following agricultural instructions if symptoms persist."
+        ]
+    },
+
+    "non_amaranthus": {
+        "title": "Non-Amaranthus Image Detected",
+
+        "summary": "The uploaded image does not appear to contain an Amaranthus leaf or contains an unsupported object.",
+
+        "possible_cause": "Incorrect image upload, unclear image quality, or unsupported plant species.",
+
+        "risk_level": "Unknown",
+
+        "recommended_action": [
+            "Upload a clear Amaranthus leaf image.",
+            "Ensure the leaf occupies most of the image.",
+            "Avoid blurred or dark images.",
+            "Capture the image under proper lighting conditions."
+        ],
+
+        "prevention": [
+            "Use high-quality image capture devices.",
+            "Avoid complex backgrounds during image capture."
+        ],
+
+        "treatment": [
+            "No treatment available because the image is not identified as Amaranthus."
+        ]
+    }
+}

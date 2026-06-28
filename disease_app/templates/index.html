@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amaranthus Disease Detection</title>
+
+<style>
+
+/* ================= GLOBAL ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background: linear-gradient(to right, #e8f5e9, #f5fff5);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+/* ================= CONTAINER ================= */
+.container{
+    width:100%;
+    max-width:1100px;
+    background:#fff;
+    border-radius:20px;
+    display:flex;
+    flex-wrap:wrap;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* ================= LEFT ================= */
+.left-section{
+    flex:1;
+    min-width:320px;
+    background:linear-gradient(135deg,#1b5e20,#43a047);
+    color:#fff;
+    padding:50px;
+    text-align:center;
+}
+
+.left-section h1{font-size:2.4rem;}
+.left-section p{margin-top:15px; line-height:1.7}
+
+/* ================= RIGHT ================= */
+.right-section{
+    flex:1;
+    min-width:320px;
+    padding:30px;
+}
+
+/* ================= UPLOAD ================= */
+.upload-box{
+    border:2px dashed #43a047;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    background:#f9fff9;
+    transition:0.3s;
+}
+
+.upload-box.dragover{
+    background:#e8f5e9;
+    border-color:#1b5e20;
+}
+
+input[type="file"]{
+    width:100%;
+    margin-top:10px;
+}
+
+button{
+    width:100%;
+    margin-top:15px;
+    padding:14px;
+    border:none;
+    background:#2e7d32;
+    color:white;
+    font-weight:bold;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+button:hover{background:#1b5e20}
+
+/* ================= PREVIEW ================= */
+#preview{
+    width:100%;
+    max-width:280px;
+    margin-top:15px;
+    border-radius:12px;
+    display:none;
+}
+
+/* ================= LOADING ================= */
+#loading{
+    display:none;
+    margin-top:10px;
+    color:#1b5e20;
+}
+
+/* spinner */
+.spinner{
+    border:4px solid #f3f3f3;
+    border-top:4px solid #2e7d32;
+    border-radius:50%;
+    width:25px;
+    height:25px;
+    animation:spin 1s linear infinite;
+    margin:auto;
+}
+
+@keyframes spin{
+    100%{transform:rotate(360deg);}
+}
+
+/* ================= RESULT ================= */
+.result-card{
+    margin-top:20px;
+    padding:20px;
+    background:#f8fff8;
+    border-radius:15px;
+    text-align:center;
+    animation:fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* confidence bar */
+.bar{
+    width:100%;
+    height:12px;
+    background:#ddd;
+    border-radius:10px;
+    overflow:hidden;
+    margin-top:10px;
+}
+
+.bar-fill{
+    height:100%;
+    background:#2e7d32;
+    width:0%;
+}
+.recommendation-box{
+    margin-top:25px;
+    padding:20px;
+    background:#ffffff;
+    border-radius:15px;
+    border:1px solid #dfeedd;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+    text-align:left;
+}
+
+.recommendation-title{
+    text-align:center;
+    color:#1b5e20;
+    margin-bottom:20px;
+    font-size:1.6rem;
+}
+
+.info-card{
+    background:#f8fff8;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+.info-card h3{
+    color:#1b5e20;
+    margin-bottom:8px;
+}
+
+.info-card p{
+    color:#444;
+    line-height:1.6;
+}
+
+.risk-level{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:20px;
+    background:#e8f5e9;
+    color:#1b5e20;
+    font-weight:bold;
+}
+
+.recommendation-box ul{
+    padding-left:20px;
+}
+
+.recommendation-box li{
+    margin-bottom:8px;
+    line-height:1.6;
+}
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+    .container{flex-direction:column;}
+    .left-section{padding:30px;}
+}
+.camera-box{
+    margin-top:15px;
+    padding:15px;
+    border-radius:15px;
+    background:#f8fff8;
+    border:1px solid #dfeedd;
+    text-align:center;
+}
+
+#video{
+    width:100%;
+    margin-top:12px;
+    border-radius:12px;
+    display:none;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.cam-btn{
+    width:100%;
+    padding:14px;
+    margin-top:10px;
+    border:none;
+    border-radius:12px;
+    font-size:1rem;
+    font-weight:bold;
+    cursor:pointer;
+    background:#2e7d32;
+    color:white;
+    transition:0.3s;
+}
+
+.cam-btn:hover{
+    background:#1b5e20;
+    transform:translateY(-2px);
+}
+
+.cam-btn.secondary{
+    background:#388e3c;
+}
+
+.cam-btn.secondary:hover{
+    background:#2e7d32;
+}
+
+#canvas{
+    display:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- LEFT -->
+<div class="left-section">
+    <h1>Amaranthus Disease Detection</h1>
+    <p>Upload leaf image to detect disease and get AI recommendations.</p>
+</div>
+
+<!-- RIGHT -->
+<div class="right-section">
+
+<form method="POST" enctype="multipart/form-data" id="uploadForm">
+    {% csrf_token %}
+
+    <div class="upload-box" id="dropZone">
+
+        <p>Drag/Drop Image Here or Select</p>
+        <div class="camera-box">
+
+    <button type="button" id="openCameraBtn" class="cam-btn">
+        📷 Open Camera
+    </button>
+
+    <video id="video" autoplay playsinline></video>
+
+    <button type="button" id="captureBtn" class="cam-btn secondary">
+        Capture Photo
+    </button>
+
+    <canvas id="canvas"></canvas>
+
+</div>
+        <input type="file" name="image"
+         id="fileInput" accept="image/*"
+          required>
+
+        <img id="preview">
+
+        <button type="submit">Predict</button>
+
+        <div id="loading">
+            <div class="spinner"></div>
+            <p>Processing...</p>
+        </div>
+
+    </div>
+</form>
+
+{% if image_url %}
+<div class="result-card" id="resultBox">
+
+    <img src="{{ image_url }}" style="max-width:300px;border-radius:10px;">
+
+    <h3>{{ prediction }}</h3>
+
+    <p>Confidence: {{ confidence|floatformat:2 }}%</p>
+
+    <div class="bar">
+        <div class="bar-fill" id="bar"></div>
+    </div>
+
+</div>
+{% endif %}
+{% if recommendation %}
+
+<div class="recommendation-box">
+
+    <h2 class="recommendation-title">
+        {{ recommendation.title }}
+    </h2>
+
+    <div class="info-card">
+        <h3>Summary</h3>
+        <p>{{ recommendation.summary }}</p>
+    </div>
+
+    <div class="info-card">
+        <h3>Possible Cause</h3>
+        <p>{{ recommendation.possible_cause }}</p>
+    </div>
+
+    <div class="info-card">
+        <h3>Risk Level</h3>
+        <span class="risk-level">
+            {{ recommendation.risk_level }}
+        </span>
+    </div>
+
+    <div class="info-card">
+        <h3>Recommended Actions</h3>
+        <ul>
+            {% for item in recommendation.recommended_action %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="info-card">
+        <h3>Prevention</h3>
+        <ul>
+            {% for item in recommendation.prevention %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="info-card">
+        <h3>Treatment</h3>
+        <ul>
+            {% for item in recommendation.treatment %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+
+{% endif %}
+</div>
+</div>
+
+<script>
+
+const openCameraBtn = document.getElementById("openCameraBtn");
+const video = document.getElementById("video");
+const captureBtn = document.getElementById("captureBtn");
+const canvas = document.getElementById("canvas");
+const fileInput = document.getElementById("fileInput");
+const dropZone = document.getElementById("dropZone");
+const form = document.getElementById("uploadForm");
+
+let stream;
+
+// =========================
+// OPEN CAMERA (FIXED FOR PHONE)
+// =========================
+if (openCameraBtn) {
+    openCameraBtn.addEventListener("click", async () => {
+
+        try {
+            stream = await navigator.mediaDevices.getUserMedia({
+                video: {
+                    facingMode: "environment" // BACK CAMERA FIX FOR MOBILE
+                },
+                audio: false
+            });
+
+            video.srcObject = stream;
+            video.style.display = "block";
+            captureBtn.style.display = "block";
+
+        } catch (err) {
+            alert("Camera access denied or not supported on this device.");
+            console.log(err);
+        }
+    });
+}
+
+// =========================
+// CAPTURE IMAGE
+// =========================
+if (captureBtn) {
+    captureBtn.addEventListener("click", () => {
+
+        const context = canvas.getContext("2d");
+
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        context.drawImage(video, 0, 0);
+
+        canvas.toBlob((blob) => {
+
+            const file = new File([blob], "camera.jpg", {
+                type: "image/jpeg"
+            });
+
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+
+            if (fileInput) {
+                fileInput.files = dataTransfer.files;
+            }
+
+            const preview = document.getElementById("preview");
+
+            if (preview) {
+                preview.src = URL.createObjectURL(file);
+                preview.style.display = "block";
+            }
+
+            // STOP CAMERA STREAM SAFELY
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+
+            video.style.display = "none";
+            captureBtn.style.display = "none";
+
+        }, "image/jpeg");
+
+    });
+}
+
+// =========================
+// FILE UPLOAD PREVIEW
+// =========================
+if (fileInput) {
+    fileInput.addEventListener("change", function (e) {
+
+        const file = e.target.files[0];
+        const preview = document.getElementById("preview");
+
+        if (file && preview) {
+
+            const reader = new FileReader();
+
+            reader.onload = function () {
+                preview.src = reader.result;
+                preview.style.display = "block";
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+}
+
+// =========================
+// DRAG & DROP
+// =========================
+if (dropZone && fileInput) {
+
+    dropZone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropZone.classList.add("dragover");
+    });
+
+    dropZone.addEventListener("dragleave", () => {
+        dropZone.classList.remove("dragover");
+    });
+
+    dropZone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropZone.classList.remove("dragover");
+
+        fileInput.files = e.dataTransfer.files;
+        fileInput.dispatchEvent(new Event("change"));
+    });
+}
+
+// =========================
+// LOADING ON SUBMIT
+// =========================
+if (form) {
+    form.addEventListener("submit", function () {
+        const loading = document.getElementById("loading");
+        if (loading) loading.style.display = "block";
+    });
+}
+
+// =========================
+// CONFIDENCE BAR
+// =========================
+window.onload = function () {
+
+    const bar = document.getElementById("bar");
+    const confidenceText = "{{ confidence|default:0 }}";
+
+    if (bar) {
+        bar.style.width = confidenceText + "%";
+    }
+};
+
+</script>
+</body>
+</html>
