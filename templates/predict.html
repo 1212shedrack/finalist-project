@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% trans "Detect Disease" %} Amaranthus AI{% endblock %}
+
+{% block content %}
+<div class="page-header-section">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'disease_app:home' %}"><i class="bi bi-house-door me-1"></i>{% trans "Home" %}</a></li>
+        <li class="breadcrumb-item active">{% trans "Detect Disease" %}</li>
+      </ol>
+    </nav>
+    <h1 class="page-header-title"><i class="bi bi-camera-fill me-3"></i>{% trans "Leaf Disease Detection" %}</h1>
+    <p class="page-header-subtitle">{% trans "Upload a clear photo of an Amaranthus leaf to get an instant AI powered disease analysis" %}</p>
+  </div>
+</div>
+
+<section class="predict-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+
+        <!-- Upload Card -->
+        <div class="upload-card">
+          <form method="POST" enctype="multipart/form-data" id="uploadForm" novalidate>
+            {% csrf_token %}
+
+            <!-- Drop Zone -->
+            <div class="drop-zone" id="dropZone">
+              <div class="drop-zone-inner" id="dropZoneInner">
+                <div class="drop-icon">
+                  <i class="bi bi-cloud-upload-fill"></i>
+                </div>
+                <h4 class="drop-title">{% trans "Drag & Drop your leaf image here" %}</h4>
+                <p class="drop-subtitle">{% trans "or click to browse from your device" %}</p>
+                <label for="image-input" class="btn btn-browse">
+                  <i class="bi bi-folder2-open me-2"></i>{% trans "Browse File" %}
+                </label>
+                {{ form.image }}
+                <div class="drop-formats">
+                  <span><i class="bi bi-image me-1"></i>JPG, JPEG, PNG</span>
+                  <span><i class="bi bi-hdd me-1"></i>Max 10 MB</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Image Preview (hidden until file selected) -->
+            <div class="preview-section" id="previewSection" style="display:none;">
+              <div class="preview-card">
+                <div class="preview-img-wrap">
+                  <img id="previewImage" src="#" alt="Preview" class="preview-img" />
+                  <div class="preview-overlay">
+                    <span class="preview-check"><i class="bi bi-check-circle-fill"></i></span>
+                  </div>
+                </div>
+                <div class="preview-info">
+                  <p class="preview-name" id="previewName">filename.jpg</p>
+                  <p class="preview-size" id="previewSize">0 KB</p>
+                  <button type="button" class="btn btn-sm btn-change" id="changeImageBtn">
+                    <i class="bi bi-arrow-repeat me-1"></i>{% trans "Change Image" %}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="submit-section" id="submitSection" style="display:none;">
+              <button type="submit" class="btn btn-analyze" id="submitBtn">
+                <i class="bi bi-cpu-fill me-2"></i>
+                <span id="submitBtnText">{% trans "Analyze Disease" %}</span>
+                <span id="submitBtnSpinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status"></span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Tips Card -->
+        <div class="tips-card mt-4">
+          <h6 class="tips-title"><i class="bi bi-lightbulb-fill me-2 text-warning"></i>{% trans "Tips for Best Results" %}</h6>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <div class="tip-item"><i class="bi bi-sun me-2 text-warning"></i>{% trans "Take photo in daylight" %}</div>
+            </div>
+            <div class="col-sm-6">
+              <div class="tip-item"><i class="bi bi-fullscreen me-2 text-success"></i>{% trans "Fill frame with the leaf" %}</div>
+            </div>
+            <div class="col-sm-6">
+              <div class="tip-item"><i class="bi bi-focus me-2 text-primary"></i>{% trans "Keep the image in focus" %}</div>
+            </div>
+            <div class="col-sm-6">
+              <div class="tip-item"><i class="bi bi-image me-2 text-info"></i>{% trans "Avoid complex backgrounds" %}</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sidebar -->
+      <div class="col-lg-4">
+        <div class="sidebar-card">
+          <h6 class="sidebar-title"><i class="bi bi-shield-check me-2"></i>{% trans "What We Detect" %}</h6>
+          <div class="disease-list">
+            <div class="disease-item">
+              <span class="disease-dot dot-success"></span>
+              <div>
+                <strong>{% trans "Healthy" %}</strong>
+                <small>{% trans "No disease detected" %}</small>
+              </div>
+            </div>
+            <div class="disease-item">
+              <span class="disease-dot dot-warning"></span>
+              <div>
+                <strong>{% trans "Leaf Spot" %}</strong>
+                <small>{% trans "Fungal: Medium Risk" %}</small>
+              </div>
+            </div>
+            <div class="disease-item">
+              <span class="disease-dot dot-danger"></span>
+              <div>
+                <strong>{% trans "White Rust" %}</strong>
+                <small>{% trans "Oomycete: High Risk" %}</small>
+              </div>
+            </div>
+            <div class="disease-item">
+              <span class="disease-dot dot-secondary"></span>
+              <div>
+                <strong>{% trans "Non-Amaranthus" %}</strong>
+                <small>{% trans "Not a valid leaf image" %}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-card mt-3">
+          <h6 class="sidebar-title"><i class="bi bi-graph-up me-2"></i>{% trans "Model Status" %}</h6>
+          <div class="stat-row">
+            <span>Model</span><strong>EfficientNet B0</strong>
+          </div>
+          <div class="stat-row">
+            <span>{% trans "Model Accuracy" %}</span><strong class="text-success">98%+</strong>
+          </div>
+          <div class="stat-row">
+            <span>Input Size</span><strong>224 × 224</strong>
+          </div>
+          <div class="stat-row">
+            <span>{% trans "Disease Classes" %}</span><strong>4</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loadingOverlay" style="display:none;">
+  <div class="loading-card">
+    <div class="loading-animation">
+      <div class="loading-ring"></div>
+      <div class="loading-icon"><i class="bi bi-cpu-fill"></i></div>
+    </div>
+    <h5 class="loading-title">{% trans "AI Analysis" %}</h5>
+    <p class="loading-subtitle">AI is processing the image...</p>
+    <div class="loading-steps">
+      <div class="loading-step active" id="loadStep1"><i class="bi bi-upload me-2"></i>{% trans "Upload Image" %}</div>
+      <div class="loading-step" id="loadStep2"><i class="bi bi-eye me-2"></i>Preprocessing</div>
+      <div class="loading-step" id="loadStep3"><i class="bi bi-cpu me-2"></i>Running AI model</div>
+      <div class="loading-step" id="loadStep4"><i class="bi bi-check2-circle me-2"></i>{% trans "Get Results" %}</div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

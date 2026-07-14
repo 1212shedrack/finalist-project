@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="{% trans 'AI-powered Amaranthus leaf disease detection and treatment recommendation system.' %}" />
+  <meta name="keywords" content="Amaranthus, disease detection, AI, machine learning, agriculture" />
+  <title>{% block title %}{% trans "Amaranthus Disease Detection System" %}{% endblock %}</title>
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Custom CSS -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="mainNavbar">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'disease_app:home' %}">
+        <span class="brand-icon"><i class="bi bi-flower2"></i></span>
+        <span class="brand-text">Amaranthus<span class="brand-accent">AI</span></span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon-custom"><i class="bi bi-list"></i></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+               href="{% url 'disease_app:home' %}">
+              <i class="bi bi-house-door me-1"></i>{% trans "Home" %}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'predict' %}active{% endif %}"
+               href="{% url 'disease_app:predict' %}">
+              <i class="bi bi-camera me-1"></i>{% trans "Detect Disease" %}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'history' %}active{% endif %}"
+               href="{% url 'disease_app:history' %}">
+              <i class="bi bi-clock-history me-1"></i>{% trans "History" %}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+               href="{% url 'disease_app:about' %}">
+              <i class="bi bi-info-circle me-1"></i>{% trans "About" %}
+            </a>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-primary-custom btn-sm" href="{% url 'disease_app:predict' %}">
+              <i class="bi bi-search me-1"></i>{% trans "Analyze Leaf" %}
+            </a>
+          </li>
+
+          <!-- LANGUAGE SWITCHER -->
+          <li class="nav-item ms-lg-2 lang-switcher-wrap">
+            <div class="lang-dropdown" id="langDropdown">
+              <button class="btn btn-lang-current" id="langToggleBtn" aria-label="Change language"
+                      aria-expanded="false" aria-haspopup="true">
+                {% if LANGUAGE_CODE == 'sw' %}
+                  🇹🇿 <span class="lang-code">SW</span>
+                {% elif LANGUAGE_CODE == 'fr' %}
+                  🇫🇷 <span class="lang-code">FR</span>
+                {% else %}
+                  🇬🇧 <span class="lang-code">EN</span>
+                {% endif %}
+                <i class="bi bi-chevron-down lang-chevron"></i>
+              </button>
+              <div class="lang-menu" id="langMenu" role="menu">
+                <div class="lang-menu-header">Select Language</div>
+                <!-- Django's built-in set_language view -->
+                <form method="post" action="/switch-lang/" id="langFormEn">
+                  {% csrf_token %}
+                  <input type="hidden" name="language" value="en" />
+                  <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                  <button type="submit" class="lang-option {% if LANGUAGE_CODE == 'en' %}lang-active{% endif %}" role="menuitem">
+                    🇬🇧 <span>English</span>
+                    {% if LANGUAGE_CODE == 'en' %}<i class="bi bi-check2"></i>{% endif %}
+                  </button>
+                </form>
+                <form method="post" action="/switch-lang/" id="langFormSw">
+                  {% csrf_token %}
+                  <input type="hidden" name="language" value="sw" />
+                  <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                  <button type="submit" class="lang-option {% if LANGUAGE_CODE == 'sw' %}lang-active{% endif %}" role="menuitem">
+                    🇹🇿 <span>Swahili</span>
+                    {% if LANGUAGE_CODE == 'sw' %}<i class="bi bi-check2"></i>{% endif %}
+                  </button>
+                </form>
+                <form method="post" action="/switch-lang/" id="langFormFr">
+                  {% csrf_token %}
+                  <input type="hidden" name="language" value="fr" />
+                  <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                  <button type="submit" class="lang-option {% if LANGUAGE_CODE == 'fr' %}lang-active{% endif %}" role="menuitem">
+                    🇫🇷 <span>Français</span>
+                    {% if LANGUAGE_CODE == 'fr' %}<i class="bi bi-check2"></i>{% endif %}
+                  </button>
+                </form>
+              </div>
+            </div>
+          </li>
+
+          <!-- Dark mode toggle -->
+          <li class="nav-item ms-lg-1">
+            <button class="btn btn-icon" id="darkModeToggle" title="{% trans 'Toggle dark mode' %}" aria-label="Toggle dark mode">
+              <i class="bi bi-moon-stars-fill" id="darkModeIcon"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- TOASTS -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true">
+    {% for message in messages %}
+      <div class="toast-custom toast-{{ message.tags }}" role="alert" data-auto-show="true">
+        <div class="toast-icon">
+          {% if message.tags == 'success' %}<i class="bi bi-check-circle-fill"></i>
+          {% elif message.tags == 'error' or message.tags == 'danger' %}<i class="bi bi-exclamation-triangle-fill"></i>
+          {% elif message.tags == 'warning' %}<i class="bi bi-exclamation-circle-fill"></i>
+          {% else %}<i class="bi bi-info-circle-fill"></i>{% endif %}
+        </div>
+        <div class="toast-body-text">{{ message }}</div>
+        <button type="button" class="toast-close" aria-label="Close"><i class="bi bi-x"></i></button>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">{% block content %}{% endblock %}</main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-brand">
+            <i class="bi bi-flower2 footer-logo-icon"></i>
+            <h5 class="footer-brand-name">AmaranthusAI</h5>
+          </div>
+          <p class="footer-desc">
+            AI-powered plant disease detection system helping farmers make informed decisions through advanced machine learning technology.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h6 class="footer-heading">{% trans "Quick Links" %}</h6>
+          <ul class="footer-links">
+            <li><a href="{% url 'disease_app:home' %}"><i class="bi bi-chevron-right"></i> {% trans "Home" %}</a></li>
+            <li><a href="{% url 'disease_app:predict' %}"><i class="bi bi-chevron-right"></i> {% trans "Detect Disease" %}</a></li>
+            <li><a href="{% url 'disease_app:history' %}"><i class="bi bi-chevron-right"></i> {% trans "History" %}</a></li>
+            <li><a href="{% url 'disease_app:about' %}"><i class="bi bi-chevron-right"></i> {% trans "About" %}</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-4">
+          <h6 class="footer-heading">{% trans "Detectable Diseases" %}</h6>
+          <ul class="footer-links">
+            <li><span class="footer-badge badge-healthy">{% trans "Healthy" %}</span> Normal Amaranthus</li>
+            <li><span class="footer-badge badge-spot">{% trans "Leaf Spot" %}</span> Fungal disease</li>
+            <li><span class="footer-badge badge-rust">{% trans "White Rust" %}</span> Oomycete pathogen</li>
+            <li><span class="footer-badge badge-non">{% trans "Non-Amaranthus" %}</span> Other images</li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-4">
+          <h6 class="footer-heading">{% trans "Contact & Info" %}</h6>
+          <ul class="footer-links footer-contact">
+            <li><i class="bi bi-building"></i> {% trans "University Project" %}</li>
+            <li><i class="bi bi-cpu"></i> Powered by MUST</li>
+            <li><i class="bi bi-shield-check"></i> 94% Model Accuracy</li>
+            <li><i class="bi bi-envelope"></i> shedrackmossesmollel@gmail.com</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="footer-divider" />
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Amaranthus Disease Detection System.</p>
+        <p class="footer-tech">Built with using Django &amp; TensorFlow Lite</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

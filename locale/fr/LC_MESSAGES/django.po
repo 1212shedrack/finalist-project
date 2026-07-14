@@ -1,0 +1,376 @@
+# Amaranthus AI — French (fr) Translations
+# Traductions en Français
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+
+msgid "Home"
+msgstr "Accueil"
+
+msgid "Detect Disease"
+msgstr "Détecter la Maladie"
+
+msgid "History"
+msgstr "Historique"
+
+msgid "About"
+msgstr "À Propos"
+
+msgid "Analyze Leaf"
+msgstr "Analyser la Feuille"
+
+msgid "Toggle dark mode"
+msgstr "Basculer le mode sombre"
+
+msgid "AI-Powered Agricultural Intelligence"
+msgstr "Intelligence Agricole Alimentée par l'IA"
+
+msgid "AI-Powered"
+msgstr "Propulsé par l'IA"
+
+msgid "Disease Detection"
+msgstr "Détection des Maladies"
+
+msgid "Upload an image of an Amaranthus leaf and receive instant disease prediction together with professional treatment recommendations powered by deep learning."
+msgstr "Téléchargez une image d'une feuille d'Amarante et recevez une prédiction instantanée de la maladie avec des recommandations de traitement professionnelles."
+
+msgid "Detect Disease Now"
+msgstr "Détecter la Maladie Maintenant"
+
+msgid "Learn More"
+msgstr "En Savoir Plus"
+
+msgid "Total Predictions"
+msgstr "Total des Prédictions"
+
+msgid "Disease Classes"
+msgstr "Classes de Maladies"
+
+msgid "Model Accuracy"
+msgstr "Précision du Modèle"
+
+msgid "Training Images"
+msgstr "Images d'Entraînement"
+
+msgid "Why Choose Us"
+msgstr "Pourquoi Nous Choisir"
+
+msgid "Powerful Features for Farmers"
+msgstr "Fonctionnalités Puissantes pour les Agriculteurs"
+
+msgid "Everything you need to protect your Amaranthus crop with confidence"
+msgstr "Tout ce dont vous avez besoin pour protéger votre culture d'Amarante en toute confiance"
+
+msgid "Instant Detection"
+msgstr "Détection Instantanée"
+
+msgid "Get disease prediction results in under 2 seconds using our optimized TFLite model."
+msgstr "Obtenez des résultats de prédiction de maladie en moins de 2 secondes avec notre modèle TFLite optimisé."
+
+msgid "Fast & Reliable"
+msgstr "Rapide et Fiable"
+
+msgid "4-Class AI Model"
+msgstr "Modèle IA à 4 Classes"
+
+msgid "Detects Healthy, Leaf Spot, White Rust, and Non-Amaranthus with 98%+ accuracy."
+msgstr "Détecte Sain, Tache Foliaire, Rouille Blanche et Non-Amarante avec une précision supérieure à 98%."
+
+msgid "Deep Learning"
+msgstr "Apprentissage Profond"
+
+msgid "Expert Recommendations"
+msgstr "Recommandations d'Experts"
+
+msgid "Receive detailed treatment plans, prevention tips, and recommended pesticides."
+msgstr "Recevez des plans de traitement détaillés, des conseils de prévention et les pesticides recommandés."
+
+msgid "Actionable Insights"
+msgstr "Informations Exploitables"
+
+msgid "Mobile Friendly"
+msgstr "Compatible Mobile"
+
+msgid "Fully responsive design works perfectly on your phone in the field."
+msgstr "Le design entièrement adaptatif fonctionne parfaitement sur votre téléphone sur le terrain."
+
+msgid "Works Anywhere"
+msgstr "Fonctionne Partout"
+
+msgid "Simple Process"
+msgstr "Processus Simple"
+
+msgid "How It Works"
+msgstr "Comment Ça Marche"
+
+msgid "Three simple steps to protect your crop"
+msgstr "Trois étapes simples pour protéger votre culture"
+
+msgid "Upload Image"
+msgstr "Télécharger l'Image"
+
+msgid "Take a clear photo of an Amaranthus leaf and upload it using drag & drop or file browser."
+msgstr "Prenez une photo nette d'une feuille d'Amarante et téléchargez-la par glisser-déposer ou navigateur de fichiers."
+
+msgid "AI Analysis"
+msgstr "Analyse par IA"
+
+msgid "Our EfficientNet deep learning model analyzes the image and classifies the disease in milliseconds."
+msgstr "Notre modèle d'apprentissage profond EfficientNet analyse l'image et classe la maladie en millisecondes."
+
+msgid "Get Results"
+msgstr "Obtenir les Résultats"
+
+msgid "Receive detailed results including disease name, confidence score, risk level, and treatment recommendations."
+msgstr "Recevez des résultats détaillés incluant le nom de la maladie, le score de confiance, le niveau de risque et les recommandations de traitement."
+
+msgid "Try It Now — It's Free"
+msgstr "Essayez Maintenant — C'est Gratuit"
+
+msgid "Latest Activity"
+msgstr "Activité Récente"
+
+msgid "Recent Detections"
+msgstr "Détections Récentes"
+
+msgid "Latest disease analyses performed by the system"
+msgstr "Dernières analyses de maladies effectuées par le système"
+
+msgid "View Details"
+msgstr "Voir les Détails"
+
+msgid "View All History"
+msgstr "Voir Tout l'Historique"
+
+msgid "Ready to Protect Your Amaranthus Crop?"
+msgstr "Prêt à Protéger Votre Culture d'Amarante?"
+
+msgid "Upload a leaf photo now and get instant AI-powered disease analysis — completely free."
+msgstr "Téléchargez une photo de feuille maintenant et obtenez une analyse instantanée alimentée par l'IA — totalement gratuit."
+
+msgid "Start Detection"
+msgstr "Commencer la Détection"
+
+msgid "Leaf Disease Detection"
+msgstr "Détection de Maladie Foliaire"
+
+msgid "Upload a clear photo of an Amaranthus leaf to get an instant AI-powered disease analysis"
+msgstr "Téléchargez une photo nette d'une feuille d'Amarante pour obtenir une analyse de maladie instantanée par IA"
+
+msgid "Drag & Drop your leaf image here"
+msgstr "Glissez-déposez votre image de feuille ici"
+
+msgid "or click to browse from your device"
+msgstr "ou cliquez pour parcourir depuis votre appareil"
+
+msgid "Browse File"
+msgstr "Parcourir le Fichier"
+
+msgid "Change Image"
+msgstr "Changer l'Image"
+
+msgid "Analyze Disease"
+msgstr "Analyser la Maladie"
+
+msgid "Tips for Best Results"
+msgstr "Conseils pour de Meilleurs Résultats"
+
+msgid "Take photo in daylight"
+msgstr "Prenez la photo à la lumière du jour"
+
+msgid "Fill frame with the leaf"
+msgstr "Remplissez le cadre avec la feuille"
+
+msgid "Keep the image in focus"
+msgstr "Gardez l'image au point"
+
+msgid "Avoid complex backgrounds"
+msgstr "Évitez les arrière-plans complexes"
+
+msgid "What We Detect"
+msgstr "Ce que Nous Détectons"
+
+msgid "No disease detected"
+msgstr "Aucune maladie détectée"
+
+msgid "Fungal — Medium Risk"
+msgstr "Fongique — Risque Moyen"
+
+msgid "Oomycete — High Risk"
+msgstr "Oomycète — Risque Élevé"
+
+msgid "Not a valid leaf image"
+msgstr "Pas une image de feuille valide"
+
+msgid "Detection Result"
+msgstr "Résultat de Détection"
+
+msgid "Analysis completed on"
+msgstr "Analyse complétée le"
+
+msgid "Confidence Score"
+msgstr "Score de Confiance"
+
+msgid "Very high confidence prediction"
+msgstr "Prédiction à très haute confiance"
+
+msgid "High confidence prediction"
+msgstr "Prédiction à haute confiance"
+
+msgid "Moderate confidence — consider retaking photo"
+msgstr "Confiance modérée — envisagez de reprendre la photo"
+
+msgid "Low confidence — please upload a clearer image"
+msgstr "Faible confiance — veuillez télécharger une image plus nette"
+
+msgid "Class Probability Distribution"
+msgstr "Distribution des Probabilités de Classes"
+
+msgid "Predicted"
+msgstr "Prédit"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "Treatment"
+msgstr "Traitement"
+
+msgid "Prevention"
+msgstr "Prévention"
+
+msgid "Pesticides"
+msgstr "Pesticides"
+
+msgid "Farmer Tips"
+msgstr "Conseils pour les Agriculteurs"
+
+msgid "Recommended Next Steps"
+msgstr "Prochaines Étapes Recommandées"
+
+msgid "Analyze Another Leaf"
+msgstr "Analyser une Autre Feuille"
+
+msgid "View Full History"
+msgstr "Voir l'Historique Complet"
+
+msgid "Delete This Record"
+msgstr "Supprimer cet Enregistrement"
+
+msgid "Prediction History"
+msgstr "Historique des Prédictions"
+
+msgid "total prediction"
+msgstr "prédiction au total"
+
+msgid "total predictions"
+msgstr "prédictions au total"
+
+msgid "New Detection"
+msgstr "Nouvelle Détection"
+
+msgid "Search predictions..."
+msgstr "Rechercher des prédictions..."
+
+msgid "All"
+msgstr "Tout"
+
+msgid "Healthy"
+msgstr "Sain"
+
+msgid "Leaf Spot"
+msgstr "Tache Foliaire"
+
+msgid "White Rust"
+msgstr "Rouille Blanche"
+
+msgid "Non-Amaranthus"
+msgstr "Non-Amarante"
+
+msgid "View"
+msgstr "Voir"
+
+msgid "No results found"
+msgstr "Aucun résultat trouvé"
+
+msgid "Try adjusting your search or filter."
+msgstr "Essayez d'ajuster votre recherche ou filtre."
+
+msgid "Clear Filters"
+msgstr "Effacer les Filtres"
+
+msgid "No predictions yet"
+msgstr "Aucune prédiction pour l'instant"
+
+msgid "Upload a leaf image to get your first disease detection result."
+msgstr "Téléchargez une image de feuille pour obtenir votre premier résultat de détection."
+
+msgid "Start First Detection"
+msgstr "Commencer la Première Détection"
+
+msgid "About the System"
+msgstr "À Propos du Système"
+
+msgid "Learn about Amaranthus diseases, AI technology, and how this system helps farmers"
+msgstr "Apprenez les maladies de l'Amarante, la technologie IA et comment ce système aide les agriculteurs"
+
+msgid "Our Mission"
+msgstr "Notre Mission"
+
+msgid "Fighting Amaranthus Diseases with AI"
+msgstr "Combattre les Maladies de l'Amarante avec l'IA"
+
+msgid "Detection Classes"
+msgstr "Classes de Détection"
+
+msgid "Diseases We Detect"
+msgstr "Maladies que Nous Détectons"
+
+msgid "Our model classifies Amaranthus leaves into four categories"
+msgstr "Notre modèle classe les feuilles d'Amarante en quatre catégories"
+
+msgid "Low Risk"
+msgstr "Risque Faible"
+
+msgid "Medium Risk"
+msgstr "Risque Moyen"
+
+msgid "High Risk"
+msgstr "Risque Élevé"
+
+msgid "Unknown"
+msgstr "Inconnu"
+
+msgid "Technology"
+msgstr "Technologie"
+
+msgid "AI Technology Behind the System"
+msgstr "Technologie IA Derrière le Système"
+
+msgid "Model Status"
+msgstr "Statut du Modèle"
+
+msgid "Loaded and Ready"
+msgstr "Chargé et Prêt"
+
+msgid "Not Loaded"
+msgstr "Non Chargé"
+
+msgid "Guide"
+msgstr "Guide"
+
+msgid "How to Use the System"
+msgstr "Comment Utiliser le Système"
+
+msgid "University Research Project"
+msgstr "Projet de Recherche Universitaire"
+
+msgid "Quick Links"
+msgstr "Liens Rapides"
+
+msgid "Detectable Diseases"
+msgstr "Maladies Détectables"
+
+msgid "Contact & Info"
+msgstr "Contact et Informations"

@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% trans "About the System" %} Amaranthus AI{% endblock %}
+
+{% block content %}
+<div class="page-header-section">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'disease_app:home' %}"><i class="bi bi-house-door me-1"></i>{% trans "Home" %}</a></li>
+        <li class="breadcrumb-item active">{% trans "About" %}</li>
+      </ol>
+    </nav>
+    <h1 class="page-header-title"><i class="bi bi-info-circle me-3"></i>{% trans "About the System" %}</h1>
+    <p class="page-header-subtitle">{% trans "Learn about Amaranthus diseases, AI technology, and how this system helps farmers" %}</p>
+  </div>
+</div>
+
+<section class="about-section">
+  <div class="container">
+
+    <!-- System Overview -->
+    <div class="row g-5 align-items-center mb-5">
+      <div class="col-lg-6">
+        <span class="section-tag">{% trans "Our Mission" %}</span>
+        <h2 class="about-title">{% trans "Fighting Amaranthus Diseases with AI" %}</h2>
+        <p class="about-text">
+          Amaranthus is a highly nutritious crop cultivated widely across Africa and Asia. However, it is
+          susceptible to several diseases that reduce yield and quality. Early detection is critical to
+          preventing crop loss and protecting farmer livelihoods.
+        </p>
+        <p class="about-text">
+          This system uses a state-of-the-art deep learning model trained on over 3,136 leaf images to
+          classify Amaranthus leaf diseases with <strong>98%+ accuracy</strong>. Farmers can simply take
+          a photo and receive instant, expert-level recommendations.
+        </p>
+        <div class="about-stats-row">
+          <div class="about-stat"><strong>94%+</strong><span>{% trans "Model Accuracy" %}</span></div>
+          <div class="about-stat"><strong>3,136</strong><span>{% trans "Training Images" %}</span></div>
+          <div class="about-stat"><strong>4</strong><span>{% trans "Disease Classes" %}</span></div>
+          <div class="about-stat"><strong>{{ total_predictions }}</strong><span>{% trans "Total Predictions" %}</span></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="about-visual">
+          <div class="about-visual-card">
+            <i class="bi bi-flower2 about-plant-icon"></i>
+            <div class="about-visual-rings">
+              <div class="av-ring av-ring-1"></div>
+              <div class="av-ring av-ring-2"></div>
+              <div class="av-ring av-ring-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Disease Classes -->
+    <div class="section-header mb-4">
+      <span class="section-tag">{% trans "Detection Classes" %}</span>
+      <h2 class="section-title">{% trans "Diseases We Detect" %}</h2>
+      <p class="section-subtitle">{% trans "Our model classifies Amaranthus leaves into four categories" %}</p>
+    </div>
+    <div class="row g-4 mb-5">
+      <div class="col-lg-3 col-md-6">
+        <div class="disease-card disease-card-healthy">
+          <div class="disease-card-icon"><i class="bi bi-check-circle-fill"></i></div>
+          <h5>{% trans "Healthy" %}</h5>
+          <p>Normal healthy Amaranthus leaf with no signs of disease or infection.</p>
+          <ul class="disease-symptoms">
+            <li>Uniform green color</li>
+            <li>No spots or lesions</li>
+            <li>Smooth leaf surface</li>
+          </ul>
+          <span class="disease-risk-badge badge-success">{% trans "Low Risk" %}</span>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="disease-card disease-card-spot">
+          <div class="disease-card-icon"><i class="bi bi-exclamation-circle-fill"></i></div>
+          <h5>{% trans "Leaf Spot" %}</h5>
+          <p>Fungal disease causing dark necrotic spots on leaf surfaces, reducing photosynthesis.</p>
+          <ul class="disease-symptoms">
+            <li>Dark brown/black spots</li>
+            <li>Yellowing around spots</li>
+            <li>Leaf wilting</li>
+          </ul>
+          <span class="disease-risk-badge badge-warning">{% trans "Medium Risk" %}</span>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="disease-card disease-card-rust">
+          <div class="disease-card-icon"><i class="bi bi-exclamation-triangle-fill"></i></div>
+          <h5>{% trans "White Rust" %}</h5>
+          <p>Oomycete pathogen (Albugo bliti) causing white powdery pustules. Spreads rapidly.</p>
+          <ul class="disease-symptoms">
+            <li>White chalky patches</li>
+            <li>Distorted leaves</li>
+            <li>Premature leaf drop</li>
+          </ul>
+          <span class="disease-risk-badge badge-danger">{% trans "High Risk" %}</span>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="disease-card disease-card-non">
+          <div class="disease-card-icon"><i class="bi bi-question-circle-fill"></i></div>
+          <h5>{% trans "Non-Amaranthus" %}</h5>
+          <p>Image does not contain an Amaranthus leaf the model cannot provide reliable results.</p>
+          <ul class="disease-symptoms">
+            <li>Wrong plant species</li>
+            <li>Unclear/blurry photo</li>
+            <li>Non-leaf objects</li>
+          </ul>
+          <span class="disease-risk-badge badge-secondary">{% trans "Unknown" %}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Technology -->
+    <div class="ai-section">
+      <div class="section-header mb-4">
+        <span class="section-tag">{% trans "Technology" %}</span>
+        <h2 class="section-title">{% trans "AI Technology Behind the System" %}</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="tech-card">
+            <div class="tech-icon"><i class="bi bi-cpu-fill"></i></div>
+            <h6 class="tech-title">EfficientNet B0</h6>
+            <p class="tech-desc">Compact yet powerful CNN architecture. Achieves 98%+ accuracy with only 5.3M parameters — perfect for fast inference.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="tech-card">
+            <div class="tech-icon"><i class="bi bi-lightning-fill"></i></div>
+            <h6 class="tech-title">TensorFlow Lite</h6>
+            <p class="tech-desc">Optimized model format for production deployment. Runs inference in milliseconds without GPU requirements.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="tech-card">
+            <div class="tech-icon"><i class="bi bi-diagram-3-fill"></i></div>
+            <h6 class="tech-title">Django Backend</h6>
+            <p class="tech-desc">Robust Python web framework handling image uploads, model inference, database storage, and recommendations.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Model status -->
+      <div class="model-status-card mt-4">
+        <div class="row g-3 align-items-center">
+          <div class="col-auto">
+            <div class="model-status-dot {% if model_status.loaded %}dot-active{% else %}dot-inactive{% endif %}"></div>
+          </div>
+          <div class="col">
+            <strong>{% trans "Model Status" %}: </strong>
+            {% if model_status.loaded %}
+              <span class="text-success fw-semibold"><i class="bi bi-check-circle-fill me-1"></i>{% trans "Loaded and Ready" %}</span>
+              <!-- <small class="text-muted ms-2">— {{ model_status.model_path }}</small> -->
+            {% else %}
+              <span class="text-danger fw-semibold"><i class="bi bi-x-circle-fill me-1"></i>{% trans "Not Loaded" %}</span>
+              {% if model_status.error %}<small class="text-danger ms-2">{{ model_status.error }}</small>{% endif %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How to Use -->
+    <div class="section-header mt-5 mb-4">
+      <span class="section-tag">{% trans "Guide" %}</span>
+      <h2 class="section-title">{% trans "How to Use the System" %}</h2>
+    </div>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="howto-card">
+          <span class="howto-num">1</span>
+          <div><strong>Take a Clear Photo</strong> Photograph an Amaranthus leaf in good lighting. Fill the frame with the leaf.</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="howto-card">
+          <span class="howto-num">2</span>
+          <div><strong>Upload the Image</strong> Go to "{% trans "Detect Disease" %}" page and drag &amp; drop or browse to select your image (JPG/PNG, max 10MB).</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="howto-card">
+          <span class="howto-num">3</span>
+          <div><strong>Wait for Analysis</strong> The AI model will process your image in under 2 seconds.</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="howto-card">
+          <span class="howto-num">4</span>
+          <div><strong>Read the Results</strong> Review the predicted disease, confidence score, risk level, and full recommendation with treatment options.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- University Info -->
+    <div class="university-card mt-5">
+      <i class="bi bi-mortarboard-fill university-icon"></i>
+      <div>
+        <h5>{% trans "University Research Project" %}</h5>
+        <p class="mb-0">This system was developed as an academic research project aimed at supporting smallholder Amaranthus farmers through artificial intelligence. The model was trained on a carefully curated dataset of 3,136 annotated leaf images using transfer learning with EfficientNet B0.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

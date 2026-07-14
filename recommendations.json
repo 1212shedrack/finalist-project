@@ -1,120 +1,192 @@
 {
     "health": {
         "title": "Healthy Amaranthus Plant",
-
-        "summary": "The uploaded Amaranthus leaf appears healthy with no visible symptoms of major disease infection.",
-
-        "possible_cause": "Proper crop management, balanced nutrition, and favorable environmental conditions.",
-
+        "summary": "The uploaded Amaranthus leaf appears healthy with no visible symptoms of major disease infection. The plant shows normal coloration, proper leaf structure, and no signs of fungal, bacterial, or environmental stress.",
         "risk_level": "Low",
-
+        "risk_color": "success",
+        "possible_cause": "Proper crop management, balanced nutrition, adequate water supply, and favorable environmental conditions.",
         "recommended_action": [
-            "Continue regular crop monitoring.",
-            "Maintain proper irrigation practices.",
-            "Apply balanced fertilizers when necessary.",
-            "Remove weeds surrounding the crop.",
-            "Maintain good field sanitation."
+            "Continue regular crop monitoring every 2-3 days.",
+            "Maintain proper irrigation practices — water at the base, not on leaves.",
+            "Apply balanced NPK fertilizers when necessary.",
+            "Remove weeds surrounding the crop to reduce competition.",
+            "Maintain good field sanitation and remove crop debris."
         ],
-
         "prevention": [
-            "Use certified quality seeds.",
+            "Use certified quality seeds from trusted suppliers.",
             "Avoid excessive moisture in the field.",
-            "Practice crop rotation.",
-            "Monitor plants frequently for early disease symptoms."
+            "Practice crop rotation every season.",
+            "Monitor plants frequently for early disease symptoms.",
+            "Maintain proper plant spacing (30-45cm) for good air circulation."
         ],
-
         "treatment": [
-            "No treatment required at this stage."
+            "No treatment required at this stage.",
+            "Continue regular monitoring to detect any early symptoms.",
+            "Document plant health with photos for future reference."
+        ],
+        "recommended_pesticides": [
+            "No pesticides required for healthy plants.",
+            "Use preventive bio-fungicides as a precaution only if nearby plants show disease symptoms.",
+            "Neem oil spray (preventive) — 5ml per liter of water, once a month."
+        ],
+        "farmer_tips": [
+            "Keep a field diary to track plant health progress.",
+            "Photograph plants weekly to compare growth stages.",
+            "Test soil pH annually — Amaranthus prefers 6.0 to 7.5 pH.",
+            "Ensure 30-45cm spacing between plants for proper growth.",
+            "Apply mulch around base to conserve moisture and prevent weeds."
+        ],
+        "next_steps": [
+            "Continue standard crop care practices.",
+            "Schedule next monitoring in 3-5 days.",
+            "Prepare a crop health log for the growing season.",
+            "Plan soil testing for next planting season."
         ]
     },
 
     "spot_leaf": {
         "title": "Amaranthus Leaf Spot Disease",
-
-        "summary": "The leaf shows symptoms associated with leaf spot disease, including dark lesions or necrotic spots that may reduce plant growth and yield.",
-
-        "possible_cause": "Fungal infection favored by high humidity, excessive moisture, poor air circulation, and infected plant debris.",
-
-        "risk_level": "Medium to High",
-
+        "summary": "The leaf shows symptoms associated with leaf spot disease, including dark lesions or necrotic spots that may reduce plant growth and yield significantly if left untreated. Early intervention is important to prevent spread.",
+        "risk_level": "Medium",
+        "risk_color": "warning",
+        "possible_cause": "Fungal infection (Alternaria spp. or Cercospora spp.) favored by high humidity, excessive moisture, poor air circulation, and infected plant debris left in the field.",
         "recommended_action": [
-            "Remove and destroy infected leaves immediately.",
-            "Reduce overhead irrigation.",
-            "Improve field ventilation and spacing.",
-            "Avoid water stagnation in the field.",
-            "Monitor neighboring plants for infection spread."
+            "Remove and destroy infected leaves immediately — do not compost them.",
+            "Reduce overhead irrigation to minimize prolonged leaf wetness.",
+            "Improve field ventilation by adjusting plant spacing.",
+            "Avoid water stagnation in the field — improve drainage.",
+            "Monitor neighboring plants for signs of infection spread.",
+            "Sanitize farming tools after handling infected plants."
         ],
-
         "prevention": [
-            "Practice crop rotation.",
-            "Use disease-free seeds.",
-            "Disinfect farming tools regularly.",
-            "Avoid overcrowding plants.",
-            "Maintain proper field hygiene."
+            "Practice crop rotation with non-host crops every season.",
+            "Use disease-free certified seeds from reputable suppliers.",
+            "Disinfect farming tools regularly with 10% bleach solution.",
+            "Avoid overcrowding plants — maintain 30-45cm spacing.",
+            "Maintain proper field hygiene and remove crop debris after harvest.",
+            "Water plants at the base to keep foliage dry."
         ],
-
         "treatment": [
-            "Apply recommended fungicides according to agricultural guidelines.",
-            "Use copper-based fungicide if appropriate.",
-            "Consult local agricultural experts for severe infections."
+            "Apply Copper Oxychloride 50WP at 2.5g per liter of water.",
+            "Use Mancozeb 75WP at 2.5kg per hectare.",
+            "Apply Chlorothalonil fungicide — follow label instructions carefully.",
+            "Repeat treatment every 7-10 days for at least 3 spray cycles.",
+            "For severe infections, consult your local agricultural extension officer."
+        ],
+        "recommended_pesticides": [
+            "Copper Oxychloride 50WP — 2.5g per liter of water",
+            "Mancozeb 75WP — 2.5kg per hectare",
+            "Chlorothalonil 72SC — follow product label",
+            "Propiconazole 25EC — apply at first sign of disease",
+            "Iprodione 50WP — for advanced infections"
+        ],
+        "farmer_tips": [
+            "Spray fungicides in the early morning or late evening for best absorption.",
+            "Always wear protective gloves, mask, and goggles when applying chemicals.",
+            "Do not apply fungicides immediately before rain — wait 4-6 hours.",
+            "Rotate fungicide classes every spray cycle to prevent resistance build-up.",
+            "Keep a record of all fungicide applications for traceability."
+        ],
+        "next_steps": [
+            "Apply fungicide within 24-48 hours of detection.",
+            "Re-inspect treated plants after 5-7 days to check progress.",
+            "Remove severely infected plants to prevent spread to healthy ones.",
+            "Consult an agricultural extension officer if spread continues.",
+            "Plan for resistant varieties in the next growing season."
         ]
     },
 
     "white_rust": {
         "title": "Amaranthus White Rust Disease",
-
-        "summary": "The leaf exhibits symptoms consistent with white rust disease, commonly identified by white pustules or patches on leaf surfaces.",
-
-        "possible_cause": "White rust is caused by pathogen infection under cool and humid environmental conditions.",
-
+        "summary": "The leaf exhibits symptoms consistent with white rust disease, commonly identified by white chalky pustules or patches on leaf surfaces. This disease is caused by the oomycete pathogen Albugo bliti and spreads very rapidly under cool humid conditions.",
         "risk_level": "High",
-
+        "risk_color": "danger",
+        "possible_cause": "White rust is caused by Albugo bliti under cool temperatures (15-25\u00b0C) and humid conditions with prolonged leaf wetness. It spreads through airborne spores and contaminated water.",
         "recommended_action": [
-            "Remove infected plants or leaves immediately.",
-            "Avoid excessive irrigation and moisture.",
-            "Isolate infected plants if possible.",
-            "Improve drainage in the cultivation area.",
-            "Monitor disease spread continuously."
+            "Remove infected plants or leaves immediately and burn them — do not compost.",
+            "Avoid overhead irrigation — switch to drip or furrow irrigation.",
+            "Isolate infected plants from healthy ones as quickly as possible.",
+            "Improve drainage in the cultivation area to reduce humidity.",
+            "Monitor disease spread daily — act immediately if new plants show symptoms.",
+            "Inform neighboring farmers about the outbreak to prevent regional spread."
         ],
-
         "prevention": [
-            "Use resistant or certified seeds.",
-            "Maintain proper plant spacing.",
-            "Avoid prolonged leaf wetness.",
-            "Rotate crops between growing seasons.",
-            "Keep the cultivation area clean."
+            "Use resistant or certified disease-free seeds from trusted sources.",
+            "Maintain proper plant spacing (45-60cm) to improve air circulation.",
+            "Avoid prolonged leaf wetness — do not water in the evening.",
+            "Rotate crops between growing seasons with unrelated plant families.",
+            "Keep the cultivation area clean and free from infected debris.",
+            "Apply preventive fungicides during cool humid weather periods."
         ],
-
         "treatment": [
-            "Apply suitable fungicides as recommended.",
-            "Use copper-based fungicide where applicable.",
-            "Repeat treatment following agricultural instructions if symptoms persist."
+            "Apply Metalaxyl + Mancozeb (Ridomil Gold MZ 68WP) at 2.5g per liter.",
+            "Use Copper Hydroxide 77WP at 3g per liter of water.",
+            "Apply Fosetyl-Al (Aliette 80WG) at 2.5g per liter of water.",
+            "Repeat applications every 7 days for a minimum of 3-4 cycles.",
+            "Stop all chemical applications 7-14 days before harvest."
+        ],
+        "recommended_pesticides": [
+            "Ridomil Gold MZ 68WP (Metalaxyl + Mancozeb) — 2.5g per liter",
+            "Copper Hydroxide 77WP — 3g per liter of water",
+            "Aliette 80WG (Fosetyl-Aluminum) — 2.5g per liter",
+            "Previcur Energy (Propamocarb + Fosetyl) — follow label",
+            "Acrobat MZ (Dimethomorph + Mancozeb) — follow label"
+        ],
+        "farmer_tips": [
+            "Act immediately — white rust spreads extremely fast within 24-48 hours.",
+            "Never compost infected plant material — always burn or dispose safely.",
+            "Clean and disinfect all farming equipment, boots, and clothing.",
+            "Avoid working in wet fields — mechanical spread increases infection.",
+            "Monitor weather forecasts — spray preventively before humid cold periods."
+        ],
+        "next_steps": [
+            "Apply fungicide immediately within 12 hours of detection.",
+            "Remove all visibly infected plants and burn them safely.",
+            "Notify neighboring farmers and agricultural authorities about the outbreak.",
+            "Contact your local agricultural extension service for emergency support.",
+            "Consider switching to resistant Amaranthus varieties in the next season.",
+            "Document the outbreak for insurance and reporting purposes."
         ]
     },
 
     "non_amaranthus": {
         "title": "Non-Amaranthus Image Detected",
-
-        "summary": "The uploaded image does not appear to contain an Amaranthus leaf or contains an unsupported object.",
-
-        "possible_cause": "Incorrect image upload, unclear image quality, or unsupported plant species.",
-
+        "summary": "The uploaded image does not appear to contain an Amaranthus leaf or the model could not identify it as belonging to the Amaranthus plant family. The AI model was specifically trained on Amaranthus leaf images and cannot provide reliable results for other subjects.",
         "risk_level": "Unknown",
-
+        "risk_color": "secondary",
+        "possible_cause": "Incorrect image upload, poor image quality (blurry/dark), a non-Amaranthus plant species, or the image does not show a clear plant leaf at all.",
         "recommended_action": [
-            "Upload a clear Amaranthus leaf image.",
-            "Ensure the leaf occupies most of the image.",
-            "Avoid blurred or dark images.",
-            "Capture the image under proper lighting conditions."
+            "Upload a clear, well-lit Amaranthus leaf image.",
+            "Ensure the leaf occupies most of the image frame (80%+).",
+            "Avoid blurred, dark, or heavily shadowed images.",
+            "Capture the image under proper natural daylight conditions.",
+            "Remove any complex backgrounds before taking the photo."
         ],
-
         "prevention": [
-            "Use high-quality image capture devices.",
-            "Avoid complex backgrounds during image capture."
+            "Use a good quality camera or modern smartphone for photos.",
+            "Avoid complex or busy backgrounds — use a plain surface.",
+            "Hold the camera steady and close to the leaf when shooting.",
+            "Clean the camera lens before taking photos for sharp images.",
+            "Take multiple photos and upload the clearest one."
         ],
-
         "treatment": [
-            "No treatment available because the image is not identified as Amaranthus."
+            "No treatment available — image not identified as Amaranthus.",
+            "Please upload a valid, clear Amaranthus leaf image to receive accurate results."
+        ],
+        "recommended_pesticides": [
+            "No pesticide recommendation available — plant not identified as Amaranthus."
+        ],
+        "farmer_tips": [
+            "Take photos outdoors in natural daylight for best clarity.",
+            "Fill the camera frame completely with the leaf for accurate detection.",
+            "Wipe the leaf gently to remove dust or dirt before photographing.",
+            "Use portrait mode if available for a clean background blur."
+        ],
+        "next_steps": [
+            "Retake a clear, focused photo of an Amaranthus leaf.",
+            "Upload the new image on the Detect Disease page.",
+            "If you believe the image is correct and results are wrong, try a different angle.",
+            "Contact technical support if the issue persists after multiple attempts."
         ]
     }
 }

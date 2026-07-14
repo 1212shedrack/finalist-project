@@ -1,0 +1,192 @@
+{
+    "health": {
+        "title": "Mmea wa Mchicha Wenye Afya",
+        "summary": "Jani la Mchicha lililopakiwa linaonekana kuwa na afya nzuri bila dalili zinazoonekana za ugonjwa mkubwa. Mmea unaonyesha rangi ya kawaida, muundo sahihi wa jani, na hakuna ishara za msongo wa ukungu, bakteria, au mazingira.",
+        "risk_level": "Ndogo",
+        "risk_color": "success",
+        "possible_cause": "Usimamizi sahihi wa mazao, lishe bora, maji ya kutosha, na hali nzuri za mazingira.",
+        "recommended_action": [
+            "Endelea na ufuatiliaji wa kawaida wa mazao kila siku 2-3.",
+            "Dumisha mazoea sahihi ya umwagiliaji — mwagilia chini ya mmea, si juu ya majani.",
+            "Weka mbolea ya NPK iliyosawazishwa inapohitajika.",
+            "Ondoa magugu yanayozunguka mazao ili kupunguza ushindani.",
+            "Dumisha usafi mzuri wa shamba na ondoa mabaki ya mazao."
+        ],
+        "prevention": [
+            "Tumia mbegu bora zilizoidhinishwa kutoka kwa wasambazaji wanaotegemewa.",
+            "Epuka unyevu kupita kiasi shambani.",
+            "Fanya mzunguko wa mazao kila msimu.",
+            "Fuatilia mimea mara kwa mara kwa dalili za awali za ugonjwa.",
+            "Dumisha nafasi sahihi za kupanda (30-45cm) kwa mzunguko mzuri wa hewa."
+        ],
+        "treatment": [
+            "Hakuna matibabu yanayohitajika katika hatua hii.",
+            "Endelea na ufuatiliaji wa kawaida kugundua dalili zozote za awali.",
+            "Hifadhi rekodi za afya ya mmea kwa picha kwa marejeo ya baadaye."
+        ],
+        "recommended_pesticides": [
+            "Hakuna dawa za wadudu zinazohitajika kwa mimea yenye afya.",
+            "Tumia dawa za ukungu za kuzuia za kibiolojia kama tahadhari tu ikiwa mimea iliyo karibu inaonyesha dalili za ugonjwa.",
+            "Dawa ya mafuta ya neem (kuzuia) — 5ml kwa lita moja ya maji, mara moja kwa mwezi."
+        ],
+        "farmer_tips": [
+            "Weka daftari la shamba kufuatilia maendeleo ya afya ya mmea.",
+            "Piga picha mimea kila wiki kulinganisha hatua za ukuaji.",
+            "Pima pH ya udongo kila mwaka — Amaranthus inapenda pH ya 6.0 hadi 7.5.",
+            "Hakikisha nafasi ya 30-45cm kati ya mimea kwa ukuaji sahihi.",
+            "Weka matandazo karibu na msingi kuhifadhi unyevu na kuzuia magugu."
+        ],
+        "next_steps": [
+            "Endelea na mazoea ya kawaida ya utunzaji wa mazao.",
+            "Panga ufuatiliaji unaofuata baada ya siku 3-5.",
+            "Andaa kumbukumbu ya afya ya mazao kwa msimu wa ukuaji.",
+            "Panga upimaji wa udongo kwa msimu ujao wa kupanda."
+        ]
+    },
+
+    "spot_leaf": {
+        "title": "Ugonjwa wa Madoa ya Majani ya Amaranthus",
+        "summary": "Jani linaonyesha dalili zinazohusiana na ugonjwa wa madoa ya majani, ikiwa ni pamoja na vidonda vya giza au madoa ya kufa ambayo yanaweza kupunguza ukuaji na mavuno ya mmea kwa kiasi kikubwa ikiwa hayatibiwa. Uingiliaji kati wa mapema ni muhimu kuzuia kuenea.",
+        "risk_level": "Ya Wastani",
+        "risk_color": "warning",
+        "possible_cause": "Maambukizi ya ukungu (Alternaria spp. au Cercospora spp.) yanayopendelewa na unyevu wa juu, maji kupita kiasi, mzunguko mbaya wa hewa, na mabaki ya mimea iliyoambukizwa iliyoachwa shambani.",
+        "recommended_action": [
+            "Ondoa na uharibu majani yaliyoambukizwa mara moja — usiyafanye mboji.",
+            "Punguza umwagiliaji wa juu ili kupunguza unyevu wa muda mrefu wa majani.",
+            "Boresha uingizaji wa hewa shambani kwa kurekebisha nafasi za mimea.",
+            "Epuka kujaa kwa maji shambani — boresha mfumo wa mifereji.",
+            "Fuatilia mimea ya jirani kwa dalili za kuenea kwa maambukizi.",
+            "Safisha zana za kilimo baada ya kushughulikia mimea iliyoambukizwa."
+        ],
+        "prevention": [
+            "Fanya mzunguko wa mazao na mazao yasiyo na ugonjwa kila msimu.",
+            "Tumia mbegu bora zilizo huru kutoka kwa ugonjwa kutoka kwa wasambazaji wanaojulikana.",
+            "Safisha zana za kilimo mara kwa mara kwa ufumbuzi wa bleach asilimia 10.",
+            "Epuka msongamano wa mimea — dumisha nafasi ya 30-45cm.",
+            "Dumisha usafi sahihi wa shamba na ondoa mabaki ya mazao baada ya mavuno.",
+            "Mwagilia mimea chini ili kuweka majani kuwa kavu."
+        ],
+        "treatment": [
+            "Weka Copper Oxychloride 50WP kwa 2.5g kwa lita moja ya maji.",
+            "Tumia Mancozeb 75WP kwa 2.5kg kwa hekta.",
+            "Weka dawa ya ukungu ya Chlorothalonil — fuata maelekezo ya lebo kwa makini.",
+            "Rudia matibabu kila siku 7-10 kwa angalau mizunguko 3 ya upuliziaji.",
+            "Kwa maambukizi makali, wasiliana na afisa wako wa ugani wa kilimo wa mtaa."
+        ],
+        "recommended_pesticides": [
+            "Copper Oxychloride 50WP — 2.5g kwa lita moja ya maji",
+            "Mancozeb 75WP — 2.5kg kwa hekta",
+            "Chlorothalonil 72SC — fuata lebo ya bidhaa",
+            "Propiconazole 25EC — weka wakati wa dalili za kwanza za ugonjwa",
+            "Iprodione 50WP — kwa maambukizi ya hatua ya juu"
+        ],
+        "farmer_tips": [
+            "Pulizia dawa za ukungu asubuhi au jioni kwa ufyonzaji bora.",
+            "Vaa glovu za kinga, barakoa, na miwani wakati wa kuweka kemikali.",
+            "Usiwasilishe dawa za ukungu kabla ya mvua — subiri masaa 4-6.",
+            "Badilisha aina za dawa za ukungu kila mzunguko wa upuliziaji kuzuia ukinzani.",
+            "Weka rekodi ya maombi yote ya dawa za ukungu kwa ufuatiliaji."
+        ],
+        "next_steps": [
+            "Weka dawa ya ukungu ndani ya masaa 24-48 ya kugundua.",
+            "Kagua tena mimea iliyotibiwa baada ya siku 5-7 kuangalia maendeleo.",
+            "Ondoa mimea iliyoambukizwa sana kuzuia kuenea kwa ile yenye afya.",
+            "Wasiliana na afisa wa ugani wa kilimo ikiwa kuenea kunaendelea.",
+            "Panga aina zinazostahimili katika msimu ujao wa kukua."
+        ]
+    },
+
+    "white_rust": {
+        "title": "Ugonjwa wa Kutu Nyeupe ya Amaranthus",
+        "summary": "Jani linaonyesha dalili zinazofanana na ugonjwa wa kutu nyeupe, unaopatikana kwa kawaida na vipele vya chaki vya rangi nyeupe au madoa kwenye nyuso za majani. Ugonjwa huu unasababishwa na vimelea vya oomycete Albugo bliti na unaenea haraka sana katika hali ya baridi na unyevu.",
+        "risk_level": "Kubwa",
+        "risk_color": "danger",
+        "possible_cause": "Kutu nyeupe inasababishwa na Albugo bliti katika joto la baridi (15-25°C) na hali ya unyevu na unyevu wa muda mrefu wa majani. Inaenea kupitia spores zinazosafiri hewani na maji yaliyochafuliwa.",
+        "recommended_action": [
+            "Ondoa mimea au majani yaliyoambukizwa mara moja na uyachome — usiyafanye mboji.",
+            "Epuka umwagiliaji wa juu — badili kwa umwagiliaji wa matone au mfereji.",
+            "Tenga mimea iliyoambukizwa kutoka ile yenye afya haraka iwezekanavyo.",
+            "Boresha mifereji katika eneo la kilimo kupunguza unyevu.",
+            "Fuatilia kuenea kwa ugonjwa kila siku — chukua hatua mara moja ikiwa mimea mipya inaonyesha dalili.",
+            "Arifu wakulima wa jirani kuhusu mlipuko kuzuia kuenea kwa mkoa."
+        ],
+        "prevention": [
+            "Tumia mbegu zinazostahimili au zilizo huru kutoka kwa ugonjwa kutoka kwa vyanzo vinavyoaminika.",
+            "Dumisha nafasi sahihi za mimea (45-60cm) kuboresha mzunguko wa hewa.",
+            "Epuka unyevu wa muda mrefu wa majani — usimwagilie jioni.",
+            "Badilisha mazao kati ya misimu ya kukua na familia zisizohusiana za mimea.",
+            "Weka eneo la kilimo kuwa safi na huru kutoka kwa mabaki yaliyoambukizwa.",
+            "Weka dawa za ukungu za kuzuia wakati wa vipindi vya hewa ya baridi na unyevu."
+        ],
+        "treatment": [
+            "Weka Metalaxyl + Mancozeb (Ridomil Gold MZ 68WP) kwa 2.5g kwa lita.",
+            "Tumia Copper Hydroxide 77WP kwa 3g kwa lita moja ya maji.",
+            "Weka Fosetyl-Al (Aliette 80WG) kwa 2.5g kwa lita moja ya maji.",
+            "Rudia maombi kila siku 7 kwa angalau mizunguko 3-4.",
+            "Acha maombi yote ya kemikali siku 7-14 kabla ya mavuno."
+        ],
+        "recommended_pesticides": [
+            "Ridomil Gold MZ 68WP (Metalaxyl + Mancozeb) — 2.5g kwa lita",
+            "Copper Hydroxide 77WP — 3g kwa lita moja ya maji",
+            "Aliette 80WG (Fosetyl-Aluminum) — 2.5g kwa lita",
+            "Previcur Energy (Propamocarb + Fosetyl) — fuata lebo",
+            "Acrobat MZ (Dimethomorph + Mancozeb) — fuata lebo"
+        ],
+        "farmer_tips": [
+            "Chukua hatua mara moja — kutu nyeupe inaenea haraka sana ndani ya masaa 24-48.",
+            "Usifanye mboji nyenzo za mimea iliyoambukizwa — zichome au zione salama.",
+            "Safisha na uthibitishe vifaa vyote vya kilimo, buti, na nguo.",
+            "Epuka kufanya kazi katika mashamba yenye unyevu — kuenea kwa mitambo kunaongeza maambukizi.",
+            "Fuatilia utabiri wa hali ya hewa — pulizia kuzuia kabla ya vipindi vya unyevu na baridi."
+        ],
+        "next_steps": [
+            "Weka dawa ya ukungu mara moja ndani ya masaa 12 ya kugundua.",
+            "Ondoa mimea yote inayoonekana kuambukizwa na iyachome salama.",
+            "Arifu wakulima wa jirani na mamlaka ya kilimo kuhusu mlipuko.",
+            "Wasiliana na huduma yako ya ugani wa kilimo ya mtaa kwa msaada wa dharura.",
+            "Fikiria kubadili aina za Amaranthus zinazostahimili katika msimu ujao.",
+            "Andika mlipuko kwa madhumuni ya bima na kuripoti."
+        ]
+    },
+
+    "non_amaranthus": {
+        "title": "Picha Isiyokuwa ya Amaranthus Imegunduliwa",
+        "summary": "Picha iliyopakiwa hionekani kuwa na jani la Amaranthus au modeli haikuweza kuiainisha kama mali ya familia ya mmea wa Amaranthus. Modeli ya AI ilifunzwa hasa kwa picha za majani ya Amaranthus na haiwezi kutoa matokeo ya kuaminika kwa mada nyingine.",
+        "risk_level": "Haijulikani",
+        "risk_color": "secondary",
+        "possible_cause": "Upakiaji wa picha usio sahihi, ubora mbaya wa picha (isiyo wazi/nyeusi), aina ya mmea isiyokuwa Amaranthus, au picha haionyeshi jani wazi la mmea kabisa.",
+        "recommended_action": [
+            "Pakia picha wazi, iliyoangaziwa vizuri ya jani la Amaranthus.",
+            "Hakikisha jani linachukua sehemu kubwa ya fremu ya picha (80%+).",
+            "Epuka picha zisizo wazi, nyeusi, au zenye kivuli kikubwa.",
+            "Piga picha chini ya hali nzuri za mwanga wa asili wa mchana.",
+            "Ondoa asili yoyote ngumu kabla ya kupiga picha."
+        ],
+        "prevention": [
+            "Tumia kamera ya ubora mzuri au simu ya kisasa kwa picha.",
+            "Epuka asili ngumu au zenye shughuli nyingi — tumia uso wa kawaida.",
+            "Shika kamera imara na karibu na jani wakati wa kupiga.",
+            "Safisha lenzi ya kamera kabla ya kupiga picha kwa picha wazi.",
+            "Piga picha nyingi na upakiwe ile iliyo wazi zaidi."
+        ],
+        "treatment": [
+            "Hakuna matibabu yanayopatikana — picha haikutambuliwa kama Amaranthus.",
+            "Tafadhali pakia picha halali, wazi ya jani la Amaranthus kupata matokeo sahihi."
+        ],
+        "recommended_pesticides": [
+            "Hakuna mapendekezo ya dawa za wadudu — mmea haukutambuliwa kama Amaranthus."
+        ],
+        "farmer_tips": [
+            "Piga picha nje katika mwanga wa asili wa mchana kwa uwazi bora.",
+            "Jaza fremu ya kamera kabisa na jani kwa ugunduzi sahihi.",
+            "Futa jani kwa upole kuondoa vumbi au uchafu kabla ya kupiga picha.",
+            "Tumia hali ya picha ikiwa inapatikana kwa ukungu safi wa asili."
+        ],
+        "next_steps": [
+            "Piga tena picha wazi, iliyofocused ya jani la Amaranthus.",
+            "Pakia picha mpya kwenye ukurasa wa Gundua Ugonjwa.",
+            "Ikiwa unaamini picha ni sahihi na matokeo ni makosa, jaribu pembe tofauti.",
+            "Wasiliana na msaada wa kiufundi ikiwa tatizo linaendelea baada ya majaribio mengi."
+        ]
+    }
+}

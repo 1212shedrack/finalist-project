@@ -1,0 +1,271 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ prediction.display_name }} — {% trans "Detection Result" %} Amaranthus AI{% endblock %}
+
+{% block content %}
+<div class="page-header-section">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'disease_app:home' %}"><i class="bi bi-house-door me-1"></i>{% trans "Home" %}</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'disease_app:predict' %}">{% trans "Detect Disease" %}</a></li>
+        <li class="breadcrumb-item active">Result {{ prediction.pk }}</li>
+      </ol>
+    </nav>
+    <h1 class="page-header-title"><i class="bi bi-file-earmark-medical me-3"></i>{% trans "Detection Result" %}</h1>
+    <p class="page-header-subtitle">{% trans "Analysis completed on" %} {{ prediction.created_at|date:"F j, Y \a\t H:i" }}</p>
+  </div>
+</div>
+
+<section class="result-section">
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- Left: Image -->
+      <div class="col-lg-5">
+        <div class="result-image-card">
+          <div class="result-image-wrap">
+            {% if prediction.image %}
+              <img src="{{ prediction.image.url }}" alt="Analyzed leaf" class="result-image" />
+            {% else %}
+              <div class="result-image-placeholder"><i class="bi bi-image"></i></div>
+            {% endif %}
+            <div class="result-image-badge badge-{{ prediction.risk_color }}">
+              <i class="bi bi-{% if prediction.risk_color == 'success' %}check-circle{% elif prediction.risk_color == 'danger' %}exclamation-triangle{% elif prediction.risk_color == 'warning' %}exclamation-circle{% else %}question-circle{% endif %} me-1"></i>
+              {{ prediction.display_name }}
+            </div>
+          </div>
+          <div class="result-image-meta">
+            <div class="meta-row">
+              <span><i class="bi bi-calendar3 me-2 text-muted"></i>{{ prediction.created_at|date:"M d, Y H:i" }}</span>
+              <span class="badge bg-{{ prediction.risk_color }}">{{ prediction.risk_level }} Risk</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-actions mt-3">
+          <a href="{% url 'disease_app:predict' %}" class="btn btn-primary-custom w-100 mb-2">
+            <i class="bi bi-camera-fill me-2"></i>{% trans "Analyze Another Leaf" %}
+          </a>
+          <a href="{% url 'disease_app:history' %}" class="btn btn-outline-primary-custom w-100 mb-2">
+            <i class="bi bi-clock-history me-2"></i>{% trans "View Full History" %}
+          </a>
+          <form method="post" action="{% url 'disease_app:delete_prediction' prediction.pk %}"
+                class="d-inline w-100" onsubmit="return confirm('Delete this prediction record?')">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger w-100">
+              <i class="bi bi-trash3 me-2"></i>{% trans "Delete This Record" %}
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right: Prediction Details -->
+      <div class="col-lg-7">
+        <div class="result-main-card">
+          <div class="result-disease-header result-header-{{ prediction.risk_color }}">
+            <div class="result-disease-icon">
+              {% if prediction.risk_color == 'success' %}<i class="bi bi-check-circle-fill"></i>
+              {% elif prediction.risk_color == 'danger' %}<i class="bi bi-exclamation-triangle-fill"></i>
+              {% elif prediction.risk_color == 'warning' %}<i class="bi bi-exclamation-circle-fill"></i>
+              {% else %}<i class="bi bi-question-circle-fill"></i>{% endif %}
+            </div>
+            <div>
+              <h2 class="result-disease-name">{{ prediction.display_name }}</h2>
+              <div class="result-risk-badges">
+                <span class="badge bg-{{ prediction.risk_color }} me-2">{{ prediction.risk_level }} Risk</span>
+                <span class="badge bg-dark">ID {{ prediction.pk }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Confidence -->
+          <div class="result-confidence-section">
+            <div class="conf-label-row">
+              <span class="conf-label">{% trans "Confidence Score" %}</span>
+              <span class="conf-value conf-{{ prediction.risk_color }}">{{ prediction.confidence|floatformat:1 }}%</span>
+            </div>
+            <div class="conf-bar-track">
+              <div class="conf-bar-fill bar-{{ prediction.risk_color }}"
+                   data-width="{{ prediction.confidence }}" style="width:0%"></div>
+            </div>
+            <p class="conf-hint">
+              {% if prediction.confidence >= 90 %}{% trans "Very high confidence prediction" %}
+              {% elif prediction.confidence >= 75 %}{% trans "High confidence prediction" %}
+              {% elif prediction.confidence >= 60 %}{% trans "Moderate confidence — consider retaking photo" %}
+              {% else %}{% trans "Low confidence — please upload a clearer image" %}{% endif %}
+            </p>
+          </div>
+        </div>
+
+        <!-- Probability Distribution -->
+        {% if prediction.all_probabilities %}
+        <div class="result-probs-card mt-3">
+          <h6 class="result-sub-title"><i class="bi bi-bar-chart-fill me-2"></i>{% trans "Class Probability Distribution" %}</h6>
+          <div class="prob-bars" id="probBars">
+            {% for prob in probs_display %}
+            <div class="prob-row">
+              <div class="prob-label-col">
+                <span class="prob-class-name">{{ prob.display_name }}</span>
+                {% if prob.class_key == prediction.predicted_class %}
+                  <span class="prob-predicted-badge">{% trans "Predicted" %}</span>
+                {% endif %}
+              </div>
+              <div class="prob-bar-col">
+                <div class="prob-bar-track">
+                  <div class="prob-bar-fill prob-bar-{{ prob.color }}"
+                       data-width="{{ prob.probability }}" style="width:0%"></div>
+                </div>
+              </div>
+              <div class="prob-val-col">{{ prob.probability|floatformat:1 }}%</div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ RECOMMENDATION SECTION -->
+    {% if recommendation %}
+    <div class="recommendation-section mt-5">
+      <div class="rec-header">
+        <i class="bi bi-journal-medical-fill me-2"></i>
+        Expert Recommendation for: <strong>{{ recommendation.title }}</strong>
+      </div>
+
+      {% if recommendation.summary %}
+      <div class="rec-summary-card">
+        <p class="rec-summary-text">{{ recommendation.summary }}</p>
+        <div class="rec-meta-row">
+          <span class="rec-meta-item"><i class="bi bi-exclamation-diamond me-1"></i>
+            Risk Level: <strong>{{ recommendation.risk_level }}</strong></span>
+          {% if recommendation.possible_cause %}
+          <span class="rec-meta-item"><i class="bi bi-search me-1"></i>
+            Cause: <strong>{{ recommendation.possible_cause }}</strong></span>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- Tabs -->
+      <ul class="nav nav-tabs rec-tabs" id="recTabs" role="tablist">
+        {% if recommendation.recommended_action %}
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#action" type="button" role="tab">
+            <i class="bi bi-list-check me-1"></i>{% trans "Actions" %}
+          </button>
+        </li>
+        {% endif %}
+        {% if recommendation.treatment %}
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#treatment" type="button" role="tab">
+            <i class="bi bi-capsule me-1"></i>{% trans "Treatment" %}
+          </button>
+        </li>
+        {% endif %}
+        {% if recommendation.prevention %}
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#prevention" type="button" role="tab">
+            <i class="bi bi-shield-check me-1"></i>{% trans "Prevention" %}
+          </button>
+        </li>
+        {% endif %}
+        {% if recommendation.recommended_pesticides %}
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pesticides" type="button" role="tab">
+            <i class="bi bi-droplet-fill me-1"></i>{% trans "Pesticides" %}
+          </button>
+        </li>
+        {% endif %}
+        {% if recommendation.farmer_tips %}
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tips" type="button" role="tab">
+            <i class="bi bi-lightbulb me-1"></i>{% trans "Farmer Tips" %}
+          </button>
+        </li>
+        {% endif %}
+      </ul>
+
+      <div class="tab-content rec-tab-content">
+        {% if recommendation.recommended_action %}
+        <div class="tab-pane fade show active" id="action" role="tabpanel">
+          <ul class="rec-list rec-list-action">
+            {% for item in recommendation.recommended_action %}
+            <li><i class="bi bi-arrow-right-circle-fill me-2"></i>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        {% if recommendation.treatment %}
+        <div class="tab-pane fade" id="treatment" role="tabpanel">
+          <ul class="rec-list rec-list-treatment">
+            {% for item in recommendation.treatment %}
+            <li><i class="bi bi-capsule me-2"></i>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        {% if recommendation.prevention %}
+        <div class="tab-pane fade" id="prevention" role="tabpanel">
+          <ul class="rec-list rec-list-prevention">
+            {% for item in recommendation.prevention %}
+            <li><i class="bi bi-shield-check me-2"></i>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        {% if recommendation.recommended_pesticides %}
+        <div class="tab-pane fade" id="pesticides" role="tabpanel">
+          <ul class="rec-list rec-list-pesticides">
+            {% for item in recommendation.recommended_pesticides %}
+            <li><i class="bi bi-droplet-fill me-2"></i>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        {% if recommendation.farmer_tips %}
+        <div class="tab-pane fade" id="tips" role="tabpanel">
+          <ul class="rec-list rec-list-tips">
+            {% for item in recommendation.farmer_tips %}
+            <li><i class="bi bi-lightbulb-fill me-2 text-warning"></i>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+
+      {% if recommendation.next_steps %}
+      <div class="next-steps-card mt-3">
+        <h6 class="next-steps-title"><i class="bi bi-arrow-right-circle me-2"></i>{% trans "Recommended Next Steps" %}</h6>
+        <div class="row g-2">
+          {% for step in recommendation.next_steps %}
+          <div class="col-md-6">
+            <div class="next-step-item">
+              <span class="next-step-num">{{ forloop.counter }}</span>{{ step }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    document.querySelectorAll('[data-width]').forEach(function(bar) {
+      bar.style.transition = 'width 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
+      bar.style.width = bar.dataset.width + '%';
+    });
+  }, 300);
+});
+</script>
+{% endblock %}

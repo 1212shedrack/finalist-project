@@ -1,0 +1,192 @@
+{
+    "health": {
+        "title": "Plant d'Amarante en Bonne Santé",
+        "summary": "La feuille d'Amarante téléchargée semble saine sans symptômes visibles de maladie majeure. La plante présente une coloration normale, une structure foliaire appropriée et aucun signe de stress fongique, bactérien ou environnemental.",
+        "risk_level": "Faible",
+        "risk_color": "success",
+        "possible_cause": "Gestion appropriée des cultures, nutrition équilibrée, apport en eau adéquat et conditions environnementales favorables.",
+        "recommended_action": [
+            "Continuer la surveillance régulière des cultures toutes les 2-3 jours.",
+            "Maintenir des pratiques d'irrigation appropriées — arroser à la base, pas sur les feuilles.",
+            "Appliquer des engrais NPK équilibrés si nécessaire.",
+            "Enlever les mauvaises herbes entourant la culture pour réduire la compétition.",
+            "Maintenir une bonne hygiène des champs et enlever les débris de cultures."
+        ],
+        "prevention": [
+            "Utiliser des semences de qualité certifiées provenant de fournisseurs de confiance.",
+            "Éviter l'excès d'humidité dans le champ.",
+            "Pratiquer la rotation des cultures chaque saison.",
+            "Surveiller fréquemment les plantes pour détecter les premiers symptômes de maladie.",
+            "Maintenir un espacement approprié des plantes (30-45cm) pour une bonne circulation de l'air."
+        ],
+        "treatment": [
+            "Aucun traitement requis à ce stade.",
+            "Continuer la surveillance régulière pour détecter tout symptôme précoce.",
+            "Documenter la santé des plantes avec des photos pour référence future."
+        ],
+        "recommended_pesticides": [
+            "Aucun pesticide requis pour les plantes saines.",
+            "Utiliser des bio-fongicides préventifs à titre de précaution uniquement si les plantes voisines montrent des symptômes.",
+            "Pulvérisation d'huile de neem (préventif) — 5ml par litre d'eau, une fois par mois."
+        ],
+        "farmer_tips": [
+            "Tenir un journal de terrain pour suivre l'évolution de la santé des plantes.",
+            "Photographier les plantes chaque semaine pour comparer les stades de croissance.",
+            "Tester le pH du sol annuellement — l'Amarante préfère un pH de 6,0 à 7,5.",
+            "Assurer un espacement de 30-45cm entre les plantes pour une croissance appropriée.",
+            "Appliquer du paillis autour de la base pour conserver l'humidité et prévenir les mauvaises herbes."
+        ],
+        "next_steps": [
+            "Continuer les pratiques standard de soin des cultures.",
+            "Planifier le prochain suivi dans 3-5 jours.",
+            "Préparer un journal de santé des cultures pour la saison de croissance.",
+            "Planifier les tests de sol pour la prochaine saison de plantation."
+        ]
+    },
+
+    "spot_leaf": {
+        "title": "Maladie de Tache Foliaire de l'Amarante",
+        "summary": "La feuille présente des symptômes associés à la maladie des taches foliaires, notamment des lésions sombres ou des taches nécrotiques qui peuvent réduire significativement la croissance et le rendement si non traitées. Une intervention précoce est importante pour prévenir la propagation.",
+        "risk_level": "Moyen",
+        "risk_color": "warning",
+        "possible_cause": "Infection fongique (Alternaria spp. ou Cercospora spp.) favorisée par une humidité élevée, une humidité excessive, une mauvaise circulation d'air et des débris de plantes infectées laissés dans le champ.",
+        "recommended_action": [
+            "Enlever et détruire immédiatement les feuilles infectées — ne pas les composter.",
+            "Réduire l'irrigation par aspersion pour minimiser l'humidité prolongée des feuilles.",
+            "Améliorer la ventilation du champ en ajustant l'espacement des plantes.",
+            "Éviter la stagnation de l'eau dans le champ — améliorer le drainage.",
+            "Surveiller les plantes voisines pour les signes de propagation de l'infection.",
+            "Désinfecter les outils agricoles après manipulation des plantes infectées."
+        ],
+        "prevention": [
+            "Pratiquer la rotation des cultures avec des cultures non hôtes chaque saison.",
+            "Utiliser des semences certifiées exemptes de maladies provenant de fournisseurs réputés.",
+            "Désinfecter régulièrement les outils agricoles avec une solution de javel à 10%.",
+            "Éviter la surpopulation des plantes — maintenir un espacement de 30-45cm.",
+            "Maintenir une bonne hygiène des champs et enlever les débris après la récolte.",
+            "Arroser les plantes à la base pour garder le feuillage sec."
+        ],
+        "treatment": [
+            "Appliquer l'Oxychlorure de Cuivre 50WP à 2,5g par litre d'eau.",
+            "Utiliser le Mancozèbe 75WP à 2,5kg par hectare.",
+            "Appliquer le fongicide Chlorothalonil — suivre attentivement les instructions de l'étiquette.",
+            "Répéter le traitement tous les 7-10 jours pendant au moins 3 cycles de pulvérisation.",
+            "Pour les infections graves, consulter votre agent d'encadrement agricole local."
+        ],
+        "recommended_pesticides": [
+            "Oxychlorure de Cuivre 50WP — 2,5g par litre d'eau",
+            "Mancozèbe 75WP — 2,5kg par hectare",
+            "Chlorothalonil 72SC — suivre l'étiquette du produit",
+            "Propiconazole 25EC — appliquer au premier signe de maladie",
+            "Iprodione 50WP — pour les infections avancées"
+        ],
+        "farmer_tips": [
+            "Pulvériser les fongicides tôt le matin ou en fin de soirée pour une meilleure absorption.",
+            "Toujours porter des gants de protection, un masque et des lunettes lors de l'application.",
+            "Ne pas appliquer les fongicides juste avant la pluie — attendre 4-6 heures.",
+            "Alterner les classes de fongicides à chaque cycle de pulvérisation pour prévenir la résistance.",
+            "Tenir un registre de toutes les applications de fongicides pour la traçabilité."
+        ],
+        "next_steps": [
+            "Appliquer le fongicide dans les 24-48 heures suivant la détection.",
+            "Réinspecter les plantes traitées après 5-7 jours pour vérifier les progrès.",
+            "Enlever les plantes sévèrement infectées pour prévenir la propagation aux plantes saines.",
+            "Consulter un agent d'encadrement agricole si la propagation continue.",
+            "Planifier des variétés résistantes pour la prochaine saison de croissance."
+        ]
+    },
+
+    "white_rust": {
+        "title": "Maladie de Rouille Blanche de l'Amarante",
+        "summary": "La feuille présente des symptômes cohérents avec la maladie de la rouille blanche, communément identifiée par des pustules ou des taches blanches crayeuses sur les surfaces foliaires. Cette maladie est causée par l'oomycète pathogène Albugo bliti et se propage très rapidement dans des conditions fraîches et humides.",
+        "risk_level": "Élevé",
+        "risk_color": "danger",
+        "possible_cause": "La rouille blanche est causée par Albugo bliti à des températures fraîches (15-25°C) et des conditions humides avec une humidité foliaire prolongée. Elle se propage par des spores aériennes et de l'eau contaminée.",
+        "recommended_action": [
+            "Enlever immédiatement les plantes ou feuilles infectées et les brûler — ne pas composter.",
+            "Éviter l'irrigation par aspersion — passer à l'irrigation goutte à goutte ou par sillon.",
+            "Isoler les plantes infectées des plantes saines aussi rapidement que possible.",
+            "Améliorer le drainage dans la zone de culture pour réduire l'humidité.",
+            "Surveiller la propagation de la maladie quotidiennement — agir immédiatement si de nouvelles plantes montrent des symptômes.",
+            "Informer les agriculteurs voisins de l'épidémie pour prévenir la propagation régionale."
+        ],
+        "prevention": [
+            "Utiliser des semences résistantes ou certifiées exemptes de maladies provenant de sources fiables.",
+            "Maintenir un espacement approprié des plantes (45-60cm) pour améliorer la circulation de l'air.",
+            "Éviter l'humidité prolongée des feuilles — ne pas arroser le soir.",
+            "Alterner les cultures entre les saisons de croissance avec des familles de plantes non apparentées.",
+            "Garder la zone de culture propre et exempte de débris infectés.",
+            "Appliquer des fongicides préventifs pendant les périodes de temps frais et humide."
+        ],
+        "treatment": [
+            "Appliquer Metalaxyl + Mancozèbe (Ridomil Gold MZ 68WP) à 2,5g par litre.",
+            "Utiliser l'Hydroxyde de Cuivre 77WP à 3g par litre d'eau.",
+            "Appliquer Fosetyl-Al (Aliette 80WG) à 2,5g par litre d'eau.",
+            "Répéter les applications tous les 7 jours pendant un minimum de 3-4 cycles.",
+            "Arrêter toutes les applications chimiques 7-14 jours avant la récolte."
+        ],
+        "recommended_pesticides": [
+            "Ridomil Gold MZ 68WP (Metalaxyl + Mancozèbe) — 2,5g par litre",
+            "Hydroxyde de Cuivre 77WP — 3g par litre d'eau",
+            "Aliette 80WG (Fosetyl-Aluminium) — 2,5g par litre",
+            "Previcur Energy (Propamocarb + Fosetyl) — suivre l'étiquette",
+            "Acrobat MZ (Diméthomorphe + Mancozèbe) — suivre l'étiquette"
+        ],
+        "farmer_tips": [
+            "Agir immédiatement — la rouille blanche se propage extrêmement vite en 24-48 heures.",
+            "Ne jamais composter les matières végétales infectées — toujours brûler ou éliminer en toute sécurité.",
+            "Nettoyer et désinfecter tous les équipements agricoles, bottes et vêtements.",
+            "Éviter de travailler dans les champs mouillés — la propagation mécanique augmente l'infection.",
+            "Surveiller les prévisions météorologiques — pulvériser préventivement avant les périodes humides et froides."
+        ],
+        "next_steps": [
+            "Appliquer immédiatement le fongicide dans les 12 heures suivant la détection.",
+            "Enlever toutes les plantes visiblement infectées et les brûler en toute sécurité.",
+            "Notifier les agriculteurs voisins et les autorités agricoles de l'épidémie.",
+            "Contacter votre service d'encadrement agricole local pour un soutien d'urgence.",
+            "Envisager de passer à des variétés d'Amarante résistantes la prochaine saison.",
+            "Documenter l'épidémie à des fins d'assurance et de rapport."
+        ]
+    },
+
+    "non_amaranthus": {
+        "title": "Image Non-Amarante Détectée",
+        "summary": "L'image téléchargée ne semble pas contenir une feuille d'Amarante ou le modèle ne pouvait pas l'identifier comme appartenant à la famille des plantes Amaranthus. Le modèle IA a été spécifiquement entraîné sur des images de feuilles d'Amarante et ne peut pas fournir des résultats fiables pour d'autres sujets.",
+        "risk_level": "Inconnu",
+        "risk_color": "secondary",
+        "possible_cause": "Téléchargement d'image incorrect, mauvaise qualité d'image (floue/sombre), une espèce de plante non-Amarante, ou l'image ne montre pas du tout une feuille de plante claire.",
+        "recommended_action": [
+            "Télécharger une image claire et bien éclairée d'une feuille d'Amarante.",
+            "S'assurer que la feuille occupe la majeure partie du cadre de l'image (80%+).",
+            "Éviter les images floues, sombres ou fortement ombragées.",
+            "Capturer l'image dans de bonnes conditions de lumière naturelle du jour.",
+            "Enlever tout arrière-plan complexe avant de prendre la photo."
+        ],
+        "prevention": [
+            "Utiliser un appareil photo de bonne qualité ou un smartphone moderne pour les photos.",
+            "Éviter les arrière-plans complexes ou chargés — utiliser une surface unie.",
+            "Tenir l'appareil photo stable et proche de la feuille lors de la prise de vue.",
+            "Nettoyer l'objectif de l'appareil photo avant de prendre des photos pour des images nettes.",
+            "Prendre plusieurs photos et télécharger la plus nette."
+        ],
+        "treatment": [
+            "Aucun traitement disponible — image non identifiée comme Amarante.",
+            "Veuillez télécharger une image valide et claire de feuille d'Amarante pour obtenir des résultats précis."
+        ],
+        "recommended_pesticides": [
+            "Aucune recommandation de pesticide disponible — plante non identifiée comme Amarante."
+        ],
+        "farmer_tips": [
+            "Prendre des photos en extérieur à la lumière naturelle du jour pour une meilleure clarté.",
+            "Remplir complètement le cadre de l'appareil photo avec la feuille pour une détection précise.",
+            "Essuyer doucement la feuille pour enlever la poussière ou la saleté avant de photographier.",
+            "Utiliser le mode portrait si disponible pour un flou d'arrière-plan propre."
+        ],
+        "next_steps": [
+            "Reprendre une photo claire et nette d'une feuille d'Amarante.",
+            "Télécharger la nouvelle image sur la page Détecter la Maladie.",
+            "Si vous croyez que l'image est correcte et les résultats sont erronés, essayer un angle différent.",
+            "Contacter le support technique si le problème persiste après plusieurs tentatives."
+        ]
+    }
+}

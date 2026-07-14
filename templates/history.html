@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% trans "Prediction History" %} — Amaranthus AI{% endblock %}
+
+{% block content %}
+<div class="page-header-section">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'disease_app:home' %}"><i class="bi bi-house-door me-1"></i>{% trans "Home" %}</a></li>
+        <li class="breadcrumb-item active">{% trans "History" %}</li>
+      </ol>
+    </nav>
+    <div class="d-flex justify-content-between align-items-end flex-wrap gap-2">
+      <div>
+        <h1 class="page-header-title"><i class="bi bi-clock-history me-3"></i>{% trans "Prediction History" %}</h1>
+        <p class="page-header-subtitle">{{ total_count }} {% trans "total predictions" %} recorded</p>
+      </div>
+      <a href="{% url 'disease_app:predict' %}" class="btn btn-primary-custom">
+        <i class="bi bi-plus-circle me-2"></i>{% trans "New Detection" %}
+      </a>
+    </div>
+  </div>
+</div>
+
+<section class="history-section">
+  <div class="container">
+
+    <!-- Search & Filters -->
+    <div class="history-controls">
+      <form method="GET" class="history-search-form" id="searchForm">
+        <div class="search-input-wrap">
+          <i class="bi bi-search search-icon"></i>
+          <input type="text" name="q" class="form-control search-input"
+                 placeholder="{% trans 'Search predictions...' %}" value="{{ search }}"
+                 id="searchInput" autocomplete="off" />
+          {% if search %}
+          <a href="{% url 'disease_app:history' %}" class="search-clear-btn" title="Clear search">
+            <i class="bi bi-x-circle"></i>
+          </a>
+          {% endif %}
+        </div>
+        {% if filter_class %}<input type="hidden" name="filter" value="{{ filter_class }}" />{% endif %}
+      </form>
+
+      <!-- Filter chips -->
+      <div class="filter-chips">
+        <a href="{% url 'disease_app:history' %}{% if search %}?q={{ search }}{% endif %}"
+           class="filter-chip {% if not filter_class or filter_class == 'all' %}active{% endif %}">
+          {% trans "All" %}
+        </a>
+        <a href="?filter=health{% if search %}&q={{ search }}{% endif %}"
+           class="filter-chip filter-chip-success {% if filter_class == 'health' %}active{% endif %}">
+          <span class="dot dot-success"></span>{% trans "Healthy" %}
+        </a>
+        <a href="?filter=spot_leaf{% if search %}&q={{ search }}{% endif %}"
+           class="filter-chip filter-chip-warning {% if filter_class == 'spot_leaf' %}active{% endif %}">
+          <span class="dot dot-warning"></span>{% trans "Leaf Spot" %}
+        </a>
+        <a href="?filter=white_rust{% if search %}&q={{ search }}{% endif %}"
+           class="filter-chip filter-chip-danger {% if filter_class == 'white_rust' %}active{% endif %}">
+          <span class="dot dot-danger"></span>{% trans "White Rust" %}
+        </a>
+        <a href="?filter=non_amaranthus{% if search %}&q={{ search }}{% endif %}"
+           class="filter-chip filter-chip-secondary {% if filter_class == 'non_amaranthus' %}active{% endif %}">
+          <span class="dot dot-secondary"></span>{% trans "Non-Amaranthus" %}
+        </a>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    {% if page_obj %}
+    <div class="row g-3 history-grid">
+      {% for pred in page_obj %}
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="history-card">
+          <div class="history-img-wrap">
+            {% if pred.image %}
+              <img src="{{ pred.image.url }}" alt="{{ pred.display_name }}"
+                   class="history-img" loading="lazy" />
+            {% else %}
+              <div class="history-img-placeholder"><i class="bi bi-image"></i></div>
+            {% endif %}
+            <span class="history-badge badge-{{ pred.risk_color }}">{{ pred.display_name }}</span>
+          </div>
+          <div class="history-body">
+            <div class="history-conf-row">
+              <span class="history-conf">
+                <i class="bi bi-graph-up me-1"></i>{{ pred.confidence|floatformat:1 }}%
+              </span>
+              <span class="history-risk-dot risk-dot-{{ pred.risk_color }}" title="{{ pred.risk_level }} Risk"></span>
+            </div>
+            <p class="history-date"><i class="bi bi-calendar2 me-1"></i>{{ pred.created_at|date:"M d, Y" }}</p>
+            <div class="history-actions">
+              <a href="{% url 'disease_app:result' pred.pk %}" class="btn btn-sm btn-view-result">
+                <i class="bi bi-eye me-1"></i>{% trans "View" %}
+              </a>
+              <form method="post" action="{% url 'disease_app:delete_prediction' pred.pk %}"
+                    class="d-inline" onsubmit="return confirmDelete(event)">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-sm btn-delete-pred" title="{% trans 'Delete' %}">
+                  <i class="bi bi-trash3"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    {% if page_obj.has_other_pages %}
+    <nav class="pagination-nav" aria-label="History pagination">
+      <ul class="pagination pagination-custom">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if search %}&q={{ search }}{% endif %}{% if filter_class %}&filter={{ filter_class }}{% endif %}">
+            <i class="bi bi-chevron-left"></i>
+          </a>
+        </li>
+        {% endif %}
+        {% for num in page_obj.paginator.page_range %}
+          {% if page_obj.number == num %}
+          <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+          {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ num }}{% if search %}&q={{ search }}{% endif %}{% if filter_class %}&filter={{ filter_class }}{% endif %}">{{ num }}</a>
+          </li>
+          {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if search %}&q={{ search }}{% endif %}{% if filter_class %}&filter={{ filter_class }}{% endif %}">
+            <i class="bi bi-chevron-right"></i>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+    {% endif %}
+
+    {% else %}
+    <!-- Empty state -->
+    <div class="empty-state">
+      <div class="empty-icon"><i class="bi bi-inbox"></i></div>
+      {% if search or filter_class %}
+        <h5>{% trans "No results found" %}</h5>
+        <p>{% trans "Try adjusting your search or filter." %}</p>
+        <a href="{% url 'disease_app:history' %}" class="btn btn-outline-primary-custom">{% trans "Clear Filters" %}</a>
+      {% else %}
+        <h5>{% trans "No predictions yet" %}</h5>
+        <p>{% trans "Upload a leaf image to get your first disease detection result." %}</p>
+        <a href="{% url 'disease_app:predict' %}" class="btn btn-primary-custom">
+          <i class="bi bi-camera-fill me-2"></i>{% trans "Start First Detection" %}
+        </a>
+      {% endif %}
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function confirmDelete(e) {
+  if (!confirm('Are you sure you want to delete this prediction?')) {
+    e.preventDefault();
+    return false;
+  }
+  return true;
+}
+let searchTimer;
+document.getElementById('searchInput')?.addEventListener('input', function() {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => document.getElementById('searchForm').submit(), 600);
+});
+</script>
+{% endblock %}

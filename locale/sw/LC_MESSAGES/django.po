@@ -1,0 +1,377 @@
+# Amaranthus AI — Swahili (sw) Translations
+# Tafsiri ya Kiswahili
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sw\n"
+
+msgid "Home"
+msgstr "Nyumbani"
+
+msgid "Detect Disease"
+msgstr "Gundua Ugonjwa"
+
+msgid "History"
+msgstr "Historia"
+
+msgid "About"
+msgstr "Kuhusu"
+
+msgid "Analyze Leaf"
+msgstr "Changanua Jani"
+
+msgid "Toggle dark mode"
+msgstr "Geuza hali ya giza"
+
+msgid "AI-Powered Agricultural Intelligence"
+msgstr "Akili Bandia kwa Kilimo"
+
+msgid "AI-Powered"
+msgstr "Inayotumiwa na AI"
+
+msgid "Disease Detection"
+msgstr "Ugunduzaji wa Magonjwa"
+
+msgid "Upload an image of an Amaranthus leaf and receive instant disease prediction together with professional treatment recommendations powered by deep learning."
+
+msgstr "Pakia picha ya jani la mchicha na upokee utabiri wa ugonjwa papo hapo pamoja na mapendekezo ya matibabu yanayotumia teknolojia ya kujifunza kwa kina."
+
+msgid "Detect Disease Now"
+msgstr "Gundua Ugonjwa Sasa"
+
+msgid "Learn More"
+msgstr "Jifunze Zaidi"
+
+msgid "Total Predictions"
+msgstr "Jumla ya Utabiri"
+
+msgid "Disease Classes"
+msgstr "Aina za Magonjwa"
+
+msgid "Model Accuracy"
+msgstr "Usahihi wa Modeli"
+
+msgid "Training Images"
+msgstr "Picha za Mafunzo"
+
+msgid "Why Choose Us"
+msgstr "Kwa Nini Tuchague"
+
+msgid "Powerful Features for Farmers"
+msgstr "Vipengele Vikubwa kwa Wakulima"
+
+msgid "Everything you need to protect your Amaranthus crop with confidence"
+msgstr "Kila unachohitaji kulinda mazao yako ya Mchicha kwa ujasiri"
+
+msgid "Instant Detection"
+msgstr "Ugunduzaji wa Haraka"
+
+msgid "Get disease prediction results in under 2 seconds using our optimized TFLite model."
+msgstr "Pata matokeo ya utabiri wa ugonjwa kwa chini ya sekunde 2 kwa kutumia modeli yetu iliyoboreshwa ya TFLite."
+
+msgid "Fast & Reliable"
+msgstr "Haraka na Kutegemewa"
+
+msgid "4-Class AI Model"
+msgstr "Modeli ya AI ya Madarasa 4"
+
+msgid "Detects Healthy, Leaf Spot, White Rust, and Non-Amaranthus with 98%+ accuracy."
+msgstr "Hugundua Afya Nzuri, Madoa ya Majani, Kutu Nyeupe, na Si-Amaranthus kwa usahihi wa zaidi ya 98%."
+
+msgid "Deep Learning"
+msgstr "Kujifunza kwa Kina"
+
+msgid "Expert Recommendations"
+msgstr "Mapendekezo ya Wataalamu"
+
+msgid "Receive detailed treatment plans, prevention tips, and recommended pesticides."
+msgstr "Pokea mipango ya matibabu ya kina, vidokezo vya kuzuia, na dawa za wadudu zinazopendekezwa."
+
+msgid "Actionable Insights"
+msgstr "Maarifa Yanayoweza Kutekelezwa"
+
+msgid "Mobile Friendly"
+msgstr "Inafanya Kazi Kwenye Simu"
+
+msgid "Fully responsive design works perfectly on your phone in the field."
+msgstr "Muundo unaostawi kikamilifu unafanya kazi vizuri kwenye simu yako shambani."
+
+msgid "Works Anywhere"
+msgstr "Inafanya Kazi Kila Mahali"
+
+msgid "Simple Process"
+msgstr "Mchakato Rahisi"
+
+msgid "How It Works"
+msgstr "Jinsi Inavyofanya Kazi"
+
+msgid "Three simple steps to protect your crop"
+msgstr "Hatua tatu rahisi za kulinda mazao yako"
+
+msgid "Upload Image"
+msgstr "Pakia Picha"
+
+msgid "Take a clear photo of an Amaranthus leaf and upload it using drag & drop or file browser."
+msgstr "Piga picha wazi ya jani la Amaranthus na uipakie ukitumia buruta na achia au kivinjari cha faili."
+
+msgid "AI Analysis"
+msgstr "Uchambuzi wa AI"
+
+msgid "Our EfficientNet deep learning model analyzes the image and classifies the disease in milliseconds."
+msgstr "Modeli yetu ya kujifunza kwa kina ya EfficientNet inachambua picha na kuainisha ugonjwa kwa millisekunde."
+
+msgid "Get Results"
+msgstr "Pata Matokeo"
+
+msgid "Receive detailed results including disease name, confidence score, risk level, and treatment recommendations."
+msgstr "Pokea matokeo ya kina ikiwa ni pamoja na jina la ugonjwa, alama ya uhakika, kiwango cha hatari, na mapendekezo ya matibabu."
+
+msgid "Try It Now — It's Free"
+msgstr "Jaribu Sasa — Ni Bure"
+
+msgid "Latest Activity"
+msgstr "Shughuli za Hivi Karibuni"
+
+msgid "Recent Detections"
+msgstr "Ugunduzaji wa Hivi Karibuni"
+
+msgid "Latest disease analyses performed by the system"
+msgstr "Uchambuzi wa ugonjwa wa hivi karibuni uliofanywa na mfumo"
+
+msgid "View Details"
+msgstr "Tazama Maelezo"
+
+msgid "View All History"
+msgstr "Tazama Historia Yote"
+
+msgid "Ready to Protect Your Amaranthus Crop?"
+msgstr "Uko Tayari Kulinda Mazao Yako ya Amaranthus?"
+
+msgid "Upload a leaf photo now and get instant AI-powered disease analysis — completely free."
+msgstr "Pakia picha ya jani sasa na upate uchambuzi wa ugonjwa unaotumia AI papo hapo — bure kabisa."
+
+msgid "Start Detection"
+msgstr "Anza Ugunduzaji"
+
+msgid "Leaf Disease Detection"
+msgstr "Ugunduzaji wa Magonjwa ya Majani"
+
+msgid "Upload a clear photo of an Amaranthus leaf to get an instant AI-powered disease analysis"
+msgstr "Pakia picha wazi ya jani la Amaranthus kupata uchambuzi wa ugonjwa unaotumia AI papo hapo"
+
+msgid "Drag & Drop your leaf image here"
+msgstr "Buruta na Achia picha yako ya jani hapa"
+
+msgid "or click to browse from your device"
+msgstr "au bonyeza kuchunguza kutoka kwenye kifaa chako"
+
+msgid "Browse File"
+msgstr "Tafuta Faili"
+
+msgid "Change Image"
+msgstr "Badilisha Picha"
+
+msgid "Analyze Disease"
+msgstr "Changanua Ugonjwa"
+
+msgid "Tips for Best Results"
+msgstr "Vidokezo kwa Matokeo Bora"
+
+msgid "Take photo in daylight"
+msgstr "Piga picha wakati wa mchana"
+
+msgid "Fill frame with the leaf"
+msgstr "Jaza fremu na jani"
+
+msgid "Keep the image in focus"
+msgstr "Weka picha ikizingatiwa"
+
+msgid "Avoid complex backgrounds"
+msgstr "Epuka mandhari changamano"
+
+msgid "What We Detect"
+msgstr "Tunachogundua"
+
+msgid "No disease detected"
+msgstr "Hakuna ugonjwa uliogunduliwa"
+
+msgid "Fungal — Medium Risk"
+msgstr "Ukungu — Hatari ya Wastani"
+
+msgid "Oomycete — High Risk"
+msgstr "Oomycete — Hatari Kubwa"
+
+msgid "Not a valid leaf image"
+msgstr "Si picha halali ya jani"
+
+msgid "Detection Result"
+msgstr "Matokeo ya Ugunduzaji"
+
+msgid "Analysis completed on"
+msgstr "Uchambuzi umekamilika tarehe"
+
+msgid "Confidence Score"
+msgstr "Alama ya Uhakika"
+
+msgid "Very high confidence prediction"
+msgstr "Utabiri wenye uhakika mkubwa sana"
+
+msgid "High confidence prediction"
+msgstr "Utabiri wenye uhakika mkubwa"
+
+msgid "Moderate confidence — consider retaking photo"
+msgstr "Uhakika wa wastani — fikiria kupiga picha tena"
+
+msgid "Low confidence — please upload a clearer image"
+msgstr "Uhakika mdogo — tafadhali pakia picha wazi zaidi"
+
+msgid "Class Probability Distribution"
+msgstr "Usambazaji wa Uwezekano wa Darasa"
+
+msgid "Predicted"
+msgstr "Imetabiriwa"
+
+msgid "Actions"
+msgstr "Vitendo"
+
+msgid "Treatment"
+msgstr "Matibabu"
+
+msgid "Prevention"
+msgstr "Kuzuia"
+
+msgid "Pesticides"
+msgstr "Dawa za Wadudu"
+
+msgid "Farmer Tips"
+msgstr "Vidokezo kwa Wakulima"
+
+msgid "Recommended Next Steps"
+msgstr "Hatua Zinazofuata Zinazopendekezwa"
+
+msgid "Analyze Another Leaf"
+msgstr "Changanua Jani Lingine"
+
+msgid "View Full History"
+msgstr "Tazama Historia Yote"
+
+msgid "Delete This Record"
+msgstr "Futa Rekodi Hii"
+
+msgid "Prediction History"
+msgstr "Historia ya Utabiri"
+
+msgid "total prediction"
+msgstr "utabiri jumla"
+
+msgid "total predictions"
+msgstr "utabiri jumla"
+
+msgid "New Detection"
+msgstr "Ugunduzaji Mpya"
+
+msgid "Search predictions..."
+msgstr "Tafuta utabiri..."
+
+msgid "All"
+msgstr "Zote"
+
+msgid "Healthy"
+msgstr "Afya Nzuri"
+
+msgid "Leaf Spot"
+msgstr "Madoa ya Majani"
+
+msgid "White Rust"
+msgstr "Kutu Nyeupe"
+
+msgid "Non-Amaranthus"
+msgstr "Si Amaranthus"
+
+msgid "View"
+msgstr "Tazama"
+
+msgid "No results found"
+msgstr "Hakuna matokeo yaliyopatikana"
+
+msgid "Try adjusting your search or filter."
+msgstr "Jaribu kurekebisha utafutaji au kichujio chako."
+
+msgid "Clear Filters"
+msgstr "Futa Vichujio"
+
+msgid "No predictions yet"
+msgstr "Bado hakuna utabiri"
+
+msgid "Upload a leaf image to get your first disease detection result."
+msgstr "Pakia picha ya jani kupata matokeo yako ya kwanza ya ugunduzaji wa ugonjwa."
+
+msgid "Start First Detection"
+msgstr "Anza Ugunduzaji wa Kwanza"
+
+msgid "About the System"
+msgstr "Kuhusu Mfumo"
+
+msgid "Learn about Amaranthus diseases, AI technology, and how this system helps farmers"
+msgstr "Jifunze kuhusu magonjwa ya Amaranthus, teknolojia ya AI, na jinsi mfumo huu unavyosaidia wakulima"
+
+msgid "Our Mission"
+msgstr "Dhamira Yetu"
+
+msgid "Fighting Amaranthus Diseases with AI"
+msgstr "Kupigana na Magonjwa ya Amaranthus kwa AI"
+
+msgid "Detection Classes"
+msgstr "Madarasa ya Ugunduzaji"
+
+msgid "Diseases We Detect"
+msgstr "Magonjwa Tunayogundua"
+
+msgid "Our model classifies Amaranthus leaves into four categories"
+msgstr "Modeli yetu huainisha majani ya Amaranthus katika makundi manne"
+
+msgid "Low Risk"
+msgstr "Hatari Ndogo"
+
+msgid "Medium Risk"
+msgstr "Hatari ya Wastani"
+
+msgid "High Risk"
+msgstr "Hatari Kubwa"
+
+msgid "Unknown"
+msgstr "Haijulikani"
+
+msgid "Technology"
+msgstr "Teknolojia"
+
+msgid "AI Technology Behind the System"
+msgstr "Teknolojia ya AI Nyuma ya Mfumo"
+
+msgid "Model Status"
+msgstr "Hali ya Modeli"
+
+msgid "Loaded and Ready"
+msgstr "Imepakiwa na Iko Tayari"
+
+msgid "Not Loaded"
+msgstr "Haijapakiwa"
+
+msgid "Guide"
+msgstr "Mwongozo"
+
+msgid "How to Use the System"
+msgstr "Jinsi ya Kutumia Mfumo"
+
+msgid "University Research Project"
+msgstr "Mradi wa Utafiti wa Chuo Kikuu"
+
+msgid "Quick Links"
+msgstr "Viungo vya Haraka"
+
+msgid "Detectable Diseases"
+msgstr "Magonjwa Yanayoweza Kugunduliwa"
+
+msgid "Contact & Info"
+msgstr "Mawasiliano na Maelezo"

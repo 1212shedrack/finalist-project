@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% trans "Home" %} — Amaranthus Disease Detection AI{% endblock %}
+
+{% block content %}
+
+<!-- ══════════════════════════════════════════════════════════ HERO -->
+<section class="hero-section" id="hero">
+  <div class="hero-bg-decoration"></div>
+  <div class="container hero-container">
+    <div class="row align-items-center min-vh-100">
+      <div class="col-lg-7 hero-text-col">
+        <div class="hero-badge animate-fadeInUp">
+          <i class="bi bi-cpu-fill me-2"></i>{% trans "AI-Powered Agricultural Intelligence" %}
+        </div>
+        <h1 class="hero-title animate-fadeInUp delay-1">
+          {% trans "AI-Powered" %}<br>
+          <span class="hero-title-accent">Amaranthus</span><br>
+          {% trans "Disease Detection" %}
+        </h1>
+        <p class="hero-subtitle animate-fadeInUp delay-2">
+          {% trans "Upload an image of an Amaranthus leaf and receive instant disease prediction together with professional treatment recommendations powered by deep learning." %}
+        </p>
+        <div class="hero-actions animate-fadeInUp delay-3">
+          <a href="{% url 'disease_app:predict' %}" class="btn btn-hero-primary">
+            <i class="bi bi-camera-fill me-2"></i>{% trans "Detect Disease Now" %}
+          </a>
+          <a href="#features" class="btn btn-hero-outline" id="learnMoreBtn">
+            <i class="bi bi-play-circle me-2"></i>{% trans "Learn More" %}
+          </a>
+        </div>
+
+        <!-- Stats row -->
+        <div class="hero-stats animate-fadeInUp delay-4">
+          <div class="stat-item">
+            <span class="stat-num" data-target="{{ total_predictions }}">0</span>
+            <span class="stat-label">{% trans "Total Predictions" %}</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="4">0</span>
+            <span class="stat-label">{% trans "Disease Classes" %}</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="98">0</span><span class="stat-suffix">%</span>
+            <span class="stat-label">{% trans "Model Accuracy" %}</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="3136">0</span>
+            <span class="stat-label">{% trans "Training Images" %}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero visual -->
+      <div class="col-lg-5 hero-visual-col animate-fadeInRight delay-2">
+        <div class="hero-card-stack">
+          <div class="hero-floating-card card-1">
+            <i class="bi bi-check-circle-fill text-success"></i>
+            <span>{% trans "Healthy" %} Leaf Detected</span>
+            <small>Confidence: 94.2%</small>
+          </div>
+          <div class="hero-main-visual">
+            <div class="hero-visual-ring ring-1"></div>
+            <div class="hero-visual-ring ring-2"></div>
+            <div class="hero-visual-center">
+              <i class="bi bi-flower2 hero-leaf-icon"></i>
+            </div>
+          </div>
+          <div class="hero-floating-card card-2">
+            <i class="bi bi-shield-check text-warning"></i>
+            <span>{% trans "AI Analysis" %} Complete</span>
+            <small>{% trans "White Rust" %} — {% trans "High Risk" %}</small>
+          </div>
+          <div class="hero-floating-card card-3">
+            <i class="bi bi-graph-up-arrow text-primary"></i>
+            <span>98% {% trans "Model Accuracy" %}</span>
+            <small>EfficientNet Model</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-indicator">
+    <a href="#features" aria-label="Scroll down"><i class="bi bi-chevron-down"></i></a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ FEATURES -->
+<section class="features-section" id="features">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">{% trans "Why Choose Us" %}</span>
+      <h2 class="section-title">{% trans "Powerful Features for Farmers" %}</h2>
+      <p class="section-subtitle">{% trans "Everything you need to protect your Amaranthus crop with confidence" %}</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="feature-card">
+          <div class="feature-icon-wrap icon-green">
+            <i class="bi bi-lightning-charge-fill"></i>
+          </div>
+          <h5 class="feature-title">{% trans "Instant Detection" %}</h5>
+          <p class="feature-desc">{% trans "Get disease prediction results in under 2 seconds using our optimized TFLite model." %}</p>
+          <div class="feature-tag">{% trans "Fast & Reliable" %}</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="feature-card">
+          <div class="feature-icon-wrap icon-blue">
+            <i class="bi bi-cpu-fill"></i>
+          </div>
+          <h5 class="feature-title">{% trans "4-Class AI Model" %}</h5>
+          <p class="feature-desc">{% trans "Detects Healthy, Leaf Spot, White Rust, and Non-Amaranthus with 98%+ accuracy." %}</p>
+          <div class="feature-tag">{% trans "Deep Learning" %}</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="feature-card">
+          <div class="feature-icon-wrap icon-orange">
+            <i class="bi bi-journal-medical"></i>
+          </div>
+          <h5 class="feature-title">{% trans "Expert Recommendations" %}</h5>
+          <p class="feature-desc">{% trans "Receive detailed treatment plans, prevention tips, and recommended pesticides." %}</p>
+          <div class="feature-tag">{% trans "Actionable Insights" %}</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="feature-card">
+          <div class="feature-icon-wrap icon-purple">
+            <i class="bi bi-phone-fill"></i>
+          </div>
+          <h5 class="feature-title">{% trans "Mobile Friendly" %}</h5>
+          <p class="feature-desc">{% trans "Fully responsive design works perfectly on your phone in the field." %}</p>
+          <div class="feature-tag">{% trans "Works Anywhere" %}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ HOW IT WORKS -->
+<section class="how-section" id="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">{% trans "Simple Process" %}</span>
+      <h2 class="section-title">{% trans "How It Works" %}</h2>
+      <p class="section-subtitle">{% trans "Three simple steps to protect your crop" %}</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="step-number">01</div>
+        <div class="step-icon"><i class="bi bi-upload"></i></div>
+        <h5 class="step-title">{% trans "Upload Image" %}</h5>
+        <p class="step-desc">{% trans "Take a clear photo of an Amaranthus leaf and upload it using drag & drop or file browser." %}</p>
+      </div>
+      <div class="how-connector"><i class="bi bi-arrow-right"></i></div>
+      <div class="how-step">
+        <div class="step-number">02</div>
+        <div class="step-icon"><i class="bi bi-cpu"></i></div>
+        <h5 class="step-title">{% trans "AI Analysis" %}</h5>
+        <p class="step-desc">{% trans "Our EfficientNet deep learning model analyzes the image and classifies the disease in milliseconds." %}</p>
+      </div>
+      <div class="how-connector"><i class="bi bi-arrow-right"></i></div>
+      <div class="how-step">
+        <div class="step-number">03</div>
+        <div class="step-icon"><i class="bi bi-file-earmark-medical"></i></div>
+        <h5 class="step-title">{% trans "Get Results" %}</h5>
+        <p class="step-desc">{% trans "Receive detailed results including disease name, confidence score, risk level, and treatment recommendations." %}</p>
+      </div>
+    </div>
+    <div class="text-center mt-5">
+      <a href="{% url 'disease_app:predict' %}" class="btn btn-primary-custom btn-lg">
+        <i class="bi bi-camera-fill me-2"></i>{% trans "Try It Now — It's Free" %}
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ RECENT PREDICTIONS -->
+{% if recent_predictions %}
+<section class="recent-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">{% trans "Latest Activity" %}</span>
+      <h2 class="section-title">{% trans "Recent Detections" %}</h2>
+      <p class="section-subtitle">{% trans "Latest disease analyses performed by the system" %}</p>
+    </div>
+    <div class="row g-4">
+      {% for pred in recent_predictions %}
+      <div class="col-lg-4 col-md-6">
+        <div class="prediction-card">
+          <div class="prediction-img-wrap">
+            {% if pred.image %}
+              <img src="{{ pred.image.url }}" alt="{{ pred.display_name }}" class="prediction-img" loading="lazy" />
+            {% else %}
+              <div class="prediction-img-placeholder"><i class="bi bi-image"></i></div>
+            {% endif %}
+            <span class="prediction-badge badge-{{ pred.risk_color }}">{{ pred.display_name }}</span>
+          </div>
+          <div class="prediction-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="prediction-conf"><i class="bi bi-graph-up me-1"></i>{{ pred.confidence|floatformat:1 }}% confidence</span>
+              <span class="risk-dot risk-{{ pred.risk_color }}"></span>
+            </div>
+            <p class="prediction-date"><i class="bi bi-calendar3 me-1"></i>{{ pred.created_at|date:"M d, Y — H:i" }}</p>
+            <a href="{% url 'disease_app:result' pred.pk %}" class="btn btn-sm btn-outline-primary-custom w-100">
+              {% trans "View Details" %} <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center mt-4">
+      <a href="{% url 'disease_app:history' %}" class="btn btn-outline-primary-custom">
+        <i class="bi bi-clock-history me-2"></i>{% trans "View All History" %}
+      </a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ══════════════════════════════════════════════════════════ CTA BANNER -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-card">
+      <div class="cta-decoration"></div>
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <h3 class="cta-title">{% trans "Ready to Protect Your Amaranthus Crop?" %}</h3>
+          <p class="cta-subtitle">{% trans "Upload a leaf photo now and get instant AI-powered disease analysis — completely free." %}</p>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <a href="{% url 'disease_app:predict' %}" class="btn btn-cta">
+            <i class="bi bi-camera-fill me-2"></i>{% trans "Start Detection" %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('[data-target]').forEach(el => {
+            animateCounter(el, parseInt(el.dataset.target));
+          });
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    const statsEl = document.querySelector('.hero-stats');
+    if (statsEl) statsObserver.observe(statsEl);
+  });
+</script>
+{% endblock %}
