@@ -79,7 +79,7 @@ The Django command-line utility entry point. Used locally to run the development
 ### `requirements.txt`
 Declares all Python packages required to run the application in production. It intentionally uses `ai-edge-litert` instead of the full `tensorflow` package to keep the Render build fast and within memory limits. The nine packages listed cover the framework, server, static file serving, machine learning runtime, image processing, and translation utilities.
 
-### `Procfile`
+### Procfile
 A single-line file that tells Render and similar platforms how to start the application. It launches Gunicorn pointing at the Django WSGI entry point with two worker processes and a 120-second timeout, which accounts for the TFLite model loading time on cold starts.
 
 ### `render.yaml`

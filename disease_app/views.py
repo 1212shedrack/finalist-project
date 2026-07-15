@@ -12,7 +12,7 @@ from .models import Prediction
 from .predictor import predict_image, load_recommendation, get_model_status, DISPLAY_NAMES
 
 
-# ── Home ──────────────────────────────────────────────────────────────────────
+# ── Home 
 def home(request):
     """Landing page with statistics and recent predictions."""
     total   = Prediction.objects.count()

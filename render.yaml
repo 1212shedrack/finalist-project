@@ -5,16 +5,15 @@ services:
     region: oregon
     plan: free
 
-    # ── Python version ─────────────────────────────────────────────────────────
+    # Python version
     pythonVersion: "3.12.3"
-
-    # ── Build ──────────────────────────────────────────────────────────────────
+    # Build
     buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --no-input && python manage.py migrate --run-syncdb"
 
-    # ── Start: Django WSGI via gunicorn (NOT Flask's app:app) ─────────────────
+    # Start: Django WSGI via gunicorn
     startCommand: "gunicorn amaranthus_project.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 120"
 
-    # ── Environment Variables ──────────────────────────────────────────────────
+    # Environment Variables
     envVars:
       - key: SECRET_KEY
         generateValue: true
