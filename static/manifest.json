@@ -1,0 +1,50 @@
+{
+  "name": "Amaranthus Disease Detection AI",
+  "short_name": "AmaranthusAI",
+  "description": "AI-powered Amaranthus leaf disease detection and treatment recommendation system",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#1a4d2e",
+  "background_color": "#1a4d2e",
+  "lang": "en",
+  "categories": ["agriculture", "health", "productivity"],
+
+  "icons": [
+    {
+      "src": "/static/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/static/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+
+  "shortcuts": [
+    {
+      "name": "Detect Disease",
+      "short_name": "Detect",
+      "description": "Upload a leaf image for instant disease detection",
+      "url": "/predict/",
+      "icons": [{ "src": "/static/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "View History",
+      "short_name": "History",
+      "description": "View previous disease detection results",
+      "url": "/history/",
+      "icons": [{ "src": "/static/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+
+  "screenshots": [],
+
+  "related_applications": [],
+  "prefer_related_applications": false
+}
