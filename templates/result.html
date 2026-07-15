@@ -18,9 +18,9 @@
   </div>
 </div>
 
-<section class="result-section">
+<section class="result-section" id="reportContent">
   <div class="container">
-    <div class="row g-4" id="reportContent">
+    <div class="row g-4">
 
       <!-- Left: Image -->
       <div class="col-lg-5">
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', function() {
           margin:       0.3,
           filename:     'AmaranthusAI_Report_{{ prediction.pk }}.pdf',
           image:        { type: 'jpeg', quality: 0.95 },
-          html2canvas:  { scale: 1, useCORS: true, logging: false },
+          html2canvas:  { scale: 1, useCORS: true, logging: false, windowWidth: 1200 },
           jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
         };
 
