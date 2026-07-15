@@ -481,3 +481,238 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+
+/*
+   15. CAMERA CAPTURE — getUserMedia + Canvas + Form POST
+ */
+(function initCamera() {
+
+  // ── Element refs ────────────────────────────────────────────────────────────
+  const tabUpload          = document.getElementById('tabUpload');
+  const tabCamera          = document.getElementById('tabCamera');
+  const panelUpload        = document.getElementById('panelUpload');
+  const panelCamera        = document.getElementById('panelCamera');
+
+  const cameraUnsupported  = document.getElementById('cameraUnsupported');
+  const cameraUI           = document.getElementById('cameraUI');
+  const cameraStartScreen  = document.getElementById('cameraStartScreen');
+  const cameraViewfinder   = document.getElementById('cameraViewfinderWrap');
+  const cameraReviewWrap   = document.getElementById('cameraReviewWrap');
+
+  const startCameraBtn     = document.getElementById('startCameraBtn');
+  const stopCameraBtn      = document.getElementById('stopCameraBtn');
+  const captureBtn         = document.getElementById('captureBtn');
+  const switchCameraBtn    = document.getElementById('switchCameraBtn');
+  const retakeBtn          = document.getElementById('retakeBtn');
+  const analyzeCapturedBtn = document.getElementById('analyzeCapturedBtn');
+
+  const video              = document.getElementById('cameraVideo');
+  const canvas             = document.getElementById('cameraCanvas');
+  const capturedImage      = document.getElementById('capturedImage');
+  const cameraForm         = document.getElementById('cameraForm');
+  const cameraImageInput   = document.getElementById('cameraImageInput');
+
+  // Exit if not on the predict page
+  if (!tabUpload || !tabCamera) return;
+
+  // ── State ───────────────────────────────────────────────────────────────────
+  let stream           = null;
+  let facingMode       = 'environment'; // rear camera by default
+  let capturedBlob     = null;
+
+  // ── Mode tab switching ───────────────────────────────────────────────────────
+  tabUpload.addEventListener('click', () => switchMode('upload'));
+  tabCamera.addEventListener('click', () => switchMode('camera'));
+
+  function switchMode(mode) {
+    if (mode === 'upload') {
+      tabUpload.classList.add('active');
+      tabCamera.classList.remove('active');
+      tabUpload.setAttribute('aria-selected', 'true');
+      tabCamera.setAttribute('aria-selected', 'false');
+      panelUpload.style.display = 'block';
+      panelCamera.style.display = 'none';
+      stopStream(); // stop camera if running
+    } else {
+      tabCamera.classList.add('active');
+      tabUpload.classList.remove('active');
+      tabCamera.setAttribute('aria-selected', 'true');
+      tabUpload.setAttribute('aria-selected', 'false');
+      panelCamera.style.display = 'block';
+      panelUpload.style.display = 'none';
+
+      // Check browser support
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        if (cameraUnsupported) cameraUnsupported.style.display = 'flex';
+        if (cameraUI)          cameraUI.style.display          = 'none';
+      }
+    }
+  }
+
+  // ── Start camera ─────────────────────────────────────────────────────────────
+  if (startCameraBtn) {
+    startCameraBtn.addEventListener('click', () => startCamera());
+  }
+
+  async function startCamera() {
+    try {
+      // Stop any existing stream first
+      stopStream();
+
+      const constraints = {
+        video: {
+          facingMode: { ideal: facingMode },
+          width:  { ideal: 1280 },
+          height: { ideal: 720 },
+        },
+        audio: false,
+      };
+
+      stream = await navigator.mediaDevices.getUserMedia(constraints);
+      video.srcObject = stream;
+
+      // Show viewfinder, hide start screen
+      cameraStartScreen.style.display  = 'none';
+      cameraViewfinder.style.display   = 'flex';
+      cameraReviewWrap.style.display   = 'none';
+
+      // Show switch button only if multiple cameras exist
+      checkMultipleCameras();
+
+    } catch (err) {
+      console.error('[Camera] getUserMedia error:', err);
+
+      let msg = 'Could not access camera. ';
+      if (err.name === 'NotAllowedError') {
+        msg += 'Please allow camera permission in your browser settings.';
+      } else if (err.name === 'NotFoundError') {
+        msg += 'No camera was found on this device.';
+      } else if (err.name === 'NotReadableError') {
+        msg += 'Camera is in use by another application.';
+      } else {
+        msg += err.message;
+      }
+
+      Toast.show(msg, 'error');
+    }
+  }
+
+  // ── Check for multiple cameras (to show switch button) ────────────────────────
+  async function checkMultipleCameras() {
+    try {
+      const devices   = await navigator.mediaDevices.enumerateDevices();
+      const videoDevs = devices.filter(d => d.kind === 'videoinput');
+      if (switchCameraBtn) {
+        switchCameraBtn.style.display = videoDevs.length > 1 ? 'flex' : 'none';
+      }
+    } catch (_) {
+      if (switchCameraBtn) switchCameraBtn.style.display = 'none';
+    }
+  }
+
+  // ── Switch front / rear camera ────────────────────────────────────────────────
+  if (switchCameraBtn) {
+    switchCameraBtn.addEventListener('click', () => {
+      facingMode = facingMode === 'environment' ? 'user' : 'environment';
+      startCamera();
+    });
+  }
+
+  // ── Stop camera ───────────────────────────────────────────────────────────────
+  if (stopCameraBtn) {
+    stopCameraBtn.addEventListener('click', () => {
+      stopStream();
+      cameraViewfinder.style.display  = 'none';
+      cameraReviewWrap.style.display  = 'none';
+      cameraStartScreen.style.display = 'flex';
+    });
+  }
+
+  function stopStream() {
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop());
+      stream = null;
+    }
+    if (video) video.srcObject = null;
+  }
+
+  // ── Capture photo ─────────────────────────────────────────────────────────────
+  if (captureBtn) {
+    captureBtn.addEventListener('click', () => capturePhoto());
+  }
+
+  function capturePhoto() {
+    if (!video || !canvas) return;
+
+    // Flash animation
+    captureBtn.classList.add('capturing');
+    setTimeout(() => captureBtn.classList.remove('capturing'), 300);
+
+    // Draw video frame to canvas
+    const w = video.videoWidth  || 640;
+    const h = video.videoHeight || 480;
+    canvas.width  = w;
+    canvas.height = h;
+
+    const ctx = canvas.getContext('2d');
+
+    // Mirror if using front camera
+    if (facingMode === 'user') {
+      ctx.translate(w, 0);
+      ctx.scale(-1, 1);
+    }
+    ctx.drawImage(video, 0, 0, w, h);
+
+    // Convert to Blob
+    canvas.toBlob(blob => {
+      if (!blob) {
+        Toast.show('Failed to capture image. Please try again.', 'error');
+        return;
+      }
+      capturedBlob = blob;
+
+      // Show review
+      const url = URL.createObjectURL(blob);
+      if (capturedImage) capturedImage.src = url;
+
+      stopStream();
+      cameraViewfinder.style.display = 'none';
+      cameraReviewWrap.style.display = 'flex';
+
+      Toast.show('Photo captured! Review it below before analysing.', 'success');
+    }, 'image/jpeg', 0.92);
+  }
+
+  // ── Retake ────────────────────────────────────────────────────────────────────
+  if (retakeBtn) {
+    retakeBtn.addEventListener('click', () => {
+      capturedBlob = null;
+      cameraReviewWrap.style.display = 'none';
+      // Restart camera
+      startCamera();
+    });
+  }
+
+  // ── Analyse captured photo ────────────────────────────────────────────────────
+  if (analyzeCapturedBtn) {
+    analyzeCapturedBtn.addEventListener('click', () => {
+      if (!capturedBlob || !cameraForm || !cameraImageInput) return;
+
+      // Convert blob to File and attach to the hidden form input
+      const file = new File([capturedBlob], 'camera-capture.jpg', { type: 'image/jpeg' });
+      const dt   = new DataTransfer();
+      dt.items.add(file);
+      cameraImageInput.files = dt.files;
+
+      // Show loading overlay and submit
+      showLoading();
+      cameraForm.submit();
+    });
+  }
+
+  // ── Stop stream when leaving page ─────────────────────────────────────────────
+  window.addEventListener('pagehide', stopStream);
+  window.addEventListener('beforeunload', stopStream);
+
+})();

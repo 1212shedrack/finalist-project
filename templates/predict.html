@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{% trans "Detect Disease" %} Amaranthus AI{% endblock %}
+{% block title %}{% trans "Detect Disease" %} — Amaranthus AI{% endblock %}
 
 {% block content %}
 <div class="page-header-section">
@@ -13,7 +13,7 @@
       </ol>
     </nav>
     <h1 class="page-header-title"><i class="bi bi-camera-fill me-3"></i>{% trans "Leaf Disease Detection" %}</h1>
-    <p class="page-header-subtitle">{% trans "Upload a clear photo of an Amaranthus leaf to get an instant AI powered disease analysis" %}</p>
+    <p class="page-header-subtitle">{% trans "Upload a photo or use your camera to get an instant AI-powered disease analysis" %}</p>
   </div>
 </div>
 
@@ -22,8 +22,18 @@
     <div class="row justify-content-center">
       <div class="col-lg-8">
 
+        <!-- Input Mode Tabs -->
+        <div class="input-mode-tabs">
+          <button class="mode-tab active" id="tabUpload" data-mode="upload" aria-selected="true">
+            <i class="bi bi-cloud-upload-fill me-2"></i>{% trans "Upload Photo" %}
+          </button>
+          <button class="mode-tab" id="tabCamera" data-mode="camera" aria-selected="false">
+            <i class="bi bi-camera-video-fill me-2"></i>{% trans "Use Camera" %}
+          </button>
+        </div>
+
         <!-- Upload Card -->
-        <div class="upload-card">
+        <div class="upload-card" id="panelUpload">
           <form method="POST" enctype="multipart/form-data" id="uploadForm" novalidate>
             {% csrf_token %}
 
@@ -75,6 +85,101 @@
             </div>
           </form>
         </div>
+
+        <!-- Camera Card -->
+        <div class="upload-card camera-card" id="panelCamera" style="display:none;">
+
+          <!-- Camera not supported warning -->
+          <div class="camera-unsupported" id="cameraUnsupported" style="display:none;">
+            <div class="camera-unsupported-inner">
+              <i class="bi bi-camera-video-off-fill"></i>
+              <h5>{% trans "Camera Not Available" %}</h5>
+              <p>{% trans "Your browser or device does not support camera access. Please use the Upload Photo option instead." %}</p>
+            </div>
+          </div>
+
+          <!-- Camera UI -->
+          <div class="camera-ui" id="cameraUI">
+
+            <!-- State 1: Not started -->
+            <div class="camera-start-screen" id="cameraStartScreen">
+              <div class="camera-start-icon">
+                <i class="bi bi-camera-video-fill"></i>
+              </div>
+              <h4 class="camera-start-title">{% trans "Live Camera Capture" %}</h4>
+              <p class="camera-start-sub">{% trans "Position the leaf clearly in the frame, then tap Capture." %}</p>
+              <div class="camera-tips-row">
+                <span><i class="bi bi-sun me-1 text-warning"></i>{% trans "Good lighting" %}</span>
+                <span><i class="bi bi-fullscreen me-1 text-success"></i>{% trans "Fill the frame" %}</span>
+                <span><i class="bi bi-focus me-1 text-info"></i>{% trans "Keep steady" %}</span>
+              </div>
+              <div class="camera-start-actions">
+                <button class="btn btn-start-camera" id="startCameraBtn">
+                  <i class="bi bi-camera-video-fill me-2"></i>{% trans "Start Camera" %}
+                </button>
+              </div>
+            </div>
+
+            <!-- State 2: Live viewfinder -->
+            <div class="camera-viewfinder-wrap" id="cameraViewfinderWrap" style="display:none;">
+              <div class="camera-viewfinder">
+                <video id="cameraVideo" autoplay playsinline muted></video>
+                <!-- Leaf guide overlay -->
+                <div class="camera-guide-overlay">
+                  <div class="camera-guide-frame">
+                    <span class="guide-corner tl"></span>
+                    <span class="guide-corner tr"></span>
+                    <span class="guide-corner bl"></span>
+                    <span class="guide-corner br"></span>
+                  </div>
+                  <p class="guide-label">{% trans "Place leaf inside the frame" %}</p>
+                </div>
+                <!-- Camera switch (rear/front) -->
+                <button class="btn-cam-switch" id="switchCameraBtn" title="{% trans 'Switch Camera' %}">
+                  <i class="bi bi-arrow-repeat"></i>
+                </button>
+              </div>
+              <canvas id="cameraCanvas" style="display:none;"></canvas>
+              <div class="camera-controls">
+                <button class="btn btn-cam-stop" id="stopCameraBtn">
+                  <i class="bi bi-x-circle me-1"></i>{% trans "Stop" %}
+                </button>
+                <button class="btn btn-capture" id="captureBtn">
+                  <span class="capture-ring"></span>
+                  <i class="bi bi-camera-fill"></i>
+                </button>
+                <div style="width:120px;"></div><!-- spacer -->
+              </div>
+            </div>
+
+            <!-- State 3: Photo taken / review -->
+            <div class="camera-review-wrap" id="cameraReviewWrap" style="display:none;">
+              <div class="camera-review-header">
+                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                <span>{% trans "Photo Captured! Review before analysing." %}</span>
+              </div>
+              <div class="camera-review-img-wrap">
+                <img id="capturedImage" src="#" alt="Captured leaf" class="camera-review-img" />
+              </div>
+              <div class="camera-review-actions">
+                <button class="btn btn-retake" id="retakeBtn">
+                  <i class="bi bi-arrow-repeat me-2"></i>{% trans "Retake" %}
+                </button>
+                <button class="btn btn-analyze-cam" id="analyzeCapturedBtn">
+                  <i class="bi bi-cpu-fill me-2"></i>{% trans "Analyze Disease" %}
+                </button>
+              </div>
+            </div>
+
+          </div><!-- /.camera-ui -->
+
+          <!-- Hidden form to POST captured image -->
+          <form method="POST" enctype="multipart/form-data" id="cameraForm" style="display:none;" novalidate>
+            {% csrf_token %}
+            <input type="file" name="image" id="cameraImageInput" accept="image/*" />
+          </form>
+
+        </div><!-- /.camera-card -->
 
         <!-- Tips Card -->
         <div class="tips-card mt-4">
