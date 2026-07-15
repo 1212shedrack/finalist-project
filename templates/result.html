@@ -20,7 +20,7 @@
 
 <section class="result-section">
   <div class="container">
-    <div class="row g-4">
+    <div class="row g-4" id="reportContent">
 
       <!-- Left: Image -->
       <div class="col-lg-5">
@@ -45,6 +45,9 @@
         </div>
 
         <div class="result-actions mt-3">
+          <button id="downloadPdfBtn" class="btn btn-secondary w-100 mb-2" style="background-color: #2d7a4f; border: none; color: white;">
+            <i class="bi bi-file-earmark-pdf-fill me-2"></i>{% trans "Download PDF Report" %}
+          </button>
           <a href="{% url 'disease_app:predict' %}" class="btn btn-primary-custom w-100 mb-2">
             <i class="bi bi-camera-fill me-2"></i>{% trans "Analyze Another Leaf" %}
           </a>
@@ -267,5 +270,49 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }, 300);
 });
+</script>
+<!-- html2pdf.js for Client-Side PDF Generation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const downloadBtn = document.getElementById('downloadPdfBtn');
+    
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', function() {
+        const element = document.getElementById('reportContent');
+        const originalBtnText = downloadBtn.innerHTML;
+        
+        // Indicate loading
+        downloadBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Generating PDF...';
+        downloadBtn.disabled = true;
+
+        // Hide result actions from the PDF
+        const actions = document.querySelector('.result-actions');
+        if (actions) actions.style.display = 'none';
+
+        const opt = {
+          margin:       0.5,
+          filename:     'AmaranthusAI_Report_{{ prediction.pk }}.pdf',
+          image:        { type: 'jpeg', quality: 0.98 },
+          html2canvas:  { scale: 2, useCORS: true },
+          jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+
+        // Generate PDF
+        html2pdf().set(opt).from(element).save().then(() => {
+          // Restore UI after download starts
+          if (actions) actions.style.display = 'block';
+          downloadBtn.innerHTML = originalBtnText;
+          downloadBtn.disabled = false;
+        }).catch(err => {
+          console.error('PDF Generation Error:', err);
+          if (actions) actions.style.display = 'block';
+          downloadBtn.innerHTML = originalBtnText;
+          downloadBtn.disabled = false;
+          alert('An error occurred while generating the PDF.');
+        });
+      });
+    }
+  });
 </script>
 {% endblock %}
