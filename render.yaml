@@ -2,22 +2,22 @@ services:
   - type: web
     name: amaranthus-ai
     env: python
-    region: oregon           # Free tier region
+    region: oregon
     plan: free
 
-    # ── Build ──────────────────────────────────────────────────────────────────
-    buildCommand: |
-      pip install -r requirements.txt
-      python manage.py collectstatic --no-input
-      python manage.py migrate --run-syncdb
+    # ── Python version ─────────────────────────────────────────────────────────
+    pythonVersion: "3.12.3"
 
-    # ── Start ──────────────────────────────────────────────────────────────────
-    startCommand: gunicorn amaranthus_project.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+    # ── Build ──────────────────────────────────────────────────────────────────
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --no-input && python manage.py migrate --run-syncdb"
+
+    # ── Start: Django WSGI via gunicorn (NOT Flask's app:app) ─────────────────
+    startCommand: "gunicorn amaranthus_project.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 120"
 
     # ── Environment Variables ──────────────────────────────────────────────────
     envVars:
       - key: SECRET_KEY
-        generateValue: true          # Render auto-generates a secure random key
+        generateValue: true
 
       - key: DEBUG
         value: "False"
@@ -27,6 +27,9 @@ services:
 
       - key: TF_ENABLE_ONEDNN_OPTS
         value: "0"
+
+      - key: DJANGO_SETTINGS_MODULE
+        value: "amaranthus_project.settings"
 
       - key: RENDER_EXTERNAL_HOSTNAME
         fromService:
