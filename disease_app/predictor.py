@@ -19,19 +19,20 @@ import os
 import json
 import logging
 import numpy as np
+import tensorflow as tf
 from ai_edge_litert.interpreter import Interpreter
 from django.conf import settings
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 logger = logging.getLogger(__name__)
 
-# ── Class configuration ───────────────────────────────────────────────────────
+# Class configuration
 CLASS_NAMES = ['health', 'non_amaranthus', 'spot_leaf', 'white_rust']
 
 DISPLAY_NAMES = {
-    'health':          'Healthy',
-    'non_amaranthus':  'Non-Amaranthus',
-    'spot_leaf':       'Leaf Spot',
-    'white_rust':      'White Rust',
+    'health': 'Healthy',
+    'non_amaranthus': 'Non-Amaranthus',
+    'spot_leaf': 'Leaf Spot',
+    'white_rust': 'White Rust',
 }
 
 RISK_CONFIG = {
@@ -43,7 +44,7 @@ RISK_CONFIG = {
 
 IMAGE_SIZE = (224, 224)
 
-# ── Global interpreter ────────────────────────────────────────────────────────
+# Global interpreter
 _interpreter = None
 _model_loaded = False
 _model_error = None
@@ -87,13 +88,13 @@ def predict_image(image_path: str) -> dict:
     if not _model_loaded:
         raise RuntimeError(f'Model not available: {_model_error}')
 
-    # ── Preprocess — matches the original working code exactly ────────────────
-    img       = tf.keras.utils.load_img(image_path, target_size=IMAGE_SIZE)
+    # ── Preprocess — matches the original working code exactly
+    img = tf.keras.utils.load_img(image_path, target_size=IMAGE_SIZE)
     img_array = tf.keras.utils.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0).astype(np.float32)
     # NOTE: NO /255 normalization — the model applies preprocessing internally
 
-    # ── Inference ─────────────────────────────────────────────────────────────
+    # Inference
     inp_details = _interpreter.get_input_details()[0]
     out_details = _interpreter.get_output_details()[0]
 
@@ -102,17 +103,18 @@ def predict_image(image_path: str) -> dict:
 
     scores = _interpreter.get_tensor(out_details['index']).flatten().tolist()
 
-    # ── Build result ──────────────────────────────────────────────────────────
-    predicted_idx   = int(np.argmax(scores))
+    # Build result
+    predicted_idx = int(np.argmax(scores))
     predicted_class = CLASS_NAMES[predicted_idx]
-    confidence      = round(float(scores[predicted_idx]) * 100, 2)
+    confidence = round(float(scores[predicted_idx]) * 100, 2)
 
     prob_dict = {
         CLASS_NAMES[i]: round(float(scores[i]) * 100, 2)
         for i in range(len(CLASS_NAMES))
     }
 
-    risk    = RISK_CONFIG.get(predicted_class, {'level': 'Unknown', 'color': 'secondary'})
+    risk = RISK_CONFIG.get(predicted_class,
+                           {'level': 'Unknown', 'color': 'secondary'})
     display = DISPLAY_NAMES.get(predicted_class, predicted_class)
 
     logger.info('Prediction: %s (%.1f%%)', display, confidence)
@@ -142,14 +144,16 @@ def load_recommendation(predicted_class: str, lang: str = 'en') -> dict:
     Load recommendation dict from the correct language JSON file.
 
     Args:
-        predicted_class: One of health | spot_leaf | white_rust | non_amaranthus
-        lang:            Language code — 'en', 'sw', or 'fr' (default 'en')
+        predicted_class: One of health | spot_leaf | white_rust |
+        non_amaranthus
+        lang: Language code — 'en', 'sw', or 'fr' (default 'en')
 
     Returns:
         dict with title, summary, risk_level, treatment, prevention …
         Falls back to English if the language file is missing.
     """
-    base_dir = settings.RECOMMENDATIONS_PATH.parent   # same folder as recommendations.json
+    # same folder as recommendations.json
+    base_dir = settings.RECOMMENDATIONS_PATH.parent
 
     # Resolve filename; fall back to English if language not in map
     filename = RECOMMENDATIONS_FILES.get(lang, RECOMMENDATIONS_FILES['en'])
@@ -157,7 +161,8 @@ def load_recommendation(predicted_class: str, lang: str = 'en') -> dict:
 
     # If language file doesn't exist yet, fall back to English
     if not file_path.exists():
-        logger.warning('Recommendations file not found for lang=%s, falling back to English', lang)
+        logger.warning('Recommendations file not found for'
+                       'lang=%s, falling back to English', lang)
         file_path = base_dir / RECOMMENDATIONS_FILES['en']
 
     try:
@@ -165,7 +170,8 @@ def load_recommendation(predicted_class: str, lang: str = 'en') -> dict:
             recs = json.load(f)
         rec = recs.get(predicted_class, {})
         if not rec:
-            logger.warning('No recommendation for class: %s in lang: %s', predicted_class, lang)
+            logger.warning('No recommendation for class: %s in lang: %s',
+                           predicted_class, lang)
         return rec
     except FileNotFoundError:
         logger.error('Recommendations file not found: %s', file_path)
