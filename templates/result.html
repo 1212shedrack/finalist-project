@@ -291,10 +291,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (actions) actions.style.display = 'none';
 
         const opt = {
-          margin:       0.5,
+          margin:       0.3,
           filename:     'AmaranthusAI_Report_{{ prediction.pk }}.pdf',
-          image:        { type: 'jpeg', quality: 0.98 },
-          html2canvas:  { scale: 2, useCORS: true },
+          image:        { type: 'jpeg', quality: 0.95 },
+          html2canvas:  { scale: 1, useCORS: true, logging: false },
           jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
         };
 
@@ -306,10 +306,14 @@ document.addEventListener('DOMContentLoaded', function() {
           downloadBtn.disabled = false;
         }).catch(err => {
           console.error('PDF Generation Error:', err);
+          // Restore UI
           if (actions) actions.style.display = 'block';
           downloadBtn.innerHTML = originalBtnText;
           downloadBtn.disabled = false;
-          alert('An error occurred while generating the PDF.');
+          
+          // Fallback to native print dialogue which can "Save as PDF"
+          alert('Advanced PDF generator failed. Falling back to native print. Please select "Save as PDF".');
+          window.print();
         });
       });
     }
