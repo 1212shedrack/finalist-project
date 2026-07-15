@@ -1,7 +1,7 @@
 {
-  "name": "Amaranthus AI",
-  "short_name": "AmaranthusAI",
-  "description": "AI-powered Amaranthus leaf disease detection and treatment recommendation system",
+  "name": "AmaranthusAI",
+  "short_name": "",
+  "description": "",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
