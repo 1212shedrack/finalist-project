@@ -19,7 +19,7 @@ import os
 import json
 import logging
 import numpy as np
-import tensorflow as tf
+from ai_edge_litert.interpreter import Interpreter
 from django.conf import settings
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 logger = logging.getLogger(__name__)
@@ -44,9 +44,9 @@ RISK_CONFIG = {
 IMAGE_SIZE = (224, 224)
 
 # ── Global interpreter ────────────────────────────────────────────────────────
-_interpreter  = None
+_interpreter = None
 _model_loaded = False
-_model_error  = None
+_model_error = None
 
 
 def _load_model():
@@ -59,7 +59,7 @@ def _load_model():
         return
 
     try:
-        _interpreter = tf.lite.Interpreter(model_path=model_path, num_threads=4)
+        _interpreter = Interpreter(model_path=model_path, num_threads=4)
         _interpreter.allocate_tensors()
         _model_loaded = True
         out_shape = _interpreter.get_output_details()[0]['shape']
