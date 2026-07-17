@@ -17,7 +17,7 @@ SECRET_KEY = os.environ.get(
 )
 
 # On Render set DEBUG=False (env var). Locally defaults to True.
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+DEBUG = os.environ.get('DEBUG', 'False') == 'False'
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
