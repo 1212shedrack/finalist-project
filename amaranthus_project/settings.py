@@ -149,8 +149,15 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'          # collectstatic output dir
 STATICFILES_DIRS = [BASE_DIR / 'static']        # source static dir
 
-# WhiteNoise: compress + cache-bust static files automatically
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# WhiteNoise: compress static files for production
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    },
+}
 
 # Media Files
 # Note: on Render these are ephemeral (lost on redeploy).
