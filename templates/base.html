@@ -135,15 +135,22 @@
           <!-- Guest user — Login + Register -->
           <li class="nav-item ms-lg-2">
             <a class="btn btn-nav-login" href="{% url 'accounts:login' %}">
-              <i class="bi bi-box-arrow-in-right"></i><span>{% trans "Login" %}</span>
+              <i class="bi bi-box-arrow-in-right me-1"></i><span>{% trans "Login" %}</span>
             </a>
           </li>
           <li class="nav-item ms-lg-2">
             <a class="btn btn-nav-register" href="{% url 'accounts:register' %}">
-              <i class="bi bi-person-plus"></i><span>{% trans "Register" %}</span>
+              <i class="bi bi-person-plus me-1"></i><span>{% trans "Register" %}</span>
             </a>
           </li>
           {% endif %}
+
+          <!-- PWA Install Nav Item -->
+          <li class="nav-item ms-lg-2" id="pwaNavInstallItem" style="display: none;">
+            <button class="btn btn-nav-install" id="pwaNavInstallBtn" type="button">
+              <i class="bi bi-download me-1"></i><span>{% trans "Install App" %}</span>
+            </button>
+          </li>
 
           <!-- LANGUAGE SWITCHER -->
           <li class="nav-item ms-lg-2 lang-switcher-wrap">
@@ -315,41 +322,51 @@
         });
       }
 
-      // Install Banner
+      // PWA Installer Logic
       let deferredPrompt = null;
-      const banner   = document.getElementById('pwaInstallBanner');
+      const banner = document.getElementById('pwaInstallBanner');
       const installBtn = document.getElementById('pwaInstallBtn');
+      const navInstallItem = document.getElementById('pwaNavInstallItem');
+      const navInstallBtn = document.getElementById('pwaNavInstallBtn');
       const dismissBtn = document.getElementById('pwaInstallDismiss');
 
-      // Show banner when browser fires install prompt
+      function triggerInstall() {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then(function (result) {
+            if (result.outcome === 'accepted') {
+              console.log('[PWA] User accepted installation.');
+            }
+            deferredPrompt = null;
+            if (banner) banner.style.display = 'none';
+            if (navInstallItem) navInstallItem.style.display = 'none';
+          });
+        } else {
+          alert('To install Amaranthus AI:\n• Chrome/Edge/Android: Tap "Add to Home Screen" or menu install icon.\n• iPhone/Safari: Tap Share -> "Add to Home Screen".');
+        }
+      }
+
       window.addEventListener('beforeinstallprompt', function (e) {
         e.preventDefault();
         deferredPrompt = e;
 
-        // Only show if user hasn't dismissed before
+        if (navInstallItem) navInstallItem.style.display = 'inline-flex';
+
         if (!sessionStorage.getItem('pwa-dismissed')) {
           setTimeout(function () {
             if (banner) banner.style.display = 'flex';
-          }, 3000); // show after 3 seconds on page
+          }, 2000);
         }
       });
 
-      // Install button clicked
-      if (installBtn) {
-        installBtn.addEventListener('click', function () {
-          if (!deferredPrompt) return;
-          deferredPrompt.prompt();
-          deferredPrompt.userChoice.then(function (result) {
-            if (result.outcome === 'accepted') {
-              console.log('[PWA] App installed!');
-            }
-            deferredPrompt = null;
-            if (banner) banner.style.display = 'none';
-          });
-        });
+      // Show navbar install button by default on mobile or PWA-supported browsers
+      if (navInstallItem && ('serviceWorker' in navigator)) {
+        navInstallItem.style.display = 'inline-flex';
       }
 
-      // Dismiss button
+      if (installBtn) installBtn.addEventListener('click', triggerInstall);
+      if (navInstallBtn) navInstallBtn.addEventListener('click', triggerInstall);
+
       if (dismissBtn) {
         dismissBtn.addEventListener('click', function () {
           if (banner) banner.style.display = 'none';
@@ -357,10 +374,10 @@
         });
       }
 
-      // Hide banner once installed
       window.addEventListener('appinstalled', function () {
         if (banner) banner.style.display = 'none';
-        console.log('[PWA] App was installed successfully.');
+        if (navInstallItem) navInstallItem.style.display = 'none';
+        console.log('[PWA] App installed successfully.');
       });
     })();
   </script>
