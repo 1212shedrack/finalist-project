@@ -24,11 +24,24 @@ DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    '.onrender.com',          # All Render subdomains
-    os.environ.get('RENDER_EXTERNAL_HOSTNAME', ''),  # Exact Render hostname
+    '.onrender.com',
+    os.environ.get('RENDER_EXTERNAL_HOSTNAME', ''),
 ]
-# Remove empty strings that os.environ.get returns when var is not set
 ALLOWED_HOSTS = [h for h in ALLOWED_HOSTS if h]
+
+# ── CSRF trusted origins (required for POST forms on Render) ──────────────────
+# Without this, every login/register/form POST gets a 403 CSRF error on Render.
+_render_host = os.environ.get('RENDER_EXTERNAL_HOSTNAME', '')
+CSRF_TRUSTED_ORIGINS = [
+    'http://127.0.0.1:8000',
+    'http://localhost:8000',
+]
+if _render_host:
+    CSRF_TRUSTED_ORIGINS += [
+        f'https://{_render_host}',
+        f'http://{_render_host}',
+    ]
+CSRF_TRUSTED_ORIGINS.append('https://*.onrender.com')
 
 # Application
 INSTALLED_APPS = [
