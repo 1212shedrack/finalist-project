@@ -25,7 +25,6 @@ services:
     env: python
     region: oregon
     plan: free
-    pythonVersion: "3.12.3"
 
     # ── Build ────────────────────────────────────────────────────────────────
     buildCommand: >-
