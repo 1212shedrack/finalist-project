@@ -101,12 +101,15 @@ WSGI_APPLICATION = 'amaranthus_project.wsgi.application'
 # Automatically uses PostgreSQL on Render (DATABASE_URL is set by the
 # linked database service). Falls back to SQLite for local development.
 if dj_database_url and os.environ.get('DATABASE_URL'):
-    DATABASES = {
-        'default': dj_database_url.config(
-            conn_max_age=600,
-            conn_health_checks=True,
-        )
+    db_config = dj_database_url.config(
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
+    # Isolated PostgreSQL schema for AmaranthusAI on shared database
+    db_config['OPTIONS'] = {
+        'options': '-c search_path=amaranthus,public'
     }
+    DATABASES = {'default': db_config}
 else:
     DATABASES = {
         'default': {
