@@ -1,9 +1,24 @@
-Django==6.0.5
-asgiref==3.11.1
-sqlparse==0.5.5
-gunicorn==21.2.0
-whitenoise==6.7.0
+# ── Core Django ──────────────────────────────────────────────
+Django==5.2.4
+asgiref==3.9.1
+sqlparse==0.5.3
+
+# ── WSGI / Static files ──────────────────────────────────────
+gunicorn==23.0.0
+whitenoise==6.9.0
+
+# ── Database ─────────────────────────────────────────────────
+# PostgreSQL adapter (production) — auto-selected by DATABASE_URL
+psycopg2-binary==2.9.10
+# Parses DATABASE_URL → DATABASES dict automatically
+dj-database-url==2.3.0
+
+# ── AI / ML ──────────────────────────────────────────────────
 ai-edge-litert==2.1.6
-numpy==2.4.6
-Pillow==12.2.0
+numpy==2.2.6
+
+# ── Image handling ───────────────────────────────────────────
+Pillow==11.2.1
+
+# ── Internationalisation ─────────────────────────────────────
 polib==1.2.0

@@ -1,37 +1,80 @@
+# ═══════════════════════════════════════════════════════════════════════════
+#  render.yaml  —  Render Blueprint for AmaranthusAI
+#
+#  Deploys:
+#    • 1 × Free Web Service  (Django + Gunicorn)
+#    • 1 × Free PostgreSQL   (auto-linked via DATABASE_URL)
+#
+#  On first deploy Render will:
+#    1. Provision the free Postgres instance
+#    2. Inject DATABASE_URL into the web service automatically
+#    3. Run migrations via buildCommand
+#    4. Start Gunicorn
+# ═══════════════════════════════════════════════════════════════════════════
+
+databases:
+  - name: amaranthus-db
+    databaseName: amaranthusai
+    user: amaranthusai
+    plan: free
+    region: oregon
+
 services:
   - type: web
     name: amaranthus-ai
     env: python
     region: oregon
     plan: free
-
-    # Python version
     pythonVersion: "3.12.3"
-    # Build
-    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --no-input && python manage.py migrate --run-syncdb"
 
-    # Start: Django WSGI via gunicorn
-    startCommand: "gunicorn amaranthus_project.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 120"
+    # ── Build ────────────────────────────────────────────────────────────────
+    buildCommand: >-
+      pip install -r requirements.txt &&
+      python manage.py collectstatic --no-input &&
+      python manage.py migrate --run-syncdb
 
-    # Environment Variables
+    # ── Start ────────────────────────────────────────────────────────────────
+    startCommand: >-
+      gunicorn amaranthus_project.wsgi:application
+      --bind 0.0.0.0:$PORT
+      --workers 2
+      --timeout 120
+      --log-level info
+
+    # ── Environment Variables ────────────────────────────────────────────────
     envVars:
+
+      # Django secret key — Render generates a unique value on first deploy
       - key: SECRET_KEY
         generateValue: true
 
+      # Production mode
       - key: DEBUG
         value: "False"
 
+      # Python version hint
       - key: PYTHON_VERSION
         value: "3.12.3"
 
+      # Suppress TensorFlow oneDNN logging noise
       - key: TF_ENABLE_ONEDNN_OPTS
         value: "0"
 
+      # Django settings module
       - key: DJANGO_SETTINGS_MODULE
         value: "amaranthus_project.settings"
 
+      # Render injects this automatically so ALLOWED_HOSTS picks it up
       - key: RENDER_EXTERNAL_HOSTNAME
         fromService:
           type: web
           name: amaranthus-ai
           property: host
+
+      # ── DATABASE_URL (automatically injected by the linked database) ───────
+      # Render links the database above and sets DATABASE_URL for us.
+      # dj-database-url in settings.py reads this → no manual DSN needed.
+      - key: DATABASE_URL
+        fromDatabase:
+          name: amaranthus-db
+          property: connectionString

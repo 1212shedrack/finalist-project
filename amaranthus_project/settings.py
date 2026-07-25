@@ -1,4 +1,8 @@
 import os
+try:
+    import dj_database_url
+except ImportError:
+    dj_database_url = None
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
 
@@ -14,8 +18,8 @@ SECRET_KEY = os.environ.get(
     'change-in-production'
 )
 
-# On Render set DEBUG=False (env var). Locally defaults to True.
-DEBUG = os.environ.get('DEBUG', 'False') == 'False'
+# On Render: set DEBUG=False via env var. Locally defaults to True.
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -80,13 +84,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'amaranthus_project.wsgi.application'
 
-# Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# ── Database ─────────────────────────────────────────────────────────────────
+# Automatically uses PostgreSQL on Render (DATABASE_URL is set by the
+# linked database service). Falls back to SQLite for local development.
+if dj_database_url and os.environ.get('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.config(
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password Validation
 AUTH_PASSWORD_VALIDATORS = [
