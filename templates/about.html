@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{% trans "About the System" %} Amaranthus AI{% endblock %}
+{% block title %}{% trans "About the System" %} — {% trans "Amaranthus AI" %}{% endblock %}
 
 {% block content %}
 <div class="page-header-section">
@@ -26,14 +26,10 @@
         <span class="section-tag">{% trans "Our Mission" %}</span>
         <h2 class="about-title">{% trans "Fighting Amaranthus Diseases with AI" %}</h2>
         <p class="about-text">
-          Amaranthus is a highly nutritious crop cultivated widely across Africa and Asia. However, it is
-          susceptible to several diseases that reduce yield and quality. Early detection is critical to
-          preventing crop loss and protecting farmer livelihoods.
+          {% trans "Amaranthus is a highly nutritious crop cultivated widely across Africa and Asia. However, it is susceptible to several diseases that reduce yield and quality. Early detection is critical to preventing crop loss and protecting farmer livelihoods." %}
         </p>
         <p class="about-text">
-          This system uses a state-of-the-art deep learning model trained on over 3,136 leaf images to
-          classify Amaranthus leaf diseases with <strong>98%+ accuracy</strong>. Farmers can simply take
-          a photo and receive instant, expert-level recommendations.
+          {% trans "This system uses a state of the art machine (deep) learning model trained on over 3,136 leaf images to classify Amaranthus leaf diseases with" %} <strong>94%+ {% trans "accuracy" %}</strong>. {% trans "Farmers can simply take a photo and receive instant, expert-level recommendations." %}
         </p>
         <div class="about-stats-row">
           <div class="about-stat"><strong>94%+</strong><span>{% trans "Model Accuracy" %}</span></div>
@@ -67,11 +63,11 @@
         <div class="disease-card disease-card-healthy">
           <div class="disease-card-icon"><i class="bi bi-check-circle-fill"></i></div>
           <h5>{% trans "Healthy" %}</h5>
-          <p>Normal healthy Amaranthus leaf with no signs of disease or infection.</p>
+          <p>{% trans "Normal healthy Amaranthus leaf with no signs of disease or infection." %}</p>
           <ul class="disease-symptoms">
-            <li>Uniform green color</li>
-            <li>No spots or lesions</li>
-            <li>Smooth leaf surface</li>
+            <li>{% trans "Uniform green color" %}</li>
+            <li>{% trans "No spots or lesions" %}</li>
+            <li>{% trans "Smooth leaf surface" %}</li>
           </ul>
           <span class="disease-risk-badge badge-success">{% trans "Low Risk" %}</span>
         </div>
@@ -80,11 +76,11 @@
         <div class="disease-card disease-card-spot">
           <div class="disease-card-icon"><i class="bi bi-exclamation-circle-fill"></i></div>
           <h5>{% trans "Leaf Spot" %}</h5>
-          <p>Fungal disease causing dark necrotic spots on leaf surfaces, reducing photosynthesis.</p>
+          <p>{% trans "Fungal disease causing dark necrotic spots on leaf surfaces, reducing photosynthesis." %}</p>
           <ul class="disease-symptoms">
-            <li>Dark brown/black spots</li>
-            <li>Yellowing around spots</li>
-            <li>Leaf wilting</li>
+            <li>{% trans "Dark brown/black spots" %}</li>
+            <li>{% trans "Yellowing around spots" %}</li>
+            <li>{% trans "Leaf wilting" %}</li>
           </ul>
           <span class="disease-risk-badge badge-warning">{% trans "Medium Risk" %}</span>
         </div>
@@ -93,11 +89,11 @@
         <div class="disease-card disease-card-rust">
           <div class="disease-card-icon"><i class="bi bi-exclamation-triangle-fill"></i></div>
           <h5>{% trans "White Rust" %}</h5>
-          <p>Oomycete pathogen (Albugo bliti) causing white powdery pustules. Spreads rapidly.</p>
+          <p>{% trans "Oomycete pathogen (Albugo bliti) causing white powdery pustules. Spreads rapidly." %}</p>
           <ul class="disease-symptoms">
-            <li>White chalky patches</li>
-            <li>Distorted leaves</li>
-            <li>Premature leaf drop</li>
+            <li>{% trans "White chalky patches" %}</li>
+            <li>{% trans "Distorted leaves" %}</li>
+            <li>{% trans "Premature leaf drop" %}</li>
           </ul>
           <span class="disease-risk-badge badge-danger">{% trans "High Risk" %}</span>
         </div>
@@ -106,11 +102,11 @@
         <div class="disease-card disease-card-non">
           <div class="disease-card-icon"><i class="bi bi-question-circle-fill"></i></div>
           <h5>{% trans "Non-Amaranthus" %}</h5>
-          <p>Image does not contain an Amaranthus leaf the model cannot provide reliable results.</p>
+          <p>{% trans "Image does not contain an Amaranthus leaf — the model cannot provide reliable results." %}</p>
           <ul class="disease-symptoms">
-            <li>Wrong plant species</li>
-            <li>Unclear/blurry photo</li>
-            <li>Non-leaf objects</li>
+            <li>{% trans "Wrong plant species" %}</li>
+            <li>{% trans "Unclear/blurry photo" %}</li>
+            <li>{% trans "Non-leaf objects" %}</li>
           </ul>
           <span class="disease-risk-badge badge-secondary">{% trans "Unknown" %}</span>
         </div>
@@ -128,21 +124,21 @@
           <div class="tech-card">
             <div class="tech-icon"><i class="bi bi-cpu-fill"></i></div>
             <h6 class="tech-title">EfficientNet B0</h6>
-            <p class="tech-desc">Compact yet powerful CNN architecture. Achieves 98%+ accuracy with only 5.3M parameters — perfect for fast inference.</p>
+            <p class="tech-desc">{% trans "Compact yet powerful CNN architecture. Achieves 94%+ accuracy with only 5.3M parameters — perfect for fast inference." %}</p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="tech-card">
             <div class="tech-icon"><i class="bi bi-lightning-fill"></i></div>
             <h6 class="tech-title">TensorFlow Lite</h6>
-            <p class="tech-desc">Optimized model format for production deployment. Runs inference in milliseconds without GPU requirements.</p>
+            <p class="tech-desc">{% trans "Optimized model format for production deployment. Runs inference in milliseconds without GPU requirements." %}</p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="tech-card">
             <div class="tech-icon"><i class="bi bi-diagram-3-fill"></i></div>
             <h6 class="tech-title">Django Backend</h6>
-            <p class="tech-desc">Robust Python web framework handling image uploads, model inference, database storage, and recommendations.</p>
+            <p class="tech-desc">{% trans "Robust Python web framework handling image uploads, model inference, database storage, and recommendations." %}</p>
           </div>
         </div>
       </div>
@@ -176,25 +172,25 @@
       <div class="col-md-6">
         <div class="howto-card">
           <span class="howto-num">1</span>
-          <div><strong>Take a Clear Photo</strong> Photograph an Amaranthus leaf in good lighting. Fill the frame with the leaf.</div>
+          <div><strong>{% trans "Take a Clear Photo" %}</strong> {% trans "Photograph an Amaranthus leaf in good lighting. Fill the frame with the leaf." %}</div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="howto-card">
           <span class="howto-num">2</span>
-          <div><strong>Upload the Image</strong> Go to "{% trans "Detect Disease" %}" page and drag &amp; drop or browse to select your image (JPG/PNG, max 10MB).</div>
+          <div><strong>{% trans "Upload the Image" %}</strong> {% trans "Go to the Detect Disease page and drag & drop or browse to select your image (JPG/PNG, max 10MB)." %}</div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="howto-card">
           <span class="howto-num">3</span>
-          <div><strong>Wait for Analysis</strong> The AI model will process your image in under 2 seconds.</div>
+          <div><strong>{% trans "Wait for Analysis" %}</strong> {% trans "The AI model will process your image in under 2 seconds." %}</div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="howto-card">
           <span class="howto-num">4</span>
-          <div><strong>Read the Results</strong> Review the predicted disease, confidence score, risk level, and full recommendation with treatment options.</div>
+          <div><strong>{% trans "Read the Results" %}</strong> {% trans "Review the predicted disease, confidence score, risk level, and full recommendation with treatment options." %}</div>
         </div>
       </div>
     </div>
@@ -204,7 +200,7 @@
       <i class="bi bi-mortarboard-fill university-icon"></i>
       <div>
         <h5>{% trans "University Research Project" %}</h5>
-        <p class="mb-0">This system was developed as an academic research project aimed at supporting smallholder Amaranthus farmers through artificial intelligence. The model was trained on a carefully curated dataset of 3,136 annotated leaf images using transfer learning with EfficientNet B0.</p>
+        <p class="mb-0">{% trans "This system was developed as an academic research project aimed at supporting smallholder Amaranthus farmers through artificial intelligence. The model was trained on a carefully curated dataset of 3,136 annotated leaf images using transfer learning with EfficientNet B0." %}</p>
       </div>
     </div>
 

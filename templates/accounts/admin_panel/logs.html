@@ -1,0 +1,43 @@
+{% extends 'accounts/_dashboard_base.html' %}
+{% load i18n %}
+
+{% block page_title %}{% trans "System Logs" %}{% endblock %}
+
+{% block dashboard_content %}
+<div class="card">
+    <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+        <h6 class="mb-0 fw-bold">{% trans "Recent Activity & Security Logs" %}</h6>
+        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-funnel"></i> {% trans "Filter" %}</button>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-sm align-middle font-monospace small mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>{% trans "Timestamp" %}</th>
+                    <th>{% trans "Level" %}</th>
+                    <th>{% trans "User" %}</th>
+                    <th>{% trans "Action/Description" %}</th>
+                    <th>{% trans "IP Address" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                <tr>
+                    <td class="text-muted">{{ log.created_at|date:"Y-m-d H:i:s" }}</td>
+                    <td>
+                        {% if log.level == 'ERROR' %}<span class="badge bg-danger">ERROR</span>
+                        {% elif log.level == 'WARNING' %}<span class="badge bg-warning text-dark">WARN</span>
+                        {% else %}<span class="badge bg-info">INFO</span>{% endif %}
+                    </td>
+                    <td>{{ log.user.username|default:"System" }}</td>
+                    <td>{{ log.description }}</td>
+                    <td class="text-muted">{{ log.ip_address|default:"-" }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="5" class="text-center py-4">{% trans "No logs found." %}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

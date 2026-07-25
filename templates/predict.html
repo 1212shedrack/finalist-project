@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{% trans "Detect Disease" %} — Amaranthus AI{% endblock %}
+{% block title %}{% trans "Detect Disease" %} — {% trans "Amaranthus AI" %}{% endblock %}
 
 {% block content %}
 <div class="page-header-section">
@@ -218,14 +218,14 @@
               <span class="disease-dot dot-warning"></span>
               <div>
                 <strong>{% trans "Leaf Spot" %}</strong>
-                <small>{% trans "Fungal: Medium Risk" %}</small>
+                <small>{% trans "Fungal — Medium Risk" %}</small>
               </div>
             </div>
             <div class="disease-item">
               <span class="disease-dot dot-danger"></span>
               <div>
                 <strong>{% trans "White Rust" %}</strong>
-                <small>{% trans "Oomycete: High Risk" %}</small>
+                <small>{% trans "Oomycete — High Risk" %}</small>
               </div>
             </div>
             <div class="disease-item">
@@ -241,13 +241,13 @@
         <div class="sidebar-card mt-3">
           <h6 class="sidebar-title"><i class="bi bi-graph-up me-2"></i>{% trans "Model Status" %}</h6>
           <div class="stat-row">
-            <span>Model</span><strong>EfficientNet B0</strong>
+            <span>{% trans "Model" %}</span><strong>EfficientNet B0</strong>
           </div>
           <div class="stat-row">
             <span>{% trans "Model Accuracy" %}</span><strong class="text-success">98%+</strong>
           </div>
           <div class="stat-row">
-            <span>Input Size</span><strong>224 × 224</strong>
+            <span>{% trans "Input Size" %}</span><strong>224 × 224</strong>
           </div>
           <div class="stat-row">
             <span>{% trans "Disease Classes" %}</span><strong>4</strong>
@@ -266,11 +266,11 @@
       <div class="loading-icon"><i class="bi bi-cpu-fill"></i></div>
     </div>
     <h5 class="loading-title">{% trans "AI Analysis" %}</h5>
-    <p class="loading-subtitle">AI is processing the image...</p>
+    <p class="loading-subtitle">{% trans "AI is processing the image..." %}</p>
     <div class="loading-steps">
       <div class="loading-step active" id="loadStep1"><i class="bi bi-upload me-2"></i>{% trans "Upload Image" %}</div>
-      <div class="loading-step" id="loadStep2"><i class="bi bi-eye me-2"></i>Preprocessing</div>
-      <div class="loading-step" id="loadStep3"><i class="bi bi-cpu me-2"></i>Running AI model</div>
+      <div class="loading-step" id="loadStep2"><i class="bi bi-eye me-2"></i>{% trans "Preprocessing" %}</div>
+      <div class="loading-step" id="loadStep3"><i class="bi bi-cpu me-2"></i>{% trans "Running AI model" %}</div>
       <div class="loading-step" id="loadStep4"><i class="bi bi-check2-circle me-2"></i>{% trans "Get Results" %}</div>
     </div>
   </div>

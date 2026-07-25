@@ -8,8 +8,8 @@
  *   - API / predict POST       → Network Only  (never cache uploads)
  */
 
-const CACHE_NAME    = 'amaranthus-ai-v1';
-const OFFLINE_URL   = '/offline/';
+const CACHE_NAME = 'amaranthus-ai-v1';
+const OFFLINE_URL = '/offline/';
 
 // Assets to pre-cache on install (app shell)
 const PRECACHE_URLS = [
@@ -24,7 +24,7 @@ const PRECACHE_URLS = [
   '/static/icons/icon-512.png',
 ];
 
-// ── Install: cache the app shell ────────────────────────────────────────────
+//Install: cache the app shell
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
@@ -39,7 +39,7 @@ self.addEventListener('install', event => {
   );
 });
 
-// ── Activate: delete old caches ──────────────────────────────────────────────
+// Activate: delete old caches
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames =>
@@ -55,7 +55,7 @@ self.addEventListener('activate', event => {
   );
 });
 
-// ── Fetch: respond with cache or network ─────────────────────────────────────
+// Fetch: respond with cache or network
 self.addEventListener('fetch', event => {
   const { request } = event;
   const url = new URL(request.url);
@@ -72,7 +72,7 @@ self.addEventListener('fetch', event => {
   // Skip media uploads
   if (url.pathname.startsWith('/media/')) return;
 
-  // ── Static assets: Cache First ─────────────────────────────────────────────
+  // Static assets: Cache First
   if (url.pathname.startsWith('/static/')) {
     event.respondWith(
       caches.match(request).then(cached => {
@@ -89,7 +89,7 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // ── HTML pages: Network First, fall back to cache ──────────────────────────
+  // HTML pages: Network First, fall back to cache
   event.respondWith(
     fetch(request)
       .then(response => {
@@ -111,14 +111,14 @@ self.addEventListener('fetch', event => {
   );
 });
 
-// ── Background sync (future: queue failed predictions) ──────────────────────
+// Background sync (future: queue failed predictions)
 self.addEventListener('sync', event => {
   if (event.tag === 'sync-predictions') {
     console.log('[SW] Background sync triggered');
   }
 });
 
-// ── Push notifications (future feature) ──────────────────────────────────────
+// Push notifications (future feature)
 self.addEventListener('push', event => {
   if (!event.data) return;
   const data = event.data.json();
@@ -129,7 +129,7 @@ self.addEventListener('push', event => {
   });
 });
 
-// ── Helper: simple offline fallback page ─────────────────────────────────────
+// Helper: simple offline fallback page
 function offlinePage() {
   const html = `
     <!DOCTYPE html>

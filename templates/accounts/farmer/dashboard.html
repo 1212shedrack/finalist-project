@@ -1,0 +1,126 @@
+{% extends 'accounts/_dashboard_base.html' %}
+{% load i18n %}
+
+{% block page_title %}{% trans "Farmer Dashboard" %}{% endblock %}
+
+{% block dashboard_content %}
+{% if unread_count > 0 %}
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+    <i class="bi bi-info-circle-fill me-2"></i> {% trans "You have" %} <strong>{{ unread_count }}</strong> {% trans "unread notifications." %}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+<div class="card mb-4 bg-primary text-white" style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);">
+    <div class="card-body p-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+        <div>
+            <h3 class="fw-bold mb-1">{% trans "Good day" %}, {{ request.user.profile.full_name|default:request.user.username }}! 🌿</h3>
+            <p class="mb-0 opacity-75">{% trans "Welcome back to your AmaranthusAI dashboard." %}</p>
+        </div>
+        <div style="min-width: 200px;">
+            <div class="d-flex justify-content-between small mb-1">
+                <span>{% trans "Profile Completion" %}</span>
+                <span>80%</span>
+            </div>
+            <div class="progress" style="height: 8px; background: rgba(255,255,255,0.2);">
+                <div class="progress-bar bg-accent" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-sm-6 col-lg-3">
+        <div class="card h-100">
+            <div class="card-body d-flex align-items-center">
+                <div class="rounded-circle bg-primary bg-opacity-10 p-3 me-3 text-primary fs-3">
+                    <i class="bi bi-camera"></i>
+                </div>
+                <div>
+                    <h6 class="text-muted mb-1">{% trans "Total Scans" %}</h6>
+                    <h3 class="mb-0 fw-bold">{{ total_scans }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="card h-100">
+            <div class="card-body d-flex align-items-center">
+                <div class="rounded-circle bg-success bg-opacity-10 p-3 me-3 text-success fs-3">
+                    <i class="bi bi-check-circle"></i>
+                </div>
+                <div>
+                    <h6 class="text-muted mb-1">{% trans "Healthy Leaves" %}</h6>
+                    <h3 class="mb-0 fw-bold">{{ stats.healthy|default:0 }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="card h-100">
+            <div class="card-body d-flex align-items-center">
+                <div class="rounded-circle bg-warning bg-opacity-10 p-3 me-3 text-warning fs-3">
+                    <i class="bi bi-exclamation-circle"></i>
+                </div>
+                <div>
+                    <h6 class="text-muted mb-1">{% trans "Diseased" %}</h6>
+                    <h3 class="mb-0 fw-bold">{{ stats.diseased|default:0 }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="card h-100">
+            <div class="card-body d-flex align-items-center">
+                <div class="rounded-circle bg-danger bg-opacity-10 p-3 me-3 text-danger fs-3">
+                    <i class="bi bi-heart"></i>
+                </div>
+                <div>
+                    <h6 class="text-muted mb-1">{% trans "Favorites" %}</h6>
+                    <h3 class="mb-0 fw-bold">{{ favorites.count|default:0 }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="fw-bold mb-0">{% trans "Recent Scans" %}</h5>
+    <a href="{% url 'disease_app:predict' %}" class="btn btn-accent"><i class="bi bi-camera-fill me-1"></i> {% trans "Scan New Leaf" %}</a>
+</div>
+
+<div class="row g-4">
+    {% for scan in predictions|slice:":6" %}
+    <div class="col-sm-6 col-md-4 col-xl-2">
+        <div class="card h-100">
+            {% if scan.image %}
+            <img src="{{ scan.image.url }}" class="card-img-top" alt="Scan" style="height: 150px; object-fit: cover;">
+            {% endif %}
+            <div class="card-body p-3">
+                <span class="badge bg-{{ scan.risk_color }} mb-2">{{ scan.display_name_translated }}</span>
+                <p class="mb-1 small text-muted"><i class="bi bi-calendar3"></i> {{ scan.created_at|date:"M d, Y" }}</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <span class="fw-bold small">{{ scan.confidence|floatformat:1 }}% {% trans "Conf." %}</span>
+                    <a href="{% url 'disease_app:result' scan.pk %}" class="btn btn-sm btn-outline-primary">{% trans "View" %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center py-5 text-muted">
+        <i class="bi bi-camera fs-1"></i>
+        <p class="mt-2">{% trans "No scans yet. Start by scanning a new leaf." %}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="mt-5">
+    <h5 class="fw-bold mb-3">{% trans "Quick Actions" %}</h5>
+    <div class="d-flex flex-wrap gap-2">
+        <a href="{% url 'disease_app:predict' %}" class="btn btn-primary"><i class="bi bi-upc-scan"></i> {% trans "Scan Now" %}</a>
+        <a href="{% url 'accounts:farmer_history' %}" class="btn btn-light"><i class="bi bi-clock-history"></i> {% trans "View History" %}</a>
+        <button class="btn btn-light"><i class="bi bi-download"></i> {% trans "Download Report" %}</button>
+        <a href="{% url 'accounts:farmer_profile' %}" class="btn btn-light"><i class="bi bi-person-lines-fill"></i> {% trans "Edit Profile" %}</a>
+    </div>
+</div>
+{% endblock %}

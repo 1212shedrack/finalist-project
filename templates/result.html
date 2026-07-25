@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ prediction.display_name }} — {% trans "Detection Result" %} Amaranthus AI{% endblock %}
+{% block title %}{{ prediction.display_name }} — {% trans "Detection Result" %} — {% trans "Amaranthus AI" %}{% endblock %}
 
 {% block content %}
 <div class="page-header-section">
@@ -10,7 +10,7 @@
       <ol class="breadcrumb breadcrumb-custom">
         <li class="breadcrumb-item"><a href="{% url 'disease_app:home' %}"><i class="bi bi-house-door me-1"></i>{% trans "Home" %}</a></li>
         <li class="breadcrumb-item"><a href="{% url 'disease_app:predict' %}">{% trans "Detect Disease" %}</a></li>
-        <li class="breadcrumb-item active">Result {{ prediction.pk }}</li>
+        <li class="breadcrumb-item active">{% trans "Result" %} {{ prediction.pk }}</li>
       </ol>
     </nav>
     <h1 class="page-header-title"><i class="bi bi-file-earmark-medical me-3"></i>{% trans "Detection Result" %}</h1>
@@ -27,19 +27,19 @@
         <div class="result-image-card">
           <div class="result-image-wrap">
             {% if prediction.image %}
-              <img src="{{ prediction.image.url }}" alt="Analyzed leaf" class="result-image" />
+              <img src="{{ prediction.image.url }}" alt="{% trans 'Analyzed leaf' %}" class="result-image" />
             {% else %}
               <div class="result-image-placeholder"><i class="bi bi-image"></i></div>
             {% endif %}
             <div class="result-image-badge badge-{{ prediction.risk_color }}">
               <i class="bi bi-{% if prediction.risk_color == 'success' %}check-circle{% elif prediction.risk_color == 'danger' %}exclamation-triangle{% elif prediction.risk_color == 'warning' %}exclamation-circle{% else %}question-circle{% endif %} me-1"></i>
-              {{ prediction.display_name }}
+              {{ prediction.display_name_translated }}
             </div>
           </div>
           <div class="result-image-meta">
             <div class="meta-row">
               <span><i class="bi bi-calendar3 me-2 text-muted"></i>{{ prediction.created_at|date:"M d, Y H:i" }}</span>
-              <span class="badge bg-{{ prediction.risk_color }}">{{ prediction.risk_level }} Risk</span>
+              <span class="badge bg-{{ prediction.risk_color }}">{{ prediction.risk_level_translated }}</span>
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@
             <i class="bi bi-clock-history me-2"></i>{% trans "View Full History" %}
           </a>
           <form method="post" action="{% url 'disease_app:delete_prediction' prediction.pk %}"
-                class="d-inline w-100" onsubmit="return confirm('Delete this prediction record?')">
+                class="d-inline w-100" onsubmit="return confirmDelete(event)">
             {% csrf_token %}
             <button type="submit" class="btn btn-outline-danger w-100">
               <i class="bi bi-trash3 me-2"></i>{% trans "Delete This Record" %}
@@ -75,9 +75,9 @@
               {% else %}<i class="bi bi-question-circle-fill"></i>{% endif %}
             </div>
             <div>
-              <h2 class="result-disease-name">{{ prediction.display_name }}</h2>
+              <h2 class="result-disease-name">{{ prediction.display_name_translated }}</h2>
               <div class="result-risk-badges">
-                <span class="badge bg-{{ prediction.risk_color }} me-2">{{ prediction.risk_level }} Risk</span>
+                <span class="badge bg-{{ prediction.risk_color }} me-2">{{ prediction.risk_level_translated }}</span>
                 <span class="badge bg-dark">ID {{ prediction.pk }}</span>
               </div>
             </div>
@@ -135,7 +135,7 @@
     <div class="recommendation-section mt-5">
       <div class="rec-header">
         <i class="bi bi-journal-medical-fill me-2"></i>
-        Expert Recommendation for: <strong>{{ recommendation.title }}</strong>
+        {% trans "Expert Recommendation for" %}: <strong>{{ recommendation.title }}</strong>
       </div>
 
       {% if recommendation.summary %}
@@ -143,10 +143,10 @@
         <p class="rec-summary-text">{{ recommendation.summary }}</p>
         <div class="rec-meta-row">
           <span class="rec-meta-item"><i class="bi bi-exclamation-diamond me-1"></i>
-            Risk Level: <strong>{{ recommendation.risk_level }}</strong></span>
+            {% trans "Risk Level" %}: <strong>{{ recommendation.risk_level }}</strong></span>
           {% if recommendation.possible_cause %}
           <span class="rec-meta-item"><i class="bi bi-search me-1"></i>
-            Cause: <strong>{{ recommendation.possible_cause }}</strong></span>
+            {% trans "Cause" %}: <strong>{{ recommendation.possible_cause }}</strong></span>
           {% endif %}
         </div>
       </div>
@@ -286,15 +286,18 @@ document.addEventListener('DOMContentLoaded', function() {
         downloadBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Generating PDF...';
         downloadBtn.disabled = true;
 
-        // Hide result actions from the PDF
+        // Hide result actions from the PDF and expand all tabs
         const actions = document.querySelector('.result-actions');
         if (actions) actions.style.display = 'none';
+
+        const tabPanes = document.querySelectorAll('.tab-pane');
+        tabPanes.forEach(pane => pane.classList.add('show', 'active'));
 
         const opt = {
           margin:       0.3,
           filename:     'AmaranthusAI_Report_{{ prediction.pk }}.pdf',
           image:        { type: 'jpeg', quality: 0.95 },
-          html2canvas:  { scale: 1, useCORS: true, logging: false, windowWidth: 1200 },
+          html2canvas:  { scale: 2, useCORS: true, logging: false, windowWidth: 1200 },
           jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
         };
 
@@ -302,16 +305,22 @@ document.addEventListener('DOMContentLoaded', function() {
         html2pdf().set(opt).from(element).save().then(() => {
           // Restore UI after download starts
           if (actions) actions.style.display = 'block';
+          tabPanes.forEach((pane, idx) => {
+            if (idx !== 0) pane.classList.remove('show', 'active');
+          });
           downloadBtn.innerHTML = originalBtnText;
           downloadBtn.disabled = false;
         }).catch(err => {
           console.error('PDF Generation Error:', err);
           // Restore UI
           if (actions) actions.style.display = 'block';
+          tabPanes.forEach((pane, idx) => {
+            if (idx !== 0) pane.classList.remove('show', 'active');
+          });
           downloadBtn.innerHTML = originalBtnText;
           downloadBtn.disabled = false;
           
-          // Fallback to native print dialogue which can "Save as PDF"
+          // Fallback to native print dialogue
           alert('Advanced PDF generator failed. Falling back to native print. Please select "Save as PDF".');
           window.print();
         });

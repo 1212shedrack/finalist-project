@@ -8,8 +8,6 @@ os.environ.setdefault("TF_ENABLE_ONEDNN_OPTS", "0")
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security
-# On Render: set SECRET_KEY env variable in the dashboard.
-# Locally: falls back to the dev key (never use this in real production).
 SECRET_KEY = os.environ.get(
     'SECRET_KEY',
     'django-insecure-amaranthus-detection-fallback-key-2025-'
@@ -35,10 +33,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    # Serve staticfiles in dev too (consistent)
+    # Serve staticfiles
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'disease_app',
+    'accounts',
 ]
 
 # Middleware
@@ -47,7 +46,7 @@ MIDDLEWARE = [
     # Must be right after SecurityMiddleware
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',   # i18n: after Session, before Common
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -82,8 +81,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'amaranthus_project.wsgi.application'
 
 # Database
-# SQLite for local dev and Render (ephemeral — history resets on redeploy).
-# To use Render's free PostgreSQL, set DATABASE_URL env var and install dj-database-url.
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -93,10 +90,14 @@ DATABASES = {
 
 # Password Validation
 AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.;'
+     'UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.'
+     'MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.'
+     'CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.'
+     'NumericPasswordValidator'},
 ]
 
 #  Internationalisation
@@ -135,15 +136,33 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ML Model
-TFLITE_MODEL_PATH    = BASE_DIR / 'model' / 'amaranthus_efficientnet_v5.tflite'
+TFLITE_MODEL_PATH = BASE_DIR / 'model' / 'amaranthus_efficientnet_v5.tflite'
 RECOMMENDATIONS_PATH = BASE_DIR / 'recommendations.json'
 
 # Upload Settings
-MAX_UPLOAD_SIZE        = 10 * 1024 * 1024    # 10 MB
-ALLOWED_IMAGE_TYPES  = ['image/jpeg', 'image/png', 'image/jpg']
+MAX_UPLOAD_SIZE = 10 * 1024 * 1024    # 10 MB
+ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/jpg']
+AVATAR_MAX_SIZE = 5 * 1024 * 1024     # 5 MB
 
 # Messages
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+# ── Authentication ────────────────────────────────────────────────────────────
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/dashboard/'
+LOGOUT_REDIRECT_URL = '/'
+
+# Session: 2-week default; overridden to 0 (browser session) when remember_me is off
+SESSION_COOKIE_AGE = 14 * 24 * 60 * 60   # 14 days
+SESSION_SAVE_EVERY_REQUEST = True
+
+# ── Email — Console backend (prints reset links to server log) ────────────────
+# To switch to real email later, replace EMAIL_BACKEND and add SMTP settings.
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'AmaranthusAI <noreply@amaranthusai.com>'
+
+# ── Password validation ───────────────────────────────────────────────────────
+# (Already configured above; kept for clarity)
 
 # Security Headers (enforced when DEBUG=False)
 if not DEBUG:

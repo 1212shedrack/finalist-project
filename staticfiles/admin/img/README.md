@@ -37,11 +37,14 @@ If you update to a different Font Awesome version, you must **update all SVG
 files** and **comments inside the files** to reflect the new version number and
 licensing URL accordingly. For example:
 
-* Original:
+- Original:
+
 ```xml
 <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
 ```
-* Updated:
+
+- Updated:
+
 ```xml
 <!--!Font Awesome Free X.Y.Z by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright YYYY Fonticons, Inc.-->
 ```
@@ -52,18 +55,20 @@ licensing URL accordingly. For example:
 2. Save the icon as an .svg file in this directory.
 3. Include the following attribution comment at the top of the file (do not
    change it):
-```xml
-<!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-```
+
+   ```xml
+   <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+   ```
 4. Right before the `<path>` element, add the following metadata comment with
    the appropriate values:
-```xml
-<!--
-  Icon Name: [icon-name]
-  Icon Family: [classic | sharp | brands | etc.]
-  Icon Style: [solid | regular | light | thin | duotone | etc.]
--->
-```
+
+   ```xml
+   <!--
+     Icon Name: [icon-name]
+     Icon Family: [classic | sharp | brands | etc.]
+     Icon Style: [solid | regular | light | thin | duotone | etc.]
+   -->
+   ```
 
 ### Example SVG Structure
 

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{% trans "Home" %} Amaranthus Disease Detection AI{% endblock %}
+{% block title %}{% trans "Home" %} — {% trans "Amaranthus Disease Detection AI" %}{% endblock %}
 
 {% block content %}
 
@@ -17,7 +17,7 @@
         </div>
         <h1 class="hero-title animate-fadeInUp delay-1">
           {% trans "AI-Powered" %}<br>
-          <span class="hero-title-accent">Amaranthus</span><br>
+          <span class="hero-title-accent">{% trans "Amaranthus" %}</span><br>
           {% trans "Disease Detection" %}
         </h1>
         <p class="hero-subtitle animate-fadeInUp delay-2">
@@ -61,8 +61,8 @@
         <div class="hero-card-stack">
           <div class="hero-floating-card card-1">
             <i class="bi bi-check-circle-fill text-success"></i>
-            <span>{% trans "Healthy" %} Leaf Detected</span>
-            <small>Confidence: 94.2%</small>
+            <span>{% trans "Healthy" %} {% trans "Leaf Detected" %}</span>
+            <small>{% trans "Confidence" %}: 94.2%</small>
           </div>
           <div class="hero-main-visual">
             <div class="hero-visual-ring ring-1"></div>
@@ -73,13 +73,13 @@
           </div>
           <div class="hero-floating-card card-2">
             <i class="bi bi-shield-check text-warning"></i>
-            <span>{% trans "AI Analysis" %} Complete</span>
+            <span>{% trans "AI Analysis" %} {% trans "Complete" %}</span>
             <small>{% trans "White Rust" %} — {% trans "High Risk" %}</small>
           </div>
           <div class="hero-floating-card card-3">
             <i class="bi bi-graph-up-arrow text-primary"></i>
             <span>98% {% trans "Model Accuracy" %}</span>
-            <small>EfficientNet Model</small>
+            <small>{% trans "EfficientNet Model" %}</small>
           </div>
         </div>
       </div>
@@ -196,15 +196,15 @@
         <div class="prediction-card">
           <div class="prediction-img-wrap">
             {% if pred.image %}
-              <img src="{{ pred.image.url }}" alt="{{ pred.display_name }}" class="prediction-img" loading="lazy" />
+              <img src="{{ pred.image.url }}" alt="{{ pred.display_name_translated }}" class="prediction-img" loading="lazy" />
             {% else %}
               <div class="prediction-img-placeholder"><i class="bi bi-image"></i></div>
             {% endif %}
-            <span class="prediction-badge badge-{{ pred.risk_color }}">{{ pred.display_name }}</span>
+            <span class="prediction-badge badge-{{ pred.risk_color }}">{{ pred.display_name_translated }}</span>
           </div>
           <div class="prediction-body">
             <div class="d-flex justify-content-between align-items-center mb-2">
-              <span class="prediction-conf"><i class="bi bi-graph-up me-1"></i>{{ pred.confidence|floatformat:1 }}% confidence</span>
+              <span class="prediction-conf"><i class="bi bi-graph-up me-1"></i>{{ pred.confidence|floatformat:1 }}% {% trans "confidence" %}</span>
               <span class="risk-dot risk-{{ pred.risk_color }}"></span>
             </div>
             <p class="prediction-date"><i class="bi bi-calendar3 me-1"></i>{{ pred.created_at|date:"M d, Y — H:i" }}</p>

@@ -1,0 +1,43 @@
+{% extends 'accounts/_dashboard_base.html' %}
+{% load i18n %}
+
+{% block page_title %}{% trans "My Favorites" %}{% endblock %}
+
+{% block dashboard_content %}
+<div class="row g-4">
+    {% for fav in favorites %}
+    <div class="col-sm-6 col-md-4 col-xl-3">
+        <div class="card h-100 overflow-hidden">
+            <div class="position-relative">
+                {% if fav.prediction.image %}
+                <img src="{{ fav.prediction.image.url }}" class="card-img-top" alt="Scan" style="height: 200px; object-fit: cover;">
+                {% endif %}
+                <form method="post" action="{% url 'accounts:favorite_remove' fav.prediction.pk %}" class="position-absolute top-0 end-0 p-2">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-light rounded-circle shadow-sm p-2 text-danger" style="width: 40px; height: 40px;" title="{% trans 'Remove' %}">
+                        <i class="bi bi-heart-fill"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <span class="badge {% if fav.prediction.disease_class == 'Healthy' %}bg-success{% else %}bg-warning text-dark{% endif %} fs-6">{{ fav.prediction.disease_class }}</span>
+                    <span class="fw-bold">{{ fav.prediction.confidence|floatformat:1 }}%</span>
+                </div>
+                <p class="text-muted small mb-3"><i class="bi bi-clock"></i> {{ fav.prediction.created_at|date:"M d, Y" }}</p>
+                <a href="{% url 'disease_app:result' fav.prediction.pk %}" class="btn btn-outline-primary w-100">{% trans "View Result" %}</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center py-5">
+        <div class="text-muted mb-3 text-danger opacity-50">
+            <i class="bi bi-heart-fill" style="font-size: 4rem;"></i>
+        </div>
+        <h4 class="fw-bold">{% trans "No favorites yet" %}</h4>
+        <p class="text-muted">{% trans "You can save important scans to your favorites by clicking the heart icon on any scan result." %}</p>
+        <a href="{% url 'accounts:farmer_history' %}" class="btn btn-outline-primary mt-2">{% trans "Browse History" %}</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

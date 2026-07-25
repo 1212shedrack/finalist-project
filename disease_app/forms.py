@@ -25,7 +25,8 @@ class ImageUploadForm(forms.Form):
 
         # Validate content type
         allowed_types = ['image/jpeg', 'image/jpg', 'image/png']
-        if hasattr(image, 'content_type') and image.content_type not in allowed_types:
+        if hasattr(image,
+                   'content_type') and image.content_type not in allowed_types:
             raise forms.ValidationError(
                 f'Unsupported file type: {image.content_type}. '
                 'Please upload a JPG or PNG image.'

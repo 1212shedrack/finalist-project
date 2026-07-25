@@ -77,19 +77,19 @@
         <div class="history-card">
           <div class="history-img-wrap">
             {% if pred.image %}
-              <img src="{{ pred.image.url }}" alt="{{ pred.display_name }}"
+              <img src="{{ pred.image.url }}" alt="{{ pred.display_name_translated }}"
                    class="history-img" loading="lazy" />
             {% else %}
               <div class="history-img-placeholder"><i class="bi bi-image"></i></div>
             {% endif %}
-            <span class="history-badge badge-{{ pred.risk_color }}">{{ pred.display_name }}</span>
+            <span class="history-badge badge-{{ pred.risk_color }}">{{ pred.display_name_translated }}</span>
           </div>
           <div class="history-body">
             <div class="history-conf-row">
               <span class="history-conf">
                 <i class="bi bi-graph-up me-1"></i>{{ pred.confidence|floatformat:1 }}%
               </span>
-              <span class="history-risk-dot risk-dot-{{ pred.risk_color }}" title="{{ pred.risk_level }} Risk"></span>
+              <span class="history-risk-dot risk-dot-{{ pred.risk_color }}" title="{{ pred.risk_level_translated }}"></span>
             </div>
             <p class="history-date"><i class="bi bi-calendar2 me-1"></i>{{ pred.created_at|date:"M d, Y" }}</p>
             <div class="history-actions">

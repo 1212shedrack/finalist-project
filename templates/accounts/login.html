@@ -1,0 +1,105 @@
+{% extends 'accounts/_auth_base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Login — Amaranthus AI" %}{% endblock %}
+
+{% block brand_panel %}
+<div class="auth-brand-panel">
+    <i class="bi bi-flower1 floating-leaf" style="font-size: 8rem; top: 10%; left: 10%;"></i>
+    <i class="bi bi-flower1 floating-leaf" style="font-size: 5rem; bottom: 15%; right: 10%; animation-delay: 2s;"></i>
+    
+    <div class="z-1">
+        <i class="bi bi-flower1" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+        <h1 class="fw-bold mb-3">{% trans "AmaranthusAI" %}</h1>
+        <p class="lead mb-5">{% trans "AI-Powered Leaf Disease Detection" %}</p>
+        
+        <ul class="list-unstyled text-start fs-5">
+            <li class="mb-3"><i class="bi bi-check-circle-fill text-white me-2"></i> {% trans "Instant Disease Recognition" %}</li>
+            <li class="mb-3"><i class="bi bi-check-circle-fill text-white me-2"></i> {% trans "Expert Treatment Advice" %}</li>
+            <li class="mb-3"><i class="bi bi-check-circle-fill text-white me-2"></i> {% trans "Secure Farmer Dashboard" %}</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="auth-card">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-dark mb-2">{% trans "Welcome Back" %}</h2>
+        <p class="text-muted">{% trans "Sign in to your account" %}</p>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags|default:'info' }}{% endif %} alert-dismissible fade show" role="alert">
+                <i class="bi {% if message.tags == 'success' %}bi-check-circle-fill{% elif message.tags == 'error' %}bi-exclamation-triangle-fill{% else %}bi-info-circle-fill{% endif %} me-2"></i>
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post" action="{% url 'accounts:login' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="username" class="form-label fw-medium">{% trans "Username" %}</label>
+            <div class="input-group">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-person text-muted"></i></span>
+                <input type="text" class="form-control border-start-0 ps-0" id="username" name="username" required>
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+                <label for="password" class="form-label fw-medium mb-0">{% trans "Password" %}</label>
+                <a href="{% url 'accounts:password_reset' %}" class="auth-link small">{% trans "Forgot password?" %}</a>
+            </div>
+            <div class="input-group">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-lock text-muted"></i></span>
+                <input type="password" class="form-control border-start-0 border-end-0 ps-0" id="password" name="password" required>
+                <button class="btn btn-outline-secondary bg-light border-start-0" type="button" id="togglePassword">
+                    <i class="bi bi-eye text-muted"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="mb-4 form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe" name="remember_me">
+            <label class="form-check-label" for="rememberMe">{% trans "Remember me" %}</label>
+        </div>
+        
+        <button type="submit" class="btn btn-primary w-100 mb-4">{% trans "Sign In" %}</button>
+        
+        <div class="position-relative mb-4">
+            <hr class="text-muted">
+            <div class="position-absolute top-50 start-50 translate-middle px-3 bg-white text-muted small">
+                {% trans "OR" %}
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <span class="text-muted">{% trans "Don't have an account?" %}</span>
+            <a href="{% url 'accounts:register' %}" class="auth-link fw-bold ms-1">{% trans "Register here" %}</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function() {
+        const passwordInput = document.getElementById('password');
+        const icon = this.querySelector('i');
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.classList.remove('bi-eye');
+            icon.classList.add('bi-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            icon.classList.remove('bi-eye-slash');
+            icon.classList.add('bi-eye');
+        }
+    });
+</script>
+{% endblock %}

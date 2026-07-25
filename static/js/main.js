@@ -223,11 +223,9 @@ document.addEventListener('DOMContentLoaded', () => Toast.init());
     }
 
     // Set file on input (for drag-drop)
-    if (fileInput.files.length === 0) {
-      const dt = new DataTransfer();
-      dt.items.add(file);
-      fileInput.files = dt.files;
-    }
+    const dt = new DataTransfer();
+    dt.items.add(file);
+    fileInput.files = dt.files;
 
     // Show preview
     const reader = new FileReader();
@@ -569,7 +567,12 @@ document.addEventListener('DOMContentLoaded', () => {
         audio: false,
       };
 
-      stream = await navigator.mediaDevices.getUserMedia(constraints);
+      try {
+        stream = await navigator.mediaDevices.getUserMedia(constraints);
+      } catch (e1) {
+        // Fallback for mobile devices/webviews that don't support resolution ideal constraints
+        stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: facingMode } }, audio: false });
+      }
       video.srcObject = stream;
 
       // Show viewfinder, hide start screen

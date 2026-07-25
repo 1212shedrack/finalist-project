@@ -1,0 +1,215 @@
+{% extends 'accounts/_dashboard_base.html' %}
+{% load i18n %}
+
+{% block page_title %}{% trans "User Feedback" %}{% endblock %}
+
+{% block dashboard_content %}
+
+
+<div class="card">
+    <div class="card-header bg-white py-3">
+        <form method="get" action="" class="d-flex flex-wrap gap-2 align-items-center">
+            <select class="form-select" style="max-width:200px;" name="category" onchange="this.form.submit()">
+                <option value="">{% trans "All Categories" %}</option>
+                <option value="bug"       {% if selected_category == 'bug' %}selected{% endif %}>{% trans "Bug Reports" %}</option>
+                <option value="feature"   {% if selected_category == 'feature' %}selected{% endif %}>{% trans "Feature Requests" %}</option>
+                <option value="general"   {% if selected_category == 'general' %}selected{% endif %}>{% trans "General Feedback" %}</option>
+                <option value="complaint" {% if selected_category == 'complaint' %}selected{% endif %}>{% trans "Complaints" %}</option>
+            </select>
+            <select class="form-select" style="max-width:200px;" name="status" onchange="this.form.submit()">
+                <option value="">{% trans "All Statuses" %}</option>
+                <option value="pending"  {% if selected_status == 'pending' %}selected{% endif %}>{% trans "Pending" %}</option>
+                <option value="resolved" {% if selected_status == 'resolved' %}selected{% endif %}>{% trans "Resolved" %}</option>
+            </select>
+            {% if selected_category or selected_status %}
+            <a href="{% url 'accounts:admin_feedback' %}" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-x-circle me-1"></i>{% trans "Clear" %}
+            </a>
+            {% endif %}
+        </form>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>{% trans "User" %}</th>
+                    <th>{% trans "Category" %}</th>
+                    <th>{% trans "Subject" %}</th>
+                    <th>{% trans "Rating" %}</th>
+                    <th>{% trans "Date" %}</th>
+                    <th>{% trans "Status" %}</th>
+                    <th class="text-end">{% trans "Action" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in feedbacks %}
+                <tr>
+                    <td>
+                        <div class="fw-bold">{{ item.user.username|default:"Anonymous" }}</div>
+                        <small class="text-muted">{{ item.user.email|default:"" }}</small>
+                    </td>
+                    <td>
+                        <span class="badge
+                            {% if item.category == 'bug' %}bg-danger
+                            {% elif item.category == 'feature' %}bg-primary
+                            {% elif item.category == 'complaint' %}bg-warning text-dark
+                            {% else %}bg-secondary{% endif %}">
+                            {{ item.get_category_display }}
+                        </span>
+                    </td>
+                    <td style="max-width:280px;" class="text-truncate" title="{{ item.subject }}">{{ item.subject }}</td>
+                    <td class="text-warning">
+                        {% if item.rating %}
+                            {% for i in "12345"|make_list %}
+                                {% if forloop.counter <= item.rating %}<i class="bi bi-star-fill"></i>{% else %}<i class="bi bi-star"></i>{% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <span class="text-muted small">{% trans "No rating" %}</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ item.created_at|date:"M d, Y" }}</td>
+                    <td>
+                        {% if item.is_resolved %}
+                            <span class="badge bg-success">{% trans "Resolved" %}</span>
+                        {% else %}
+                            <span class="badge bg-warning text-dark">{% trans "Pending" %}</span>
+                        {% endif %}
+                    </td>
+                    <td class="text-end">
+                        {# Button targets modal rendered OUTSIDE the table below #}
+                        <button class="btn btn-sm btn-outline-primary"
+                                type="button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#feedbackModal{{ item.id }}">
+                            <i class="bi bi-eye me-1"></i>{% trans "View" %}
+                        </button>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center py-5 text-muted">
+                        <i class="bi bi-chat-square-text fs-1 d-block mb-2 opacity-25"></i>
+                        {% trans "No feedback entries found." %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{# Pagination #}
+{% if feedbacks.has_other_pages %}
+<nav class="mt-4">
+    <ul class="pagination justify-content-center">
+        {% if feedbacks.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ feedbacks.previous_page_number }}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if selected_status %}&status={{ selected_status }}{% endif %}">
+                {% trans "Previous" %}
+            </a>
+        </li>
+        {% endif %}
+        <li class="page-item active">
+            <span class="page-link">{{ feedbacks.number }} / {{ feedbacks.paginator.num_pages }}</span>
+        </li>
+        {% if feedbacks.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ feedbacks.next_page_number }}{% if selected_category %}&category={{ selected_category }}{% endif %}{% if selected_status %}&status={{ selected_status }}{% endif %}">
+                {% trans "Next" %}
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+{% for item in feedbacks %}
+<div class="modal fade" id="feedbackModal{{ item.id }}" tabindex="-1" aria-labelledby="feedbackModalLabel{{ item.id }}" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content border-0 shadow-lg">
+
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-bold" id="feedbackModalLabel{{ item.id }}">
+                    <i class="bi bi-chat-text me-2 text-primary"></i>{% trans "Feedback Details" %}
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body pt-2">
+                {# Meta info #}
+                <div class="bg-light rounded p-3 mb-3">
+                    <div class="row g-2 small">
+                        <div class="col-sm-4 text-muted fw-semibold">{% trans "From" %}</div>
+                        <div class="col-sm-8">{{ item.user.username|default:"Anonymous" }}
+                            {% if item.user.email %}<span class="text-muted">&lt;{{ item.user.email }}&gt;</span>{% endif %}
+                        </div>
+
+                        <div class="col-sm-4 text-muted fw-semibold">{% trans "Category" %}</div>
+                        <div class="col-sm-8">
+                            <span class="badge
+                                {% if item.category == 'bug' %}bg-danger
+                                {% elif item.category == 'feature' %}bg-primary
+                                {% elif item.category == 'complaint' %}bg-warning text-dark
+                                {% else %}bg-secondary{% endif %}">
+                                {{ item.get_category_display }}
+                            </span>
+                        </div>
+
+                        <div class="col-sm-4 text-muted fw-semibold">{% trans "Subject" %}</div>
+                        <div class="col-sm-8 fw-bold">{{ item.subject }}</div>
+
+                        <div class="col-sm-4 text-muted fw-semibold">{% trans "Rating" %}</div>
+                        <div class="col-sm-8 text-warning">
+                            {% if item.rating %}
+                                {% for i in "12345"|make_list %}
+                                    {% if forloop.counter <= item.rating %}<i class="bi bi-star-fill"></i>{% else %}<i class="bi bi-star"></i>{% endif %}
+                                {% endfor %}
+                                <span class="text-muted ms-1">({{ item.rating }}/5)</span>
+                            {% else %}
+                                <span class="text-muted">—</span>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-sm-4 text-muted fw-semibold">{% trans "Submitted" %}</div>
+                        <div class="col-sm-8">{{ item.created_at|date:"M d, Y H:i" }}</div>
+
+                        <div class="col-sm-4 text-muted fw-semibold">{% trans "Status" %}</div>
+                        <div class="col-sm-8">
+                            {% if item.is_resolved %}
+                                <span class="badge bg-success"><i class="bi bi-check-circle-fill me-1"></i>{% trans "Resolved" %}</span>
+                            {% else %}
+                                <span class="badge bg-warning text-dark"><i class="bi bi-clock-fill me-1"></i>{% trans "Pending" %}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                {# Message body #}
+                <label class="fw-semibold mb-1 text-muted small text-uppercase">{% trans "Message" %}</label>
+                <div class="border rounded p-3 mb-3" style="white-space:pre-wrap;background:#fafafa;min-height:80px;">{{ item.message }}</div>
+            </div>
+
+            <div class="modal-footer border-0 pt-0">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
+                    <i class="bi bi-x me-1"></i>{% trans "Close" %}
+                </button>
+                {# Resolve / Unresolve toggle #}
+                <form method="post" action="{% url 'accounts:admin_resolve_feedback' item.pk %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm {% if item.is_resolved %}btn-outline-warning{% else %}btn-success{% endif %}">
+                        {% if item.is_resolved %}
+                            <i class="bi bi-arrow-counterclockwise me-1"></i>{% trans "Mark as Pending" %}
+                        {% else %}
+                            <i class="bi bi-check-circle me-1"></i>{% trans "Mark as Resolved" %}
+                        {% endif %}
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'accounts/_dashboard_base.html' %}
+{% load i18n %}
+
+{% block page_title %}{% trans "Send Feedback" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .star-rating {
+        direction: rtl;
+        display: inline-flex;
+    }
+    .star-rating input[type="radio"] {
+        display: none;
+    }
+    .star-rating label {
+        font-size: 2rem;
+        color: #ddd;
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+    .star-rating input[type="radio"]:checked ~ label,
+    .star-rating label:hover,
+    .star-rating label:hover ~ label {
+        color: #ffc107;
+    }
+</style>
+{% endblock %}
+
+{% block dashboard_content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <i class="bi bi-chat-heart-fill text-primary" style="font-size: 3rem;"></i>
+                    <h4 class="fw-bold mt-2">{% trans "We value your feedback!" %}</h4>
+                    <p class="text-muted">{% trans "Help us improve AmaranthusAI by sharing your experience." %}</p>
+                </div>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">{% trans "Category" %}</label>
+                        <select name="category" class="form-select" required>
+                            <option value="">{% trans "Select a category" %}</option>
+                            <option value="bug">{% trans "Bug Report" %}</option>
+                            <option value="feature">{% trans "Feature Request" %}</option>
+                            <option value="general">{% trans "General Feedback" %}</option>
+                            <option value="complaint">{% trans "Complaint" %}</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">{% trans "Subject" %}</label>
+                        <input type="text" name="subject" class="form-control" required placeholder="{% trans 'Brief summary' %}">
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">{% trans "Message" %}</label>
+                        <textarea name="message" class="form-control" rows="5" required placeholder="{% trans 'Please provide details...' %}"></textarea>
+                    </div>
+                    
+                    <div class="mb-4 text-center">
+                        <label class="form-label fw-bold d-block">{% trans "Rate your experience" %}</label>
+                        <div class="star-rating">
+                            <input type="radio" id="star5" name="rating" value="5"><label for="star5" class="bi bi-star-fill"></label>
+                            <input type="radio" id="star4" name="rating" value="4"><label for="star4" class="bi bi-star-fill"></label>
+                            <input type="radio" id="star3" name="rating" value="3"><label for="star3" class="bi bi-star-fill"></label>
+                            <input type="radio" id="star2" name="rating" value="2"><label for="star2" class="bi bi-star-fill"></label>
+                            <input type="radio" id="star1" name="rating" value="1" required><label for="star1" class="bi bi-star-fill"></label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-bold fs-5">{% trans "Submit Feedback" %}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

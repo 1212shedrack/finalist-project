@@ -9,13 +9,14 @@
 
   {% load static %}
 
-  <!-- ═══ PWA Meta Tags ═══════════════════════════════════════════════════ -->
+  <!-- PWA Meta Tags -->
   <link rel="manifest" href="{% static 'manifest.json' %}" />
   <meta name="theme-color" content="#1a4d2e" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="AmaranthusAI" />
+  
   <link rel="apple-touch-icon" href="{% static 'icons/icon-180.png' %}" />
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'icons/favicon-32.png' %}" />
   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'icons/favicon-16.png' %}" />
@@ -75,11 +76,74 @@
               <i class="bi bi-info-circle me-1"></i>{% trans "About" %}
             </a>
           </li>
+          {% if request.user.is_authenticated %}
+          <!-- Authenticated user menu -->
           <li class="nav-item ms-lg-2">
-            <a class="btn btn-primary-custom btn-sm" href="{% url 'disease_app:predict' %}">
-              <i class="bi bi-search me-1"></i>{% trans "Analyze Leaf" %}
+            <div class="dropdown">
+              <button class="btn d-flex align-items-center gap-2 user-nav-btn dropdown-toggle"
+                      type="button" data-bs-toggle="dropdown" aria-expanded="false" id="userNavDropdown">
+                {% if request.user.profile.avatar %}
+                  <img src="{{ request.user.profile.avatar.url }}" alt="" class="user-nav-avatar" />
+                {% else %}
+                  <span class="user-nav-initials">{{ request.user.username|slice:':1'|upper }}</span>
+                {% endif %}
+                <span class="user-nav-name d-none d-lg-inline">{{ request.user.username }}</span>
+                {% if request.user.profile.role == 'admin' or request.user.is_staff %}
+                  <span class="badge bg-warning text-dark" style="font-size:10px">Admin</span>
+                {% else %}
+                  <span class="badge" style="background:#4CAF50;font-size:10px">{% trans "Farmer" %}</span>
+                {% endif %}
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end user-nav-dropdown shadow" aria-labelledby="userNavDropdown">
+                <li class="dropdown-header">
+                  <strong>{{ request.user.get_full_name|default:request.user.username }}</strong>
+                  <small class="d-block text-muted">{{ request.user.email }}</small>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'accounts:dashboard' %}">
+                    <i class="bi bi-grid me-2"></i>{% trans "Dashboard" %}
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'accounts:farmer_profile' %}">
+                    <i class="bi bi-person me-2"></i>{% trans "My Profile" %}
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'disease_app:history' %}">
+                    <i class="bi bi-clock-history me-2"></i>{% trans "Scan History" %}
+                  </a>
+                </li>
+                {% if request.user.profile.role == 'admin' or request.user.is_staff %}
+                <li>
+                  <a class="dropdown-item" href="{% url 'accounts:admin_dashboard' %}">
+                    <i class="bi bi-shield-check me-2"></i>{% trans "Admin Panel" %}
+                  </a>
+                </li>
+                {% endif %}
+                <li><hr class="dropdown-divider my-1"></li>
+                <li>
+                  <a class="dropdown-item dropdown-item-logout" href="{% url 'accounts:logout' %}">
+                    <i class="bi bi-box-arrow-right me-2"></i><span>{% trans "Logout" %}</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          {% else %}
+          <!-- Guest user — Login + Register -->
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-nav-login" href="{% url 'accounts:login' %}">
+              <i class="bi bi-box-arrow-in-right"></i><span>{% trans "Login" %}</span>
             </a>
           </li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn btn-nav-register" href="{% url 'accounts:register' %}">
+              <i class="bi bi-person-plus"></i><span>{% trans "Register" %}</span>
+            </a>
+          </li>
+          {% endif %}
 
           <!-- LANGUAGE SWITCHER -->
           <li class="nav-item ms-lg-2 lang-switcher-wrap">
@@ -96,7 +160,7 @@
                 <i class="bi bi-chevron-down lang-chevron"></i>
               </button>
               <div class="lang-menu" id="langMenu" role="menu">
-                <div class="lang-menu-header">Select Language</div>
+                <div class="lang-menu-header">{% trans "Select Language" %}</div>
                 <!-- Django's built-in set_language view -->
                 <form method="post" action="/switch-lang/" id="langFormEn">
                   {% csrf_token %}
@@ -169,12 +233,12 @@
             <h5 class="footer-brand-name">AmaranthusAI</h5>
           </div>
           <p class="footer-desc">
-            AI-powered plant disease detection system helping farmers make informed decisions through advanced machine learning technology.
+            {% trans "AI-powered plant disease detection system helping farmers make informed decisions through advanced machine learning technology." %}
           </p>
           <div class="footer-social">
-            <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-            <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            <a href="https://github.com/1212shedrack" aria-label="GitHub"><i class="bi bi-github"></i></a>
+            <a href="https://linkedin.com/in/shedrackmossesmollel" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="mailto:shedrackmossesmollel@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
           </div>
         </div>
         <div class="col-lg-2 col-md-4">
@@ -189,26 +253,26 @@
         <div class="col-lg-3 col-md-4">
           <h6 class="footer-heading">{% trans "Detectable Diseases" %}</h6>
           <ul class="footer-links">
-            <li><span class="footer-badge badge-healthy">{% trans "Healthy" %}</span> Normal Amaranthus</li>
-            <li><span class="footer-badge badge-spot">{% trans "Leaf Spot" %}</span> Fungal disease</li>
-            <li><span class="footer-badge badge-rust">{% trans "White Rust" %}</span> Oomycete pathogen</li>
-            <li><span class="footer-badge badge-non">{% trans "Non-Amaranthus" %}</span> Other images</li>
+            <li><span class="footer-badge badge-healthy">{% trans "Healthy" %}</span> {% trans "Normal Amaranthus leaf" %}</li>
+            <li><span class="footer-badge badge-spot">{% trans "Leaf Spot" %}</span> {% trans "Fungal disease" %}</li>
+            <li><span class="footer-badge badge-rust">{% trans "White Rust" %}</span> {% trans "Oomycete pathogen" %}</li>
+            <li><span class="footer-badge badge-non">{% trans "Non-Amaranthus" %}</span> {% trans "Other images" %}</li>
           </ul>
         </div>
         <div class="col-lg-3 col-md-4">
           <h6 class="footer-heading">{% trans "Contact & Info" %}</h6>
           <ul class="footer-links footer-contact">
             <li><i class="bi bi-building"></i> {% trans "University Project" %}</li>
-            <li><i class="bi bi-cpu"></i> Powered by MUST</li>
-            <li><i class="bi bi-shield-check"></i> 94% Model Accuracy</li>
+            <li><i class="bi bi-cpu"></i> {% trans "Powered by MUST" %}</li>
+            <li><i class="bi bi-shield-check"></i> {% trans "94% Model Accuracy" %}</li>
             <li><i class="bi bi-envelope"></i> shedrackmossesmollel@gmail.com</li>
           </ul>
         </div>
       </div>
       <hr class="footer-divider" />
       <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2026 Amaranthus Disease Detection System.</p>
-        <p class="footer-tech">Built with using Django &amp; TensorFlow Lite</p>
+        <p class="footer-copy">&copy; 2026 {% trans "Amaranthus Disease Detection System" %}.</p>
+        <!-- <p class="footer-tech">Built with using Django &amp; TensorFlow Lite</p> -->
       </div>
     </div>
   </footer>
@@ -217,27 +281,27 @@
   <script src="{% static 'js/main.js' %}"></script>
   {% block extra_js %}{% endblock %}
 
-  <!-- ═══ PWA Install Banner ══════════════════════════════════════════════ -->
+  <!-- PWA Install Banner -->
   <div id="pwaInstallBanner" class="pwa-install-banner" style="display:none;" role="alert" aria-live="polite">
     <div class="pwa-install-content">
       <img src="{% static 'icons/icon-192.png' %}" alt="App Icon" class="pwa-install-icon" />
       <div class="pwa-install-text">
-        <strong>Install Amaranthus AI</strong>
-        <span>Add to your home screen for quick access</span>
+        <strong>{% trans "Install Amaranthus AI" %}</strong>
+        <span>{% trans "Add to your home screen for quick access" %}</span>
       </div>
     </div>
     <div class="pwa-install-actions">
-      <button id="pwaInstallBtn" class="btn-pwa-install">Install App</button>
+      <button id="pwaInstallBtn" class="btn-pwa-install">{% trans "Install App" %}</button>
       <button id="pwaInstallDismiss" class="btn-pwa-dismiss" aria-label="Dismiss">&times;</button>
     </div>
   </div>
 
-  <!-- ═══ Service Worker + PWA Install Logic ══════════════════════════════ -->
+  <!-- Service Worker + PWA Install Logic  -->
   <script>
     (function () {
       'use strict';
 
-      // ── Register Service Worker ──────────────────────────────────────────
+      // Register Service Worker
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
           navigator.serviceWorker
@@ -251,7 +315,7 @@
         });
       }
 
-      // ── Install Banner (beforeinstallprompt) ─────────────────────────────
+      // Install Banner
       let deferredPrompt = null;
       const banner   = document.getElementById('pwaInstallBanner');
       const installBtn = document.getElementById('pwaInstallBtn');

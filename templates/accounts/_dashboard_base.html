@@ -1,0 +1,287 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% trans "AmaranthusAI Dashboard" %}{% endblock %}</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5.3.2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons 1.11.3 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --primary: #1a4d2e;
+            --primary-light: #2d7a4f;
+            --accent: #4CAF50;
+            --bg-color: #f8faf8;
+            --text-color: #1a2535;
+            --sidebar-width: 260px;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        #sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: linear-gradient(180deg, #1a4d2e 0%, #123821 100%);
+            color: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.08);
+        }
+        #sidebar .logo-area {
+            padding: 22px 24px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        #sidebar .nav-links {
+            flex-grow: 1;
+            padding: 16px 0;
+            overflow-y: auto;
+        }
+        /* Custom sleek scrollbar for sidebar nav-links */
+        #sidebar .nav-links::-webkit-scrollbar {
+            width: 4px;
+        }
+        #sidebar .nav-links::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        #sidebar .nav-links::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+        }
+        #sidebar .nav-link {
+            color: rgba(255,255,255,0.78);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+            font-size: 0.92rem;
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+            text-decoration: none;
+        }
+        #sidebar .nav-link:hover, #sidebar .nav-link.active {
+            color: #ffffff;
+            background: rgba(255,255,255,0.12);
+        }
+        #sidebar .nav-link.active {
+            border-left-color: var(--accent);
+            background: rgba(255,255,255,0.15);
+            font-weight: 600;
+        }
+        #sidebar .user-area {
+            padding: 20px 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.12);
+        }
+        #main-content {
+            margin-left: var(--sidebar-width);
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            transition: all 0.3s ease;
+        }
+        .top-header {
+            background: #ffffff;
+            padding: 18px 32px;
+            border-bottom: 1px solid #e2ede6;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .top-header h4 {
+            color: var(--primary) !important;
+            font-weight: 700 !important;
+            font-size: 1.35rem;
+            margin: 0;
+        }
+        .card {
+            border: 1px solid #e2ede6;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(26,77,46,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(26,77,46,0.09);
+        }
+        .btn-sidebar-logout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 9px 16px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9) !important;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+        .btn-sidebar-logout:hover {
+            background: #dc3545 !important;
+            border-color: #dc3545 !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 14px rgba(220, 53, 69, 0.4);
+        }
+        .btn-sidebar-logout i {
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+        .btn-sidebar-logout:hover i {
+            transform: translateX(3px);
+        }
+        @media (max-width: 768px) {
+            #sidebar {
+                left: calc(var(--sidebar-width) * -1);
+            }
+            #sidebar.show {
+                left: 0;
+            }
+            #main-content {
+                margin-left: 0;
+            }
+        }
+        /* Dark Mode Overrides for Dashboard Layout */
+        [data-theme="dark"] .top-header {
+            background: #1a2535 !important;
+            border-bottom-color: #2a3a4a !important;
+        }
+        [data-theme="dark"] .top-header h4 {
+            color: #ffffff !important;
+        }
+        [data-theme="dark"] #main-content {
+            background-color: #0f1923 !important;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <div id="sidebar">
+        <div class="logo-area">
+            <i class="bi bi-flower2"></i>
+            <span>Amaranthus<span style="color:var(--accent);">AI</span></span>
+        </div>
+        <div class="nav-links">
+            {% block sidebar_nav %}
+            {% if request.user.profile.is_farmer %}
+                <a href="{% url 'accounts:farmer_dashboard' %}" class="nav-link"><i class="bi bi-grid-1x2-fill"></i> {% trans "Dashboard" %}</a>
+                <a href="{% url 'accounts:farmer_history' %}" class="nav-link"><i class="bi bi-clock-history"></i> {% trans "Scan History" %}</a>
+                <a href="{% url 'accounts:farmer_favorites' %}" class="nav-link"><i class="bi bi-heart-fill"></i> {% trans "Favorites" %}</a>
+                <a href="{% url 'accounts:farmer_notifications' %}" class="nav-link"><i class="bi bi-bell-fill"></i> {% trans "Notifications" %}</a>
+                <a href="{% url 'accounts:farmer_feedback' %}" class="nav-link"><i class="bi bi-chat-left-text-fill"></i> {% trans "Send Feedback" %}</a>
+                <a href="{% url 'accounts:farmer_profile' %}" class="nav-link"><i class="bi bi-person-fill"></i> {% trans "Profile" %}</a>
+            {% elif request.user.profile.is_admin %}
+                <a href="{% url 'accounts:admin_dashboard' %}" class="nav-link"><i class="bi bi-speedometer2"></i> {% trans "Dashboard" %}</a>
+                <a href="{% url 'accounts:admin_farmers' %}" class="nav-link"><i class="bi bi-people-fill"></i> {% trans "Farmers" %}</a>
+                <a href="{% url 'accounts:admin_scans' %}" class="nav-link"><i class="bi bi-images"></i> {% trans "All Scans" %}</a>
+                <a href="{% url 'accounts:admin_reports' %}" class="nav-link"><i class="bi bi-file-earmark-bar-graph-fill"></i> {% trans "Reports" %}</a>
+                <a href="{% url 'accounts:admin_feedback' %}" class="nav-link"><i class="bi bi-chat-dots-fill"></i> {% trans "Feedback" %}</a>
+                <a href="{% url 'accounts:admin_logs' %}" class="nav-link"><i class="bi bi-journal-text"></i> {% trans "Logs" %}</a>
+                <a href="{% url 'disease_app:home' %}" class="nav-link"><i class="bi bi-box-arrow-up-right"></i> {% trans "Go to Site" %}</a>
+            {% endif %}
+            {% endblock %}
+        </div>
+        <div class="user-area">
+            <div class="d-flex align-items-center gap-2">
+                {% if request.user.profile.avatar %}
+                    <img src="{{ request.user.profile.avatar.url }}" alt="Avatar" class="rounded-circle" width="40" height="40" style="object-fit: cover;">
+                {% else %}
+                    <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center text-white" style="width: 40px; height: 40px;"><i class="bi bi-person"></i></div>
+                {% endif %}
+                <div class="overflow-hidden">
+                    <div class="fw-bold text-truncate">{{ request.user.profile.full_name|default:request.user.username }}</div>
+                    <div class="small text-muted">{{ request.user.profile.role }}</div>
+                </div>
+            </div>
+            <a href="{% url 'accounts:logout' %}" class="btn btn-sidebar-logout w-100 mt-3">
+                <i class="bi bi-box-arrow-right"></i> <span>{% trans "Logout" %}</span>
+            </a>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <div class="top-header">
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-light d-md-none" id="sidebarToggle"><i class="bi bi-list"></i></button>
+                <h4 class="mb-0 fw-bold">{% block page_title %}{% trans "Dashboard" %}{% endblock %}</h4>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <a href="{% url 'accounts:farmer_notifications' %}" class="position-relative text-dark fs-5" title="{% trans 'Notifications' %}">
+                    <i class="bi bi-bell"></i>
+                    {% if unread_count > 0 %}
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">
+                        {{ unread_count }}
+                    </span>
+                    {% endif %}
+                </a>
+                <button class="btn btn-icon" id="darkModeToggle" title="{% trans 'Toggle dark mode' %}" aria-label="Toggle dark mode">
+                    <i class="bi bi-moon-stars-fill" id="darkModeIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="p-4 p-md-5">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show mb-4 shadow-sm" role="alert">
+                        <i class="bi {% if message.tags == 'success' %}bi-check-circle-fill text-success{% elif message.tags == 'error' %}bi-exclamation-triangle-fill text-danger{% else %}bi-info-circle-fill text-info{% endif %} me-2 fs-5"></i>
+                        <span>{{ message }}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% block dashboard_content %}{% endblock %}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script>
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        if (sidebarToggle) {
+            sidebarToggle.addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) sidebar.classList.toggle('show');
+            });
+        }
+        
+        // Highlight active nav link
+        const currentPath = window.location.pathname;
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

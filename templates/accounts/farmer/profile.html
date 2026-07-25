@@ -1,0 +1,179 @@
+{% extends 'accounts/_dashboard_base.html' %}
+{% load i18n %}
+
+{% block page_title %}{% trans "My Profile" %}{% endblock %}
+
+{% block dashboard_content %}
+<div class="card">
+    <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
+        <ul class="nav nav-tabs border-bottom" id="profileTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active fw-bold text-dark" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab">{% trans "Personal Info" %}</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-bold text-dark" id="password-tab" data-bs-toggle="tab" data-bs-target="#password" type="button" role="tab">{% trans "Change Password" %}</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-bold text-dark" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab">{% trans "Account Settings" %}</button>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body p-4">
+        <div class="tab-content" id="profileTabsContent">
+            <!-- Info Tab -->
+            <div class="tab-pane fade show active" id="info" role="tabpanel">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="d-flex align-items-center gap-4 mb-4">
+                        <div class="position-relative">
+                            {% if request.user.profile.avatar %}
+                                <img src="{{ request.user.profile.avatar.url }}" id="avatarPreview" class="rounded-circle border" width="120" height="120" style="object-fit: cover;">
+                            {% else %}
+                                <div id="avatarPreview" class="rounded-circle bg-light border d-flex align-items-center justify-content-center text-muted fs-1" style="width: 120px; height: 120px;">
+                                    <i class="bi bi-person"></i>
+                                </div>
+                            {% endif %}
+                            <label for="id_avatar" class="position-absolute bottom-0 end-0 bg-primary text-white rounded-circle p-2" style="cursor:pointer; transform: translate(25%, 25%);">
+                                <i class="bi bi-camera"></i>
+                            </label>
+                            <input type="file" name="avatar" id="id_avatar" class="d-none" accept="image/*" onchange="previewImage(event)">
+                        </div>
+                        <div>
+                            <h4 class="mb-1 fw-bold">{{ request.user.username }}</h4>
+                            <p class="text-muted mb-0">{{ request.user.profile.role }}</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">{% trans "Full Name" %}</label>
+                            <input type="text" name="full_name" class="form-control" value="{{ request.user.profile.full_name|default:'' }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">{% trans "Email" %}</label>
+                            <input type="email" name="email" class="form-control" value="{{ request.user.email }}" readonly disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">{% trans "Phone Number" %}</label>
+                            <input type="text" name="phone" class="form-control" value="{{ request.user.profile.phone|default:'' }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">{% trans "Gender" %}</label>
+                            <select name="gender" class="form-select">
+                                <option value="">{% trans "Select Gender" %}</option>
+                                <option value="M" {% if request.user.profile.gender == 'M' %}selected{% endif %}>{% trans "Male" %}</option>
+                                <option value="F" {% if request.user.profile.gender == 'F' %}selected{% endif %}>{% trans "Female" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">{% trans "Location" %}</label>
+                            <input type="text" name="location" class="form-control" value="{{ request.user.profile.location|default:'' }}">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">{% trans "Bio" %}</label>
+                            <textarea name="bio" class="form-control" rows="3">{{ request.user.profile.bio|default:'' }}</textarea>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-primary px-4 py-2">{% trans "Save Changes" %}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Password Tab -->
+            <div class="tab-pane fade" id="password" role="tabpanel">
+                <form method="post" action="{% url 'accounts:farmer_password' %}" style="max-width: 500px;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Current Password" %}</label>
+                        <input type="password" name="old_password" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "New Password" %}</label>
+                        <input type="password" name="new_password" class="form-control" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">{% trans "Confirm New Password" %}</label>
+                        <input type="password" name="confirm_password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">{% trans "Update Password" %}</button>
+                </form>
+            </div>
+
+            <!-- Settings Tab -->
+            <div class="tab-pane fade" id="settings" role="tabpanel">
+                <div class="mb-5">
+                    <h5 class="fw-bold">{% trans "Preferences" %}</h5>
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Language" %}</label>
+                        <select class="form-select" style="max-width: 250px;">
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                    <p class="text-muted small">{% trans "Account created on" %} {{ request.user.date_joined|date:"M d, Y" }}</p>
+                </div>
+                
+                <hr>
+                
+                <div class="mt-4">
+                    <h5 class="fw-bold text-danger">{% trans "Danger Zone" %}</h5>
+                    <p class="text-muted">{% trans "Once you delete your account, there is no going back. Please be certain." %}</p>
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+                        {% trans "Delete Account" %}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Account Modal -->
+<div class="modal fade" id="deleteAccountModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content border-danger">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">{% trans "Delete Account" %}</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>{% trans "Are you sure you want to delete your account? This action cannot be undone." %}</p>
+                <form method="post" action="{% url 'accounts:farmer_delete_account' %}" id="deleteForm">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Type your username" %} (<strong>{{ request.user.username }}</strong>) {% trans "to confirm:" %}</label>
+                        <input type="text" class="form-control" id="confirmUsername" oninput="checkUsername()">
+                    </div>
+                    <button type="submit" class="btn btn-danger w-100" id="deleteBtn" disabled>{% trans "Permanently Delete My Account" %}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function previewImage(event) {
+        const reader = new FileReader();
+        reader.onload = function() {
+            const output = document.getElementById('avatarPreview');
+            if(output.tagName === 'IMG') {
+                output.src = reader.result;
+            } else {
+                output.outerHTML = '<img src="' + reader.result + '" id="avatarPreview" class="rounded-circle border" width="120" height="120" style="object-fit: cover;">';
+            }
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    function checkUsername() {
+        const input = document.getElementById('confirmUsername').value;
+        const btn = document.getElementById('deleteBtn');
+        if (input === '{{ request.user.username }}') {
+            btn.disabled = false;
+        } else {
+            btn.disabled = true;
+        }
+    }
+</script>
+{% endblock %}

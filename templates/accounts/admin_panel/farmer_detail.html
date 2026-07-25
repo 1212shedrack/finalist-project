@@ -1,0 +1,120 @@
+{% extends 'accounts/_dashboard_base.html' %}
+{% load i18n %}
+
+{% block page_title %}{% trans "Farmer Details" %}{% endblock %}
+
+{% block dashboard_content %}
+<div class="mb-3">
+    <a href="{% url 'accounts:admin_farmers' %}" class="text-decoration-none text-muted"><i class="bi bi-arrow-left"></i> {% trans "Back to Farmers" %}</a>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-4">
+        <div class="card h-100">
+            <div class="card-body text-center p-4">
+                {% if farmer.avatar %}
+                    <img src="{{ farmer.avatar.url }}" class="rounded-circle mb-3 border" width="120" height="120" style="object-fit: cover;">
+                {% else %}
+                    <div class="rounded-circle bg-light d-inline-flex align-items-center justify-content-center text-muted mb-3 border" style="width: 120px; height: 120px; font-size: 3rem;"><i class="bi bi-person"></i></div>
+                {% endif %}
+                <h4 class="fw-bold mb-1">{{ farmer.full_name|default:farmer.user.username }}</h4>
+                <p class="text-muted mb-3">@{{ farmer.user.username }}</p>
+                
+                <div class="d-flex justify-content-center gap-2 mb-4">
+                    {% if farmer.user.is_active %}
+                        <span class="badge bg-success">{% trans "Active Account" %}</span>
+                    {% else %}
+                        <span class="badge bg-danger">{% trans "Disabled Account" %}</span>
+                    {% endif %}
+                    <span class="badge bg-primary">{{ farmer.user.date_joined|date:"M Y" }}</span>
+                </div>
+                
+                <ul class="list-group list-group-flush text-start mb-4">
+                    <li class="list-group-item px-0"><i class="bi bi-envelope me-2 text-muted"></i> {{ farmer.user.email }}</li>
+                    <li class="list-group-item px-0"><i class="bi bi-telephone me-2 text-muted"></i> {{ farmer.phone|default:"N/A" }}</li>
+                    <li class="list-group-item px-0"><i class="bi bi-geo-alt me-2 text-muted"></i> {{ farmer.location|default:"N/A" }}</li>
+                    <li class="list-group-item px-0"><i class="bi bi-gender-ambiguous me-2 text-muted"></i> {{ farmer.get_gender_display|default:"N/A" }}</li>
+                </ul>
+                
+                <div class="d-grid gap-2">
+                    <form method="post" action="{% url 'accounts:admin_toggle_active' farmer.user.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn {% if farmer.user.is_active %}btn-outline-warning{% else %}btn-success{% endif %} w-100">
+                            {% if farmer.user.is_active %}<i class="bi bi-pause-circle"></i> {% trans "Disable Account" %}{% else %}<i class="bi bi-play-circle"></i> {% trans "Enable Account" %}{% endif %}
+                        </button>
+                    </form>
+                    <button class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="bi bi-trash"></i> {% trans "Delete Account" %}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-8">
+        <div class="row g-3 mb-4">
+            <div class="col-sm-4">
+                <div class="card bg-primary text-white text-center p-3">
+                    <h3 class="mb-0 fw-bold">{{ farmer.user.predictions.count }}</h3>
+                    <div class="small opacity-75">{% trans "Total Scans" %}</div>
+                </div>
+            </div>
+            <!-- Add more stat cards if needed -->
+        </div>
+        
+        <div class="card">
+            <div class="card-header bg-white py-3 fw-bold">{% trans "Recent Scans by this Farmer" %}</div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>{% trans "Image" %}</th>
+                            <th>{% trans "Result" %}</th>
+                            <th>{% trans "Confidence" %}</th>
+                            <th>{% trans "Date" %}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for scan in farmer.user.predictions.all|slice:":10" %}
+                        <tr>
+                            <td>
+                                {% if scan.image %}
+                                <img src="{{ scan.image.url }}" width="50" height="50" class="rounded object-fit-cover">
+                                {% endif %}
+                            </td>
+                            <td><span class="badge {% if scan.disease_class == 'Healthy' %}bg-success{% else %}bg-warning text-dark{% endif %}">{{ scan.disease_class }}</span></td>
+                            <td>{{ scan.confidence|floatformat:1 }}%</td>
+                            <td>{{ scan.created_at|date:"M d, Y H:i" }}</td>
+                            <td class="text-end"><a href="{% url 'disease_app:result' scan.pk %}" class="btn btn-sm btn-light">{% trans "View" %}</a></td>
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="5" class="text-center py-4 text-muted">{% trans "No scans recorded yet." %}</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">{% trans "Confirm Deletion" %}</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                {% trans "Are you sure you want to permanently delete this farmer's account and all their data?" %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Cancel" %}</button>
+                <form method="post" action="{% url 'accounts:admin_delete_farmer' farmer.user.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">{% trans "Delete" %}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

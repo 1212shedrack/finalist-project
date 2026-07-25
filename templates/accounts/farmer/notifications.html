@@ -1,0 +1,49 @@
+{% extends 'accounts/_dashboard_base.html' %}
+{% load i18n %}
+
+{% block page_title %}{% trans "Notifications" %}{% endblock %}
+
+{% block dashboard_content %}
+<div class="card">
+    <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+        <h5 class="mb-0 fw-bold">{% trans "Recent Alerts" %}</h5>
+        <button class="btn btn-sm btn-outline-secondary">{% trans "Mark all as read" %}</button>
+    </div>
+    <div class="list-group list-group-flush">
+        {% for notif in notifications %}
+        <div class="list-group-item p-4 {% if not notif.is_read %}bg-light{% endif %}">
+            <div class="d-flex gap-3">
+                <div class="flex-shrink-0">
+                    {% if notif.notif_type == 'success' %}
+                        <div class="rounded-circle bg-success text-white p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="bi bi-check-lg"></i></div>
+                    {% elif notif.notif_type == 'warning' %}
+                        <div class="rounded-circle bg-warning text-dark p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="bi bi-exclamation-triangle"></i></div>
+                    {% elif notif.notif_type == 'danger' %}
+                        <div class="rounded-circle bg-danger text-white p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="bi bi-shield-x"></i></div>
+                    {% else %}
+                        <div class="rounded-circle bg-primary text-white p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;"><i class="bi bi-info-circle"></i></div>
+                    {% endif %}
+                </div>
+                <div class="flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <h6 class="mb-0 fw-bold">{{ notif.title }}</h6>
+                        <small class="text-muted">{{ notif.created_at|timesince }} {% trans "ago" %}</small>
+                    </div>
+                    <p class="mb-0 text-secondary">{{ notif.message }}</p>
+                </div>
+                {% if not notif.is_read %}
+                <div class="align-self-center">
+                    <span class="badge bg-primary rounded-circle p-1"><span class="visually-hidden">unread</span></span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+        <div class="text-center py-5 text-muted">
+            <i class="bi bi-bell-slash fs-1"></i>
+            <p class="mt-3">{% trans "You have no notifications." %}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

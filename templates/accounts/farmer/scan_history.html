@@ -1,0 +1,74 @@
+{% extends 'accounts/_dashboard_base.html' %}
+{% load i18n %}
+
+{% block page_title %}{% trans "Scan History" %}{% endblock %}
+
+{% block dashboard_content %}
+<div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+    <div class="d-flex gap-2 flex-wrap">
+        <button class="btn btn-primary rounded-pill px-3 active">{% trans "All" %}</button>
+        <button class="btn btn-outline-secondary rounded-pill px-3">{% trans "Healthy" %}</button>
+        <button class="btn btn-outline-secondary rounded-pill px-3">{% trans "Leaf Spot" %}</button>
+        <button class="btn btn-outline-secondary rounded-pill px-3">{% trans "White Rust" %}</button>
+        <button class="btn btn-outline-secondary rounded-pill px-3">{% trans "Non-Amaranthus" %}</button>
+    </div>
+    <div class="d-flex gap-2">
+        <div class="input-group">
+            <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+            <input type="text" class="form-control border-start-0 ps-0" placeholder="{% trans 'Search...' %}">
+        </div>
+        <button class="btn btn-outline-primary"><i class="bi bi-download"></i> {% trans "Export" %}</button>
+    </div>
+</div>
+
+<div class="row g-4">
+    {% for scan in page_obj %}
+    <div class="col-sm-6 col-md-4 col-xl-3">
+        <div class="card h-100 overflow-hidden">
+            <div class="position-relative">
+                {% if scan.image %}
+                <img src="{{ scan.image.url }}" class="card-img-top" alt="Scan" style="height: 200px; object-fit: cover;">
+                {% endif %}
+                <form method="post" action="{% url 'accounts:favorite_add' scan.pk %}" class="position-absolute top-0 end-0 p-2">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-light rounded-circle shadow-sm p-2 text-danger" style="width: 40px; height: 40px;">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <span class="badge bg-{{ scan.risk_color }} fs-6">{{ scan.display_name_translated }}</span>
+                    <span class="fw-bold">{{ scan.confidence|floatformat:1 }}%</span>
+                </div>
+                <p class="text-muted small mb-3"><i class="bi bi-clock"></i> {{ scan.created_at|date:"M d, Y H:i" }}</p>
+                <a href="{% url 'disease_app:result' scan.pk %}" class="btn btn-outline-primary w-100">{% trans "View Details" %}</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center py-5">
+        <div class="text-muted mb-3">
+            <i class="bi bi-images fs-1"></i>
+        </div>
+        <h4 class="fw-bold">{% trans "No scans found" %}</h4>
+        <p class="text-muted">{% trans "You haven't scanned any leaves yet. Start your first scan!" %}</p>
+        <a href="{% url 'disease_app:predict' %}" class="btn btn-accent mt-2"><i class="bi bi-camera-fill me-1"></i> {% trans "Scan New Leaf" %}</a>
+    </div>
+    {% endfor %}
+</div>
+
+{% if page_obj.has_other_pages %}
+<nav class="mt-5">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">{% trans "Previous" %}</a></li>
+        {% endif %}
+        <li class="page-item active"><span class="page-link">{{ page_obj.number }}</span></li>
+        {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">{% trans "Next" %}</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+{% endblock %}

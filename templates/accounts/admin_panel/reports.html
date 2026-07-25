@@ -1,0 +1,85 @@
+{% extends 'accounts/_dashboard_base.html' %}
+{% load i18n %}
+
+{% block page_title %}{% trans "Analytics & Reports" %}{% endblock %}
+
+{% block dashboard_content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h5 class="mb-0 fw-bold">{% trans "Monthly Summary" %}</h5>
+    <div class="d-flex gap-2">
+        <input type="month" class="form-control" value="2023-10">
+        <button class="btn btn-primary"><i class="bi bi-download"></i> {% trans "Export Report" %}</button>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <div class="card h-100 border-start border-4 border-primary">
+            <div class="card-body">
+                <h6 class="text-muted">{% trans "Total Scans (This Month)" %}</h6>
+                <h2 class="fw-bold mb-0">1,245</h2>
+                <small class="text-success"><i class="bi bi-arrow-up-right"></i> 12% {% trans "from last month" %}</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 border-start border-4 border-success">
+            <div class="card-body">
+                <h6 class="text-muted">{% trans "Healthy Crops Detected" %}</h6>
+                <h2 class="fw-bold mb-0">65%</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 border-start border-4 border-danger">
+            <div class="card-body">
+                <h6 class="text-muted">{% trans "High Risk Areas" %}</h6>
+                <h2 class="fw-bold mb-0">3</h2>
+                <small class="text-danger">{% trans "Requires immediate attention" %}</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header bg-white py-3 fw-bold">{% trans "Disease Breakdown" %}</div>
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>{% trans "Disease Name" %}</th>
+                    <th>{% trans "Total Occurrences" %}</th>
+                    <th>{% trans "Percentage" %}</th>
+                    <th>{% trans "Trend" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in disease_stats|default:"" %}
+                <tr>
+                    <td><span class="badge bg-secondary">{{ item.name|default:"Leaf Spot" }}</span></td>
+                    <td>{{ item.count|default:"450" }}</td>
+                    <td>
+                        <div class="d-flex align-items-center gap-2">
+                            <span>{{ item.percentage|default:"35" }}%</span>
+                            <div class="progress flex-grow-1" style="height: 6px;">
+                                <div class="progress-bar bg-primary" style="width: {{ item.percentage|default:'35' }}%;"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="text-danger"><i class="bi bi-graph-up-arrow"></i> +5%</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td><span class="badge bg-warning text-dark">Leaf Spot</span></td>
+                    <td>250</td>
+                    <td>
+                        <div class="d-flex align-items-center gap-2"><span>25%</span><div class="progress flex-grow-1" style="height: 6px;"><div class="progress-bar bg-warning" style="width: 25%;"></div></div></div>
+                    </td>
+                    <td class="text-danger"><i class="bi bi-graph-up-arrow"></i> +2%</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

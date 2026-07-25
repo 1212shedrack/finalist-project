@@ -374,3 +374,952 @@ msgstr "Maladies Détectables"
 
 msgid "Contact & Info"
 msgstr "Contact et Informations"
+
+# ── NEW KEYS (from audit) ──────────────────────────────────────────────────
+
+msgid "Select Language"
+msgstr "Sélectionner la Langue"
+
+msgid "AI-powered plant disease detection system helping farmers make informed decisions through advanced machine learning technology."
+msgstr "Système de détection des maladies des plantes alimenté par l'IA, aidant les agriculteurs à prendre des décisions éclairées grâce à la technologie avancée d'apprentissage automatique."
+
+msgid "Normal Amaranthus leaf"
+msgstr "Feuille d'Amarante normale"
+
+msgid "Fungal disease"
+msgstr "Maladie fongique"
+
+msgid "Oomycete pathogen"
+msgstr "Pathogène Oomycète"
+
+msgid "Other images"
+msgstr "Autres images"
+
+msgid "Powered by MUST"
+msgstr "Propulsé par MUST"
+
+msgid "94% Model Accuracy"
+msgstr "Précision du Modèle 94%"
+
+msgid "Amaranthus Disease Detection System"
+msgstr "Système de Détection des Maladies de l'Amarante"
+
+msgid "Install Amaranthus AI"
+msgstr "Installer Amarante AI"
+
+msgid "Add to your home screen for quick access"
+msgstr "Ajoutez à votre écran d'accueil pour un accès rapide"
+
+msgid "Install App"
+msgstr "Installer l'Application"
+
+msgid "Amaranthus Disease Detection AI"
+msgstr "IA de Détection des Maladies de l'Amarante"
+
+msgid "Amaranthus"
+msgstr "Amarante"
+
+msgid "Amaranthus AI"
+msgstr "Amarante IA"
+
+msgid "Leaf Detected"
+msgstr "Feuille Détectée"
+
+msgid "Confidence"
+msgstr "Confiance"
+
+msgid "Complete"
+msgstr "Terminé"
+
+msgid "EfficientNet Model"
+msgstr "Modèle EfficientNet"
+
+msgid "confidence"
+msgstr "confiance"
+
+msgid "Upload a photo or use your camera to get an instant AI-powered disease analysis"
+msgstr "Téléchargez une photo ou utilisez votre caméra pour obtenir une analyse instantanée des maladies par IA"
+
+msgid "Max 10 MB"
+msgstr "Max 10 Mo"
+
+msgid "Model"
+msgstr "Modèle"
+
+msgid "Input Size"
+msgstr "Taille d'Entrée"
+
+msgid "AI is processing the image..."
+msgstr "L'IA traite l'image..."
+
+msgid "Preprocessing"
+msgstr "Prétraitement"
+
+msgid "Running AI model"
+msgstr "Exécution du modèle IA"
+
+msgid "Camera Not Available"
+msgstr "Caméra Non Disponible"
+
+msgid "Your browser or device does not support camera access. Please use the Upload Photo option instead."
+msgstr "Votre navigateur ou appareil ne prend pas en charge l'accès à la caméra. Veuillez utiliser l'option Télécharger une Photo à la place."
+
+msgid "Live Camera Capture"
+msgstr "Capture en Direct par Caméra"
+
+msgid "Position the leaf clearly in the frame, then tap Capture."
+msgstr "Positionnez clairement la feuille dans le cadre, puis appuyez sur Capturer."
+
+msgid "Good lighting"
+msgstr "Bon éclairage"
+
+msgid "Fill the frame"
+msgstr "Remplir le cadre"
+
+msgid "Keep steady"
+msgstr "Restez stable"
+
+msgid "Start Camera"
+msgstr "Démarrer la Caméra"
+
+msgid "Place leaf inside the frame"
+msgstr "Placez la feuille dans le cadre"
+
+msgid "Switch Camera"
+msgstr "Changer de Caméra"
+
+msgid "Stop"
+msgstr "Arrêter"
+
+msgid "Photo Captured! Review before analysing."
+msgstr "Photo Capturée! Vérifiez avant d'analyser."
+
+msgid "Retake"
+msgstr "Reprendre"
+
+msgid "Upload Photo"
+msgstr "Télécharger une Photo"
+
+msgid "Use Camera"
+msgstr "Utiliser la Caméra"
+
+msgid "Download PDF Report"
+msgstr "Télécharger le Rapport PDF"
+
+msgid "Result"
+msgstr "Résultat"
+
+msgid "Analyzed leaf"
+msgstr "Feuille analysée"
+
+msgid "Risk"
+msgstr "Risque"
+
+msgid "Delete this prediction record?"
+msgstr "Supprimer cet enregistrement de prédiction?"
+
+msgid "Expert Recommendation for"
+msgstr "Recommandation d'Expert pour"
+
+msgid "Risk Level"
+msgstr "Niveau de Risque"
+
+msgid "Cause"
+msgstr "Cause"
+
+msgid "recorded"
+msgstr "enregistrées"
+
+msgid "Are you sure you want to delete this prediction?"
+msgstr "Êtes-vous sûr de vouloir supprimer cette prédiction?"
+
+msgid "Delete"
+msgstr "Supprimer"
+
+msgid "University Project"
+msgstr "Projet Universitaire"
+
+msgid "Amaranthus is a highly nutritious crop cultivated widely across Africa and Asia. However, it is susceptible to several diseases that reduce yield and quality. Early detection is critical to preventing crop loss and protecting farmer livelihoods."
+msgstr "L'Amarante est une culture très nutritive cultivée largement en Afrique et en Asie. Cependant, elle est sensible à plusieurs maladies qui réduisent le rendement et la qualité. La détection précoce est essentielle pour prévenir les pertes de récolte et protéger les moyens de subsistance des agriculteurs."
+
+msgid "This system uses a state of the art machine (deep) learning model trained on over 3,136 leaf images to classify Amaranthus leaf diseases with"
+msgstr "Ce système utilise un modèle d'apprentissage profond de pointe entraîné sur plus de 3 136 images de feuilles pour classer les maladies des feuilles d'Amarante avec"
+
+msgid "accuracy"
+msgstr "précision"
+
+msgid "Farmers can simply take a photo and receive instant, expert-level recommendations."
+msgstr "Les agriculteurs peuvent simplement prendre une photo et recevoir des recommandations instantanées de niveau expert."
+
+msgid "Normal healthy Amaranthus leaf with no signs of disease or infection."
+msgstr "Feuille d'Amarante normale et saine sans signes de maladie ou d'infection."
+
+msgid "Uniform green color"
+msgstr "Couleur verte uniforme"
+
+msgid "No spots or lesions"
+msgstr "Pas de taches ni de lésions"
+
+msgid "Smooth leaf surface"
+msgstr "Surface foliaire lisse"
+
+msgid "Fungal disease causing dark necrotic spots on leaf surfaces, reducing photosynthesis."
+msgstr "Maladie fongique causant des taches nécrotiques sombres sur les surfaces foliaires, réduisant la photosynthèse."
+
+msgid "Dark brown/black spots"
+msgstr "Taches brun foncé/noires"
+
+msgid "Yellowing around spots"
+msgstr "Jaunissement autour des taches"
+
+msgid "Leaf wilting"
+msgstr "Flétrissement des feuilles"
+
+msgid "Oomycete pathogen (Albugo bliti) causing white powdery pustules. Spreads rapidly."
+msgstr "Pathogène Oomycète (Albugo bliti) causant des pustules blanc poudreux. Se propage rapidement."
+
+msgid "White chalky patches"
+msgstr "Taches blanches crayeuses"
+
+msgid "Distorted leaves"
+msgstr "Feuilles déformées"
+
+msgid "Premature leaf drop"
+msgstr "Chute prématurée des feuilles"
+
+msgid "Image does not contain an Amaranthus leaf — the model cannot provide reliable results."
+msgstr "L'image ne contient pas une feuille d'Amarante — le modèle ne peut pas fournir de résultats fiables."
+
+msgid "Wrong plant species"
+msgstr "Mauvaise espèce végétale"
+
+msgid "Unclear/blurry photo"
+msgstr "Photo floue/peu nette"
+
+msgid "Non-leaf objects"
+msgstr "Objets non foliaires"
+
+msgid "Compact yet powerful CNN architecture. Achieves 94%+ accuracy with only 5.3M parameters — perfect for fast inference."
+msgstr "Architecture CNN compacte mais puissante. Atteint une précision de 94%+ avec seulement 5,3M de paramètres — parfaite pour une inférence rapide."
+
+msgid "Optimized model format for production deployment. Runs inference in milliseconds without GPU requirements."
+msgstr "Format de modèle optimisé pour le déploiement en production. Exécute l'inférence en millisecondes sans GPU."
+
+msgid "Robust Python web framework handling image uploads, model inference, database storage, and recommendations."
+msgstr "Framework web Python robuste gérant les téléchargements d'images, l'inférence de modèles, le stockage en base de données et les recommandations."
+
+msgid "Take a Clear Photo"
+msgstr "Prendre une Photo Nette"
+
+msgid "Photograph an Amaranthus leaf in good lighting. Fill the frame with the leaf."
+msgstr "Photographiez une feuille d'Amarante dans une bonne lumière. Remplissez le cadre avec la feuille."
+
+msgid "Upload the Image"
+msgstr "Télécharger l'Image"
+
+msgid "Go to the Detect Disease page and drag & drop or browse to select your image (JPG/PNG, max 10MB)."
+msgstr "Allez sur la page Détecter la Maladie et glissez-déposez ou parcourez pour sélectionner votre image (JPG/PNG, max 10 Mo)."
+
+msgid "Wait for Analysis"
+msgstr "Attendre l'Analyse"
+
+msgid "The AI model will process your image in under 2 seconds."
+msgstr "Le modèle IA traitera votre image en moins de 2 secondes."
+
+msgid "Read the Results"
+msgstr "Lire les Résultats"
+
+msgid "Review the predicted disease, confidence score, risk level, and full recommendation with treatment options."
+msgstr "Examinez la maladie prédite, le score de confiance, le niveau de risque et la recommandation complète avec les options de traitement."
+
+msgid "This system was developed as an academic research project aimed at supporting smallholder Amaranthus farmers through artificial intelligence. The model was trained on a carefully curated dataset of 3,136 annotated leaf images using transfer learning with EfficientNet B0."
+msgstr "Ce système a été développé comme un projet de recherche académique visant à soutenir les petits agriculteurs d'Amarante grâce à l'intelligence artificielle. Le modèle a été entraîné sur un ensemble de données soigneusement sélectionné de 3 136 images de feuilles annotées en utilisant le transfert d'apprentissage avec EfficientNet B0."
+
+msgid "Analysis failed: %(error)s"
+msgstr "Analyse échouée: %(error)s"
+
+msgid "Analysis complete: %(name)s detected (%(conf).1f%% confidence)"
+msgstr "Analyse terminée: %(name)s détecté(e) (%(conf).1f%% de confiance)"
+
+msgid "Prediction deleted successfully."
+msgstr "Prédiction supprimée avec succès."
+
+msgid "Fungal: Medium Risk"
+msgstr "Fongique: Risque Moyen"
+
+msgid "Oomycete: High Risk"
+msgstr "Oomycète: Risque Élevé"
+
+# ── AUTH & DASHBOARD KEYS ──────────────────────────────────────────────────
+
+msgid "AI-Powered Leaf Disease Detection"
+msgstr "Détection des Maladies des Feuilles par IA"
+
+msgid "Account Settings"
+msgstr "Paramètres du Compte"
+
+msgid "Account created on"
+msgstr "Compte créé le"
+
+msgid "Action"
+msgstr "Action"
+
+msgid "Action/Description"
+msgstr "Action/Description"
+
+msgid "Active"
+msgstr "Actif"
+
+msgid "Active Account"
+msgstr "Compte Actif"
+
+msgid "Admin Dashboard"
+msgstr "Tableau de Bord Administrateur"
+
+msgid "All Categories"
+msgstr "Toutes les Catégories"
+
+msgid "All Diseases"
+msgstr "Toutes les Maladies"
+
+msgid "All Risks"
+msgstr "Tous les Risques"
+
+msgid "All Scans"
+msgstr "Toutes les Analyses"
+
+msgid "All Statuses"
+msgstr "Tous les Statuts"
+
+msgid "Already have an account?"
+msgstr "Vous avez déjà un compte?"
+
+msgid "AmaranthusAI"
+msgstr "AmaranteIA"
+
+msgid "AmaranthusAI Dashboard"
+msgstr "Tableau de Bord AmaranteIA"
+
+msgid "Analytics & Reports"
+msgstr "Analytique et Rapports"
+
+msgid "Are you sure you want to delete your account? This action cannot be undone."
+msgstr "Êtes-vous sûr de vouloir supprimer votre compte? Cette action est irréversible."
+
+msgid "Are you sure you want to permanently delete this farmer's account and all their data?"
+msgstr "Êtes-vous sûr de vouloir supprimer définitivement le compte de cet agriculteur et toutes ses données?"
+
+msgid "Back to Farmers"
+msgstr "Retour aux Agriculteurs"
+
+msgid "Back to Login"
+msgstr "Retour à la Connexion"
+
+msgid "Bio"
+msgstr "Biographie"
+
+msgid "Brief summary"
+msgstr "Bref résumé"
+
+msgid "Browse History"
+msgstr "Parcourir l'Historique"
+
+msgid "Bug Report"
+msgstr "Rapport de Bogue"
+
+msgid "Bug Reports"
+msgstr "Rapports de Bogues"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Category"
+msgstr "Catégorie"
+
+msgid "Change Password"
+msgstr "Changer le Mot de Passe"
+
+msgid "Check your email"
+msgstr "Vérifiez votre e-mail"
+
+msgid "Choose..."
+msgstr "Choisir..."
+
+msgid "Community Support"
+msgstr "Soutien Communautaire"
+
+msgid "Complaint"
+msgstr "Plainte"
+
+msgid "Conf."
+msgstr "Conf."
+
+msgid "Confirm Deletion"
+msgstr "Confirmer la Suppression"
+
+msgid "Confirm New Password"
+msgstr "Confirmer le Nouveau Mot de Passe"
+
+msgid "Confirm Password"
+msgstr "Confirmer le Mot de Passe"
+
+msgid "Contact"
+msgstr "Contact"
+
+msgid "Create Account"
+msgstr "Créer un Compte"
+
+msgid "Create Account — Amaranthus AI"
+msgstr "Créer un Compte — Amarante IA"
+
+msgid "Create Farmer Account"
+msgstr "Créer un Compte Agriculteur"
+
+msgid "Current Password"
+msgstr "Mot de Passe Actuel"
+
+msgid "Danger Zone"
+msgstr "Zone Dangereuse"
+
+msgid "Dashboard"
+msgstr "Tableau de Bord"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Delete Account"
+msgstr "Supprimer le Compte"
+
+msgid "Delete My Account"
+msgstr "Supprimer Mon Compte"
+
+msgid "Disable Account"
+msgstr "Désactiver le Compte"
+
+msgid "Disabled"
+msgstr "Désactivé"
+
+msgid "Disabled Account"
+msgstr "Compte Désactivé"
+
+msgid "Disease"
+msgstr "Maladie"
+
+msgid "Disease Breakdown"
+msgstr "Répartition des Maladies"
+
+msgid "Disease Distribution"
+msgstr "Distribution des Maladies"
+
+msgid "Disease Name"
+msgstr "Nom de la Maladie"
+
+msgid "Diseased"
+msgstr "Malade"
+
+msgid "Don't have an account?"
+msgstr "Vous n'avez pas de compte?"
+
+msgid "Download Report"
+msgstr "Télécharger le Rapport"
+
+msgid "Early Disease Detection"
+msgstr "Détection Précoce des Maladies"
+
+msgid "Edit Profile"
+msgstr "Modifier le Profil"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Email Address"
+msgstr "Adresse E-mail"
+
+msgid "Email Sent — Amaranthus AI"
+msgstr "E-mail Envoyé — Amarante IA"
+
+msgid "Empowering agriculture with AI technology."
+msgstr "Renforcer l'agriculture avec la technologie IA."
+
+msgid "Enable Account"
+msgstr "Activer le Compte"
+
+msgid "Enter your email address and we'll send you instructions to reset your password."
+msgstr "Entrez votre adresse e-mail et nous vous enverrons des instructions pour réinitialiser votre mot de passe."
+
+msgid "Expert Treatment Advice"
+msgstr "Conseils de Traitement d'Experts"
+
+msgid "Export"
+msgstr "Exporter"
+
+msgid "Export CSV"
+msgstr "Exporter CSV"
+
+msgid "Export Report"
+msgstr "Exporter le Rapport"
+
+msgid "Farmer"
+msgstr "Agriculteur"
+
+msgid "Farmer Dashboard"
+msgstr "Tableau de Bord Agriculteur"
+
+msgid "Farmer Details"
+msgstr "Détails de l'Agriculteur"
+
+msgid "Farmers"
+msgstr "Agriculteurs"
+
+msgid "Favorites"
+msgstr "Favoris"
+
+msgid "Feature Request"
+msgstr "Demande de Fonctionnalité"
+
+msgid "Feature Requests"
+msgstr "Demandes de Fonctionnalités"
+
+msgid "Feedback"
+msgstr "Commentaires"
+
+msgid "Feedback Details"
+msgstr "Détails des Commentaires"
+
+msgid "Female"
+msgstr "Féminin"
+
+msgid "Filter"
+msgstr "Filtrer"
+
+msgid "Forgot password?"
+msgstr "Mot de passe oublié?"
+
+msgid "Full Name"
+msgstr "Nom Complet"
+
+msgid "Gender"
+msgstr "Genre"
+
+msgid "General Feedback"
+msgstr "Commentaires Généraux"
+
+msgid "Go to Site"
+msgstr "Aller au Site"
+
+msgid "Good day"
+msgstr "Bonjour"
+
+msgid "Healthy Crops Detected"
+msgstr "Cultures Saines Détectées"
+
+msgid "Healthy Leaves"
+msgstr "Feuilles Saines"
+
+msgid "Help us improve AmaranthusAI by sharing your experience."
+msgstr "Aidez-nous à améliorer AmaranteIA en partageant votre expérience."
+
+msgid "High Risk Areas"
+msgstr "Zones à Haut Risque"
+
+msgid "IP Address"
+msgstr "Adresse IP"
+
+msgid "Image"
+msgstr "Image"
+
+msgid "Increase Crop Yield"
+msgstr "Augmenter le Rendement des Cultures"
+
+msgid "Instant Disease Recognition"
+msgstr "Reconnaissance Instantanée des Maladies"
+
+msgid "Join Thousands of Farmers"
+msgstr "Rejoignez des Milliers d'Agriculteurs"
+
+msgid "Joined"
+msgstr "A rejoint"
+
+msgid "Language"
+msgstr "Langue"
+
+msgid "Level"
+msgstr "Niveau"
+
+msgid "Location"
+msgstr "Emplacement"
+
+msgid "Login — Amaranthus AI"
+msgstr "Connexion — Amarante IA"
+
+msgid "Logout"
+msgstr "Déconnexion"
+
+msgid "Logs"
+msgstr "Journaux"
+
+msgid "Male"
+msgstr "Masculin"
+
+msgid "Manage Farmers"
+msgstr "Gérer les Agriculteurs"
+
+msgid "Mark all as read"
+msgstr "Tout marquer comme lu"
+
+msgid "Mark as Resolved"
+msgstr "Marquer comme Résolu"
+
+msgid "Medium"
+msgstr "Moyen"
+
+msgid "Message"
+msgstr "Message"
+
+msgid "Monthly Summary"
+msgstr "Résumé Mensuel"
+
+msgid "Must be at least 8 characters."
+msgstr "Doit contenir au moins 8 caractères."
+
+msgid "My Favorites"
+msgstr "Mes Favoris"
+
+msgid "My Profile"
+msgstr "Mon Profil"
+
+msgid "New Password"
+msgstr "Nouveau Mot de Passe"
+
+msgid "Newest Farmers"
+msgstr "Agriculteurs les Plus Récents"
+
+msgid "Next"
+msgstr "Suivant"
+
+msgid "No Data"
+msgstr "Aucune Donnée"
+
+msgid "No farmers found."
+msgstr "Aucun agriculteur trouvé."
+
+msgid "No farmers registered yet."
+msgstr "Aucun agriculteur enregistré pour l'instant."
+
+msgid "No favorites yet"
+msgstr "Pas encore de favoris"
+
+msgid "No feedback entries found."
+msgstr "Aucun commentaire trouvé."
+
+msgid "No logs found."
+msgstr "Aucun journal trouvé."
+
+msgid "No recent scans."
+msgstr "Aucune analyse récente."
+
+msgid "No scans available."
+msgstr "Aucune analyse disponible."
+
+msgid "No scans found"
+msgstr "Aucune analyse trouvée"
+
+msgid "No scans recorded yet."
+msgstr "Aucune analyse enregistrée pour l'instant."
+
+msgid "No scans yet. Start by scanning a new leaf."
+msgstr "Aucune analyse encore. Commencez par analyser une nouvelle feuille."
+
+msgid "Notifications"
+msgstr "Notifications"
+
+msgid "OR"
+msgstr "OU"
+
+msgid "Once you delete your account, there is no going back. Please be certain."
+msgstr "Une fois votre compte supprimé, il n'y a pas de retour en arrière. Veuillez être certain."
+
+msgid "Other"
+msgstr "Autre"
+
+msgid "Password"
+msgstr "Mot de Passe"
+
+msgid "Password Reset Complete — Amaranthus AI"
+msgstr "Réinitialisation du Mot de Passe Terminée — Amarante IA"
+
+msgid "Password Updated!"
+msgstr "Mot de Passe Mis à Jour!"
+
+msgid "Passwords do not match."
+msgstr "Les mots de passe ne correspondent pas."
+
+msgid "Pending"
+msgstr "En Attente"
+
+msgid "Percentage"
+msgstr "Pourcentage"
+
+msgid "Permanently Delete My Account"
+msgstr "Supprimer Définitivement Mon Compte"
+
+msgid "Personal Info"
+msgstr "Informations Personnelles"
+
+msgid "Phone Number"
+msgstr "Numéro de Téléphone"
+
+msgid "Please choose a username."
+msgstr "Veuillez choisir un nom d'utilisateur."
+
+msgid "Please enter a valid email address."
+msgstr "Veuillez entrer une adresse e-mail valide."
+
+msgid "Please enter your full name."
+msgstr "Veuillez entrer votre nom complet."
+
+msgid "Please enter your new password below."
+msgstr "Veuillez entrer votre nouveau mot de passe ci-dessous."
+
+msgid "Please provide details..."
+msgstr "Veuillez fournir des détails..."
+
+msgid "Preferences"
+msgstr "Préférences"
+
+msgid "Previous"
+msgstr "Précédent"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Profile Completion"
+msgstr "Complétion du Profil"
+
+msgid "Quick Actions"
+msgstr "Actions Rapides"
+
+msgid "Rate your experience"
+msgstr "Évaluez votre expérience"
+
+msgid "Rating"
+msgstr "Évaluation"
+
+msgid "Recent Activity & Security Logs"
+msgstr "Activité Récente et Journaux de Sécurité"
+
+msgid "Recent Alerts"
+msgstr "Alertes Récentes"
+
+msgid "Recent Scans"
+msgstr "Analyses Récentes"
+
+msgid "Recent Scans by this Farmer"
+msgstr "Analyses Récentes par cet Agriculteur"
+
+msgid "Register here"
+msgstr "S'inscrire ici"
+
+msgid "Register to access the platform"
+msgstr "Inscrivez-vous pour accéder à la plateforme"
+
+msgid "Remember me"
+msgstr "Se souvenir de moi"
+
+msgid "Remove"
+msgstr "Supprimer"
+
+msgid "Reports"
+msgstr "Rapports"
+
+msgid "Requires immediate attention"
+msgstr "Nécessite une attention immédiate"
+
+msgid "Reset Password"
+msgstr "Réinitialiser le Mot de Passe"
+
+msgid "Reset Password — Amaranthus AI"
+msgstr "Réinitialiser le Mot de Passe — Amarante IA"
+
+msgid "Resolved"
+msgstr "Résolu"
+
+msgid "Return to Login"
+msgstr "Retour à la Connexion"
+
+msgid "Save Changes"
+msgstr "Enregistrer les Modifications"
+
+msgid "Scan History"
+msgstr "Historique des Analyses"
+
+msgid "Scan New Leaf"
+msgstr "Analyser une Nouvelle Feuille"
+
+msgid "Scan Now"
+msgstr "Analyser Maintenant"
+
+msgid "Scans"
+msgstr "Analyses"
+
+msgid "Scans Overview (Last 7 Days)"
+msgstr "Aperçu des Analyses (7 Derniers Jours)"
+
+msgid "Scans Today"
+msgstr "Analyses Aujourd'hui"
+
+msgid "Search farmers..."
+msgstr "Rechercher des agriculteurs..."
+
+msgid "Search..."
+msgstr "Rechercher..."
+
+msgid "Secure Farmer Dashboard"
+msgstr "Tableau de Bord Agriculteur Sécurisé"
+
+msgid "Select Gender"
+msgstr "Sélectionner le Genre"
+
+msgid "Select a category"
+msgstr "Sélectionner une catégorie"
+
+msgid "Send Feedback"
+msgstr "Envoyer des Commentaires"
+
+msgid "Send Reset Link"
+msgstr "Envoyer le Lien de Réinitialisation"
+
+msgid "Set New Password"
+msgstr "Définir un Nouveau Mot de Passe"
+
+msgid "Set New Password — Amaranthus AI"
+msgstr "Définir un Nouveau Mot de Passe — Amarante IA"
+
+msgid "Sign In"
+msgstr "Se Connecter"
+
+msgid "Sign In Now"
+msgstr "Se Connecter Maintenant"
+
+msgid "Sign in"
+msgstr "Se connecter"
+
+msgid "Sign in to your account"
+msgstr "Connectez-vous à votre compte"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Strong"
+msgstr "Fort"
+
+msgid "Subject"
+msgstr "Sujet"
+
+msgid "Subject:"
+msgstr "Sujet:"
+
+msgid "Submit Feedback"
+msgstr "Soumettre les Commentaires"
+
+msgid "System Logs"
+msgstr "Journaux Système"
+
+msgid "This action is permanent. All your scan history and data will be deactivated. You cannot undo this."
+msgstr "Cette action est permanente. Tout votre historique d'analyses et données seront désactivés. Vous ne pouvez pas annuler cela."
+
+msgid "Timestamp"
+msgstr "Horodatage"
+
+msgid "Toggle Status"
+msgstr "Basculer le Statut"
+
+msgid "Top Disease"
+msgstr "Maladie Principale"
+
+msgid "Total Farmers"
+msgstr "Total des Agriculteurs"
+
+msgid "Total Occurrences"
+msgstr "Total des Occurrences"
+
+msgid "Total Scans"
+msgstr "Total des Analyses"
+
+msgid "Total Scans (This Month)"
+msgstr "Total des Analyses (Ce Mois)"
+
+msgid "Trend"
+msgstr "Tendance"
+
+msgid "Type your username"
+msgstr "Tapez votre nom d'utilisateur"
+
+msgid "Update Password"
+msgstr "Mettre à Jour le Mot de Passe"
+
+msgid "Update Status"
+msgstr "Mettre à Jour le Statut"
+
+msgid "User"
+msgstr "Utilisateur"
+
+msgid "User Feedback"
+msgstr "Commentaires des Utilisateurs"
+
+msgid "Username"
+msgstr "Nom d'Utilisateur"
+
+msgid "View All"
+msgstr "Voir Tout"
+
+msgid "View History"
+msgstr "Voir l'Historique"
+
+msgid "View Result"
+msgstr "Voir le Résultat"
+
+msgid "We value your feedback!"
+msgstr "Nous apprécions vos commentaires!"
+
+msgid "We've sent an email with instructions on how to reset your password. If you don't receive an email within a few minutes, please check your spam folder."
+msgstr "Nous vous avons envoyé un e-mail avec des instructions pour réinitialiser votre mot de passe. Si vous ne recevez pas d'e-mail dans quelques minutes, vérifiez votre dossier spam."
+
+msgid "Weak"
+msgstr "Faible"
+
+msgid "Welcome Back"
+msgstr "Bon Retour"
+
+msgid "Welcome back to your AmaranthusAI dashboard."
+msgstr "Bon retour sur votre tableau de bord AmaranteIA."
+
+msgid "You can save important scans to your favorites by clicking the heart icon on any scan result."
+msgstr "Vous pouvez sauvegarder des analyses importantes dans vos favoris en cliquant sur l'icône cœur sur n'importe quel résultat d'analyse."
+
+msgid "You have"
+msgstr "Vous avez"
+
+msgid "You have no notifications."
+msgstr "Vous n'avez aucune notification."
+
+msgid "You haven't scanned any leaves yet. Start your first scan!"
+msgstr "Vous n'avez pas encore analysé de feuilles. Commencez votre première analyse!"
+
+msgid "Your password has been successfully reset. You can now use your new password to log in to your account."
+msgstr "Votre mot de passe a été réinitialisé avec succès. Vous pouvez maintenant utiliser votre nouveau mot de passe pour vous connecter à votre compte."
+
+msgid "ago"
+msgstr "il y a"
+
+msgid "from last month"
+msgstr "du mois dernier"
+
+msgid "to confirm deletion:"
+msgstr "pour confirmer la suppression:"
+
+msgid "to confirm:"
+msgstr "pour confirmer:"
+
+msgid "unread notifications."
+msgstr "notifications non lues."

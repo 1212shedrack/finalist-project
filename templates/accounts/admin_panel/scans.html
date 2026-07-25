@@ -1,0 +1,139 @@
+{% extends 'accounts/_dashboard_base.html' %}
+{% load i18n %}
+
+{% block page_title %}{% trans "All Scans" %}{% endblock %}
+
+{% block dashboard_content %}
+<div class="card">
+    <div class="card-header bg-white py-3">
+        {# ── Filter form ── all three controls share one GET form #}
+        <form method="get" action="" id="scansFilterForm" class="d-flex flex-wrap gap-2 align-items-center justify-content-between">
+
+            <div class="d-flex flex-wrap gap-2">
+                {# Disease filter #}
+                <select class="form-select" style="width: auto;" name="disease"
+                        onchange="this.form.submit()">
+                    <option value="">{% trans "All Diseases" %}</option>
+                    <option value="health"        {% if selected_disease == 'health' %}selected{% endif %}>{% trans "Healthy" %}</option>
+                    <option value="non_amaranthus"{% if selected_disease == 'non_amaranthus' %}selected{% endif %}>{% trans "Non-Amaranthus" %}</option>
+                    <option value="spot_leaf"     {% if selected_disease == 'spot_leaf' %}selected{% endif %}>{% trans "Leaf Spot" %}</option>
+                    <option value="white_rust"    {% if selected_disease == 'white_rust' %}selected{% endif %}>{% trans "White Rust" %}</option>
+                </select>
+
+                {# Risk filter #}
+                <select class="form-select" style="width: auto;" name="risk"
+                        onchange="this.form.submit()">
+                    <option value="">{% trans "All Risks" %}</option>
+                    <option value="Low"    {% if selected_risk == 'Low' %}selected{% endif %}>{% trans "Low Risk" %}</option>
+                    <option value="Medium" {% if selected_risk == 'Medium' %}selected{% endif %}>{% trans "Medium Risk" %}</option>
+                    <option value="High"   {% if selected_risk == 'High' %}selected{% endif %}>{% trans "High Risk" %}</option>
+                    <option value="Unknown"{% if selected_risk == 'Unknown' %}selected{% endif %}>{% trans "Unknown Risk" %}</option>
+                </select>
+
+                {# Clear filters link — only show when a filter is active #}
+                {% if selected_disease or selected_risk or q %}
+                <a href="{% url 'accounts:admin_scans' %}" class="btn btn-outline-secondary btn-sm align-self-center">
+                    <i class="bi bi-x-circle me-1"></i>{% trans "Clear" %}
+                </a>
+                {% endif %}
+            </div>
+
+            {# Search box #}
+            <div class="input-group" style="max-width: 260px;">
+                <input type="text" class="form-control" name="q" value="{{ q }}"
+                       placeholder="{% trans 'Search farmer or disease…' %}">
+                <button class="btn btn-outline-secondary" type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>{% trans "Image" %}</th>
+                    <th>{% trans "Farmer" %}</th>
+                    <th>{% trans "Disease" %}</th>
+                    <th>{% trans "Confidence" %}</th>
+                    <th>{% trans "Date" %}</th>
+                    <th class="text-end">{% trans "Action" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for scan in all_predictions %}
+                <tr>
+                    <td>
+                        {% if scan.image %}
+                        <img src="{{ scan.image.url }}" width="60" height="40"
+                             class="rounded border object-fit-cover">
+                        {% else %}
+                        <div class="rounded border bg-light d-flex align-items-center justify-content-center"
+                             style="width:60px;height:40px;">
+                            <i class="bi bi-image text-muted small"></i>
+                        </div>
+                        {% endif %}
+                    </td>
+                    <td>{{ scan.user.username|default:"Anonymous" }}</td>
+                    <td>
+                        <span class="badge bg-{{ scan.risk_color }}">
+                            {{ scan.display_name }}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center gap-2">
+                            <span>{{ scan.confidence|floatformat:1 }}%</span>
+                            <div class="progress flex-grow-1" style="height:5px;width:50px;">
+                                <div class="progress-bar bg-primary"
+                                     style="width:{{ scan.confidence|floatformat:0 }}%;"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{ scan.created_at|date:"M d, Y H:i" }}</td>
+                    <td class="text-end">
+                        <a href="{% url 'disease_app:result' scan.pk %}"
+                           class="btn btn-sm btn-light">{% trans "View" %}</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center py-5 text-muted">
+                        <i class="bi bi-inbox fs-2 d-block mb-2"></i>
+                        {% trans "No scans match your filters." %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{# Pagination — preserve all active filter params #}
+{% if all_predictions.has_other_pages %}
+<nav class="mt-4">
+    <ul class="pagination justify-content-center">
+        {% if all_predictions.has_previous %}
+        <li class="page-item">
+            <a class="page-link"
+               href="?page={{ all_predictions.previous_page_number }}{% if q %}&q={{ q }}{% endif %}{% if selected_disease %}&disease={{ selected_disease }}{% endif %}{% if selected_risk %}&risk={{ selected_risk }}{% endif %}">
+                {% trans "Previous" %}
+            </a>
+        </li>
+        {% endif %}
+        <li class="page-item active">
+            <span class="page-link">{{ all_predictions.number }} / {{ all_predictions.paginator.num_pages }}</span>
+        </li>
+        {% if all_predictions.has_next %}
+        <li class="page-item">
+            <a class="page-link"
+               href="?page={{ all_predictions.next_page_number }}{% if q %}&q={{ q }}{% endif %}{% if selected_disease %}&disease={{ selected_disease }}{% endif %}{% if selected_risk %}&risk={{ selected_risk }}{% endif %}">
+                {% trans "Next" %}
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+{% endblock %}

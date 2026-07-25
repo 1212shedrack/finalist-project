@@ -11,6 +11,8 @@ urlpatterns = [
          name='switch_language'),
     # Keep Django's built-in set_language as fallback (not used in templates)
     path('i18n/', include('django.conf.urls.i18n')),
+    # Accounts & dashboards (no language prefix — auth pages are universal)
+    path('', include('accounts.urls')),
 ]
 
 urlpatterns += i18n_patterns(

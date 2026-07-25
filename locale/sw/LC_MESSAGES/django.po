@@ -28,13 +28,12 @@ msgid "AI-Powered Agricultural Intelligence"
 msgstr "Akili Bandia kwa Kilimo"
 
 msgid "AI-Powered"
-msgstr "Inayotumiwa na AI"
+msgstr "Inayotumia AI"
 
 msgid "Disease Detection"
 msgstr "Ugunduzaji wa Magonjwa"
 
 msgid "Upload an image of an Amaranthus leaf and receive instant disease prediction together with professional treatment recommendations powered by deep learning."
-
 msgstr "Pakia picha ya jani la mchicha na upokee utabiri wa ugonjwa papo hapo pamoja na mapendekezo ya matibabu yanayotumia teknolojia ya kujifunza kwa kina."
 
 msgid "Detect Disease Now"
@@ -50,13 +49,13 @@ msgid "Disease Classes"
 msgstr "Aina za Magonjwa"
 
 msgid "Model Accuracy"
-msgstr "Usahihi wa Modeli"
+msgstr "Usahihi wa Modo"
 
 msgid "Training Images"
 msgstr "Picha za Mafunzo"
 
 msgid "Why Choose Us"
-msgstr "Kwa Nini Tuchague"
+msgstr "Kwa Nini Utuchague"
 
 msgid "Powerful Features for Farmers"
 msgstr "Vipengele Vikubwa kwa Wakulima"
@@ -68,16 +67,16 @@ msgid "Instant Detection"
 msgstr "Ugunduzaji wa Haraka"
 
 msgid "Get disease prediction results in under 2 seconds using our optimized TFLite model."
-msgstr "Pata matokeo ya utabiri wa ugonjwa kwa chini ya sekunde 2 kwa kutumia modeli yetu iliyoboreshwa ya TFLite."
+msgstr "Pata matokeo ya utabiri wa ugonjwa kwa chini ya sekunde 2 kwa kutumia modeli yetu iliyoboreshwa."
 
 msgid "Fast & Reliable"
 msgstr "Haraka na Kutegemewa"
 
 msgid "4-Class AI Model"
-msgstr "Modeli ya AI ya Madarasa 4"
+msgstr "Modo ya AI ya Madaraja ma 4"
 
 msgid "Detects Healthy, Leaf Spot, White Rust, and Non-Amaranthus with 98%+ accuracy."
-msgstr "Hugundua Afya Nzuri, Madoa ya Majani, Kutu Nyeupe, na Si-Amaranthus kwa usahihi wa zaidi ya 98%."
+msgstr "Hugundua Afya Nzuri, Madoa ya Majani, Kutu Nyeupe, na Si-Mchicha kwa usahihi wa zaidi ya 98%."
 
 msgid "Deep Learning"
 msgstr "Kujifunza kwa Kina"
@@ -113,13 +112,13 @@ msgid "Upload Image"
 msgstr "Pakia Picha"
 
 msgid "Take a clear photo of an Amaranthus leaf and upload it using drag & drop or file browser."
-msgstr "Piga picha wazi ya jani la Amaranthus na uipakie ukitumia buruta na achia au kivinjari cha faili."
+msgstr "Piga picha wazi ya jani la Mchicha na uipakie ukitumia buruta/kamera na achia au kivinjari cha faili."
 
 msgid "AI Analysis"
 msgstr "Uchambuzi wa AI"
 
 msgid "Our EfficientNet deep learning model analyzes the image and classifies the disease in milliseconds."
-msgstr "Modeli yetu ya kujifunza kwa kina ya EfficientNet inachambua picha na kuainisha ugonjwa kwa millisekunde."
+msgstr "Modo/mfumo yetu/wetu inachambua picha na kuainisha ugonjwa kwa sekunde ."
 
 msgid "Get Results"
 msgstr "Pata Matokeo"
@@ -127,8 +126,8 @@ msgstr "Pata Matokeo"
 msgid "Receive detailed results including disease name, confidence score, risk level, and treatment recommendations."
 msgstr "Pokea matokeo ya kina ikiwa ni pamoja na jina la ugonjwa, alama ya uhakika, kiwango cha hatari, na mapendekezo ya matibabu."
 
-msgid "Try It Now — It's Free"
-msgstr "Jaribu Sasa — Ni Bure"
+msgid "Try It Now  It's Free"
+msgstr "Jaribu Sasa  Ni Bure"
 
 msgid "Latest Activity"
 msgstr "Shughuli za Hivi Karibuni"
@@ -146,10 +145,10 @@ msgid "View All History"
 msgstr "Tazama Historia Yote"
 
 msgid "Ready to Protect Your Amaranthus Crop?"
-msgstr "Uko Tayari Kulinda Mazao Yako ya Amaranthus?"
+msgstr "Uko Tayari Kulinda Mazao Yako ya Mchicha?"
 
-msgid "Upload a leaf photo now and get instant AI-powered disease analysis — completely free."
-msgstr "Pakia picha ya jani sasa na upate uchambuzi wa ugonjwa unaotumia AI papo hapo — bure kabisa."
+msgid "Upload a leaf photo now and get instant AI-powered disease analysis  completely free."
+msgstr "Pakia picha ya jani sasa na upate uchambuzi wa ugonjwa unaotumia AI papo hapo  bure kabisa."
 
 msgid "Start Detection"
 msgstr "Anza Ugunduzaji"
@@ -158,7 +157,7 @@ msgid "Leaf Disease Detection"
 msgstr "Ugunduzaji wa Magonjwa ya Majani"
 
 msgid "Upload a clear photo of an Amaranthus leaf to get an instant AI-powered disease analysis"
-msgstr "Pakia picha wazi ya jani la Amaranthus kupata uchambuzi wa ugonjwa unaotumia AI papo hapo"
+msgstr "Pakia picha ya wazi ya jani la Mchicha kupata uchambuzi wa ugonjwa unaotumia AI papo hapo"
 
 msgid "Drag & Drop your leaf image here"
 msgstr "Buruta na Achia picha yako ya jani hapa"
@@ -203,7 +202,7 @@ msgid "Oomycete — High Risk"
 msgstr "Oomycete — Hatari Kubwa"
 
 msgid "Not a valid leaf image"
-msgstr "Si picha halali ya jani"
+msgstr "Si picha halali ya jani/mchicha"
 
 msgid "Detection Result"
 msgstr "Matokeo ya Ugunduzaji"
@@ -287,7 +286,7 @@ msgid "White Rust"
 msgstr "Kutu Nyeupe"
 
 msgid "Non-Amaranthus"
-msgstr "Si Amaranthus"
+msgstr "Si Mchicha"
 
 msgid "View"
 msgstr "Tazama"
@@ -314,22 +313,22 @@ msgid "About the System"
 msgstr "Kuhusu Mfumo"
 
 msgid "Learn about Amaranthus diseases, AI technology, and how this system helps farmers"
-msgstr "Jifunze kuhusu magonjwa ya Amaranthus, teknolojia ya AI, na jinsi mfumo huu unavyosaidia wakulima"
+msgstr "Jifunze kuhusu magonjwa ya Mchicha, teknolojia ya AI, na jinsi mfumo huu unavyosaidia wakulima"
 
 msgid "Our Mission"
 msgstr "Dhamira Yetu"
 
 msgid "Fighting Amaranthus Diseases with AI"
-msgstr "Kupigana na Magonjwa ya Amaranthus kwa AI"
+msgstr "Kupigana na Magonjwa ya Mchicha kwa AI"
 
 msgid "Detection Classes"
-msgstr "Madarasa ya Ugunduzaji"
+msgstr "Madaja ya Ugunduzaji"
 
 msgid "Diseases We Detect"
 msgstr "Magonjwa Tunayogundua"
 
 msgid "Our model classifies Amaranthus leaves into four categories"
-msgstr "Modeli yetu huainisha majani ya Amaranthus katika makundi manne"
+msgstr "Modo yetu huainisha majani ya Mchicha katika makundi manne"
 
 msgid "Low Risk"
 msgstr "Hatari Ndogo"
@@ -350,7 +349,7 @@ msgid "AI Technology Behind the System"
 msgstr "Teknolojia ya AI Nyuma ya Mfumo"
 
 msgid "Model Status"
-msgstr "Hali ya Modeli"
+msgstr "Hali ya Modo"
 
 msgid "Loaded and Ready"
 msgstr "Imepakiwa na Iko Tayari"
@@ -375,3 +374,952 @@ msgstr "Magonjwa Yanayoweza Kugunduliwa"
 
 msgid "Contact & Info"
 msgstr "Mawasiliano na Maelezo"
+
+# NEW KEYS (from audit)
+
+msgid "Select Language"
+msgstr "Chagua Lugha"
+
+msgid "AI-powered plant disease detection system helping farmers make informed decisions through advanced machine learning technology."
+msgstr "Mfumo wa ugunduzaji wa magonjwa ya mimea unaotumia AI kusaidia wakulima kufanya maamuzi sahihi kupitia teknolojia ya kisasa ya kujifunza kwa mashine."
+
+msgid "Normal Amaranthus leaf"
+msgstr "Jani la Mchicha lenye afya"
+
+msgid "Fungal disease"
+msgstr "Ugonjwa wa ukungu"
+
+msgid "Oomycete pathogen"
+msgstr "Vimelea vya Oomycete"
+
+msgid "Other images"
+msgstr "Picha nyingine"
+
+msgid "Powered by MUST"
+msgstr "Inaendeshwa na MUST"
+
+msgid "94% Model Accuracy"
+msgstr "Usahihi wa Modo 94%"
+
+msgid "Amaranthus Disease Detection System"
+msgstr "Mfumo wa Kugundua Magonjwa ya Mchicha"
+
+msgid "Install Amaranthus AI"
+msgstr "Sakinisha Mchicha AI"
+
+msgid "Add to your home screen for quick access"
+msgstr "Ongeza kwenye skrini yako ya nyumbani kwa ufikiaji wa haraka"
+
+msgid "Install App"
+msgstr "Sakinisha Programu"
+
+msgid "Amaranthus Disease Detection AI"
+msgstr "AI ya Kugundua Magonjwa ya Mchicha"
+
+msgid "Amaranthus"
+msgstr "Mchicha"
+
+msgid "Amaranthus AI"
+msgstr "Mchicha AI"
+
+msgid "Leaf Detected"
+msgstr "Jani Limegunduliwa"
+
+msgid "Confidence"
+msgstr "Uhakika"
+
+msgid "Complete"
+msgstr "Imekamilika"
+
+msgid "EfficientNet Model"
+msgstr "Modo ya EfficientNet"
+
+msgid "confidence"
+msgstr "uhakika"
+
+msgid "Upload a photo or use your camera to get an instant AI-powered disease analysis"
+msgstr "Pakia picha au tumia kamera yako kupata uchambuzi wa ugonjwa unaotumia AI papo hapo"
+
+msgid "Max 10 MB"
+msgstr "Upeo wa 10 MB"
+
+msgid "Model"
+msgstr "Modeli"
+
+msgid "Input Size"
+msgstr "Ukubwa wa Ingizo"
+
+msgid "AI is processing the image..."
+msgstr "AI inashughulikia picha..."
+
+msgid "Preprocessing"
+msgstr "Utayarishaji wa Awali"
+
+msgid "Running AI model"
+msgstr "Inaendesha Modeli ya AI"
+
+msgid "Camera Not Available"
+msgstr "Kamera Haipatikani"
+
+msgid "Your browser or device does not support camera access. Please use the Upload Photo option instead."
+msgstr "Kivinjari au kifaa chako hakisaidii ufikiaji wa kamera. Tafadhali tumia chaguo la Pakia Picha badala yake."
+
+msgid "Live Camera Capture"
+msgstr "Kunasa Kamera ya Moja kwa Moja"
+
+msgid "Position the leaf clearly in the frame, then tap Capture."
+msgstr "Weka jani wazi katika fremu, kisha gonga Nasa."
+
+msgid "Good lighting"
+msgstr "Mwanga mzuri"
+
+msgid "Fill the frame"
+msgstr "Jaza fremu"
+
+msgid "Keep steady"
+msgstr "Shika imara"
+
+msgid "Start Camera"
+msgstr "Anza Kamera"
+
+msgid "Place leaf inside the frame"
+msgstr "Weka jani ndani ya fremu"
+
+msgid "Switch Camera"
+msgstr "Badilisha Kamera"
+
+msgid "Stop"
+msgstr "Simama"
+
+msgid "Photo Captured! Review before analysing."
+msgstr "Picha Imenaswa! Kagua kabla ya kuchambua."
+
+msgid "Retake"
+msgstr "Piga Tena"
+
+msgid "Upload Photo"
+msgstr "Pakia Picha"
+
+msgid "Use Camera"
+msgstr "Tumia Kamera"
+
+msgid "Download PDF Report"
+msgstr "Pakua Ripoti ya PDF"
+
+msgid "Result"
+msgstr "Matokeo"
+
+msgid "Analyzed leaf"
+msgstr "Jani lililochunguzwa"
+
+msgid "Risk"
+msgstr "Hatari"
+
+msgid "Delete this prediction record?"
+msgstr "Futa rekodi hii ya utabiri?"
+
+msgid "Expert Recommendation for"
+msgstr "Mapendekezo ya Mtaalamu kwa"
+
+msgid "Risk Level"
+msgstr "Kiwango cha Hatari"
+
+msgid "Cause"
+msgstr "Sababu"
+
+msgid "recorded"
+msgstr "zilizorekodiwa"
+
+msgid "Are you sure you want to delete this prediction?"
+msgstr "Je, una uhakika unataka kufuta utabiri huu?"
+
+msgid "Delete"
+msgstr "Futa"
+
+msgid "University Project"
+msgstr "Mradi wa Chuo Kikuu"
+
+msgid "Amaranthus is a highly nutritious crop cultivated widely across Africa and Asia. However, it is susceptible to several diseases that reduce yield and quality. Early detection is critical to preventing crop loss and protecting farmer livelihoods."
+msgstr "Mchicha ni zao lenye lishe nyingi linalolimwa sana Afrika na Asia. Hata hivyo, lina uwezekano wa magonjwa kadhaa yanayopunguza mavuno na ubora. Ugunduzaji wa mapema ni muhimu kuzuia upotezaji wa mazao na kulinda maisha ya wakulima."
+
+msgid "This system uses a state of the art machine (deep) learning model trained on over 3,136 leaf images to classify Amaranthus leaf diseases with"
+msgstr "Mfumo huu unatumia modeli ya kisasa ya kujifunza kwa kina iliyofunzwa kwa picha zaidi ya 3,136 za majani kuainisha magonjwa ya majani ya Mchicha kwa"
+
+msgid "accuracy"
+msgstr "usahihi"
+
+msgid "Farmers can simply take a photo and receive instant, expert-level recommendations."
+msgstr "Wakulima wanaweza tu kupiga picha na kupokea mapendekezo ya papo hapo ya kiwango cha kitaalamu."
+
+msgid "Normal healthy Amaranthus leaf with no signs of disease or infection."
+msgstr "Jani la Mchicha lenye afya bila dalili za ugonjwa au maambukizi."
+
+msgid "Uniform green color"
+msgstr "Rangi ya kijani sawa"
+
+msgid "No spots or lesions"
+msgstr "Hakuna madoa au majeraha"
+
+msgid "Smooth leaf surface"
+msgstr "Uso laini wa jani"
+
+msgid "Fungal disease causing dark necrotic spots on leaf surfaces, reducing photosynthesis."
+msgstr "Ugonjwa wa ukungu unaosababisha madoa meusi ya kifo kwenye uso wa jani, kupunguza usanisinuru."
+
+msgid "Dark brown/black spots"
+msgstr "Madoa ya kahawia giza/meusi"
+
+msgid "Yellowing around spots"
+msgstr "Njano inayozunguka madoa"
+
+msgid "Leaf wilting"
+msgstr "Kunyauka kwa jani"
+
+msgid "Oomycete pathogen (Albugo bliti) causing white powdery pustules. Spreads rapidly."
+msgstr "Vimelea vya Oomycete (Albugo bliti) vinavyosababisha vidonda vya unga mweupe. Huenea haraka."
+
+msgid "White chalky patches"
+msgstr "Mabaka meupe kama chaki"
+
+msgid "Distorted leaves"
+msgstr "Majani yaliyopotoka"
+
+msgid "Premature leaf drop"
+msgstr "Kuanguka kwa majani mapema"
+
+msgid "Image does not contain an Amaranthus leaf — the model cannot provide reliable results."
+msgstr "Picha haina jani la Mchicha — modeli haiwezi kutoa matokeo ya kuaminika."
+
+msgid "Wrong plant species"
+msgstr "Aina mbaya ya mmea"
+
+msgid "Unclear/blurry photo"
+msgstr "Picha isiyo wazi/iliyofifia"
+
+msgid "Non-leaf objects"
+msgstr "Vitu visivyo majani"
+
+msgid "Compact yet powerful CNN architecture. Achieves 94%+ accuracy with only 5.3M parameters — perfect for fast inference."
+msgstr "Usanifu wa CNN mdogo lakini wenye nguvu. Hufikia usahihi wa zaidi ya 94% kwa vigezo 5.3M tu — kamili kwa uelekezaji wa haraka."
+
+msgid "Optimized model format for production deployment. Runs inference in milliseconds without GPU requirements."
+msgstr "Umbizo la modeli liliboreshwa kwa utekelezaji wa uzalishaji. Huendesha uelekezaji kwa millisekunde bila mahitaji ya GPU."
+
+msgid "Robust Python web framework handling image uploads, model inference, database storage, and recommendations."
+msgstr "Mfumo thabiti wa wavuti wa Python unaoshughulikia upakiaji wa picha, uelekezaji wa modeli, hifadhi ya hifadhidata, na mapendekezo."
+
+msgid "Take a Clear Photo"
+msgstr "Piga Picha Wazi"
+
+msgid "Photograph an Amaranthus leaf in good lighting. Fill the frame with the leaf."
+msgstr "Piga picha ya jani la Mchicha katika mwanga mzuri. Jaza fremu na jani."
+
+msgid "Upload the Image"
+msgstr "Pakia Picha"
+
+msgid "Go to the Detect Disease page and drag & drop or browse to select your image (JPG/PNG, max 10MB)."
+msgstr "Nenda kwenye ukurasa wa Gundua Ugonjwa na buruta na achia au vinjari ili kuchagua picha yako (JPG/PNG, upeo wa 10MB)."
+
+msgid "Wait for Analysis"
+msgstr "Subiri Uchambuzi"
+
+msgid "The AI model will process your image in under 2 seconds."
+msgstr "Modeli ya AI itashughulikia picha yako kwa chini ya sekunde 2."
+
+msgid "Read the Results"
+msgstr "Soma Matokeo"
+
+msgid "Review the predicted disease, confidence score, risk level, and full recommendation with treatment options."
+msgstr "Kagua ugonjwa uliobashiriwa, alama ya uhakika, kiwango cha hatari, na mapendekezo kamili na chaguzi za matibabu."
+
+msgid "This system was developed as an academic research project aimed at supporting smallholder Amaranthus farmers through artificial intelligence. The model was trained on a carefully curated dataset of 3,136 annotated leaf images using transfer learning with EfficientNet B0."
+msgstr "Mfumo huu ulitengenezwa kama mradi wa utafiti wa kitaaluma unaolenga kusaidia wakulima wadogo wadogo wa Mchicha kupitia akili bandia. Modeli ilifunzwa kwenye seti ya data iliyochaguliwa kwa makini ya picha 3,136 za majani zilizopigwa alama kwa kutumia kujifunza kwa uhamishaji na EfficientNet B0."
+
+msgid "Analysis failed: %(error)s"
+msgstr "Uchambuzi umeshindwa: %(error)s"
+
+msgid "Analysis complete: %(name)s detected (%(conf).1f%% confidence)"
+msgstr "Uchambuzi umekamilika: %(name)s imegunduliwa (uhakika wa %(conf).1f%%)"
+
+msgid "Prediction deleted successfully."
+msgstr "Utabiri umefutwa kwa mafanikio."
+
+msgid "Fungal: Medium Risk"
+msgstr "Ukungu: Hatari ya Wastani"
+
+msgid "Oomycete: High Risk"
+msgstr "Oomycete: Hatari Kubwa"
+
+# ── AUTH & DASHBOARD KEYS ──────────────────────────────────────────────────
+
+msgid "AI-Powered Leaf Disease Detection"
+msgstr "Ugunduzaji wa Magonjwa ya Majani kwa AI"
+
+msgid "Account Settings"
+msgstr "Mipangilio ya Akaunti"
+
+msgid "Account created on"
+msgstr "Akaunti iliundwa tarehe"
+
+msgid "Action"
+msgstr "Hatua"
+
+msgid "Action/Description"
+msgstr "Hatua/Maelezo"
+
+msgid "Active"
+msgstr "Amilifu"
+
+msgid "Active Account"
+msgstr "Akaunti Inayofanya Kazi"
+
+msgid "Admin Dashboard"
+msgstr "Dashibodi ya Msimamizi"
+
+msgid "All Categories"
+msgstr "Makategoria Yote"
+
+msgid "All Diseases"
+msgstr "Magonjwa Yote"
+
+msgid "All Risks"
+msgstr "Hatari Zote"
+
+msgid "All Scans"
+msgstr "Uchunguzi Wote"
+
+msgid "All Statuses"
+msgstr "Hali Zote"
+
+msgid "Already have an account?"
+msgstr "Una akaunti tayari?"
+
+msgid "AmaranthusAI"
+msgstr "MchichaAI"
+
+msgid "AmaranthusAI Dashboard"
+msgstr "Dashibodi ya MchichaAI"
+
+msgid "Analytics & Reports"
+msgstr "Uchanganuzi na Ripoti"
+
+msgid "Are you sure you want to delete your account? This action cannot be undone."
+msgstr "Je, una uhakika unataka kufuta akaunti yako? Hatua hii haiwezi kutendwa upya."
+
+msgid "Are you sure you want to permanently delete this farmer's account and all their data?"
+msgstr "Je, una uhakika unataka kufuta kabisa akaunti ya mkulima huyu na data yake yote?"
+
+msgid "Back to Farmers"
+msgstr "Rudi kwa Wakulima"
+
+msgid "Back to Login"
+msgstr "Rudi kwenye Kuingia"
+
+msgid "Bio"
+msgstr "Wasifu Mfupi"
+
+msgid "Brief summary"
+msgstr "Muhtasari mfupi"
+
+msgid "Browse History"
+msgstr "Vinjari Historia"
+
+msgid "Bug Report"
+msgstr "Ripoti ya Hitilafu"
+
+msgid "Bug Reports"
+msgstr "Ripoti za Hitilafu"
+
+msgid "Cancel"
+msgstr "Ghairi"
+
+msgid "Category"
+msgstr "Kategoria"
+
+msgid "Change Password"
+msgstr "Badilisha Nenosiri"
+
+msgid "Check your email"
+msgstr "Angalia barua pepe yako"
+
+msgid "Choose..."
+msgstr "Chagua..."
+
+msgid "Community Support"
+msgstr "Msaada wa Jamii"
+
+msgid "Complaint"
+msgstr "Malalamiko"
+
+msgid "Conf."
+msgstr "Uhak."
+
+msgid "Confirm Deletion"
+msgstr "Thibitisha Ufutaji"
+
+msgid "Confirm New Password"
+msgstr "Thibitisha Nenosiri Jipya"
+
+msgid "Confirm Password"
+msgstr "Thibitisha Nenosiri"
+
+msgid "Contact"
+msgstr "Wasiliana"
+
+msgid "Create Account"
+msgstr "Unda Akaunti"
+
+msgid "Create Account — Amaranthus AI"
+msgstr "Unda Akaunti — Mchicha AI"
+
+msgid "Create Farmer Account"
+msgstr "Unda Akaunti ya Mkulima"
+
+msgid "Current Password"
+msgstr "Nenosiri la Sasa"
+
+msgid "Danger Zone"
+msgstr "Eneo la Hatari"
+
+msgid "Dashboard"
+msgstr "Dashibodi"
+
+msgid "Date"
+msgstr "Tarehe"
+
+msgid "Delete Account"
+msgstr "Futa Akaunti"
+
+msgid "Delete My Account"
+msgstr "Futa Akaunti Yangu"
+
+msgid "Disable Account"
+msgstr "Zima Akaunti"
+
+msgid "Disabled"
+msgstr "Imezimwa"
+
+msgid "Disabled Account"
+msgstr "Akaunti Iliyozimwa"
+
+msgid "Disease"
+msgstr "Ugonjwa"
+
+msgid "Disease Breakdown"
+msgstr "Muhtasari wa Magonjwa"
+
+msgid "Disease Distribution"
+msgstr "Usambazaji wa Magonjwa"
+
+msgid "Disease Name"
+msgstr "Jina la Ugonjwa"
+
+msgid "Diseased"
+msgstr "Mgonjwa"
+
+msgid "Don't have an account?"
+msgstr "Huna akaunti?"
+
+msgid "Download Report"
+msgstr "Pakua Ripoti"
+
+msgid "Early Disease Detection"
+msgstr "Ugunduzaji wa Mapema wa Magonjwa"
+
+msgid "Edit Profile"
+msgstr "Hariri Wasifu"
+
+msgid "Email"
+msgstr "Barua pepe"
+
+msgid "Email Address"
+msgstr "Anwani ya Barua Pepe"
+
+msgid "Email Sent — Amaranthus AI"
+msgstr "Barua Pepe Imetumwa — Mchicha AI"
+
+msgid "Empowering agriculture with AI technology."
+msgstr "Kuimarisha kilimo kwa teknolojia ya AI."
+
+msgid "Enable Account"
+msgstr "Washa Akaunti"
+
+msgid "Enter your email address and we'll send you instructions to reset your password."
+msgstr "Ingiza anwani yako ya barua pepe na tutakutumia maelekezo ya kuweka upya nenosiri lako."
+
+msgid "Expert Treatment Advice"
+msgstr "Ushauri wa Kitaalamu wa Matibabu"
+
+msgid "Export"
+msgstr "Hamisha"
+
+msgid "Export CSV"
+msgstr "Hamisha CSV"
+
+msgid "Export Report"
+msgstr "Hamisha Ripoti"
+
+msgid "Farmer"
+msgstr "Mkulima"
+
+msgid "Farmer Dashboard"
+msgstr "Dashibodi ya Mkulima"
+
+msgid "Farmer Details"
+msgstr "Maelezo ya Mkulima"
+
+msgid "Farmers"
+msgstr "Wakulima"
+
+msgid "Favorites"
+msgstr "Vipendwa"
+
+msgid "Feature Request"
+msgstr "Ombi la Kipengele"
+
+msgid "Feature Requests"
+msgstr "Maombi ya Vipengele"
+
+msgid "Feedback"
+msgstr "Maoni"
+
+msgid "Feedback Details"
+msgstr "Maelezo ya Maoni"
+
+msgid "Female"
+msgstr "Kike"
+
+msgid "Filter"
+msgstr "Chuja"
+
+msgid "Forgot password?"
+msgstr "Umesahau nenosiri?"
+
+msgid "Full Name"
+msgstr "Jina Kamili"
+
+msgid "Gender"
+msgstr "Jinsia"
+
+msgid "General Feedback"
+msgstr "Maoni ya Jumla"
+
+msgid "Go to Site"
+msgstr "Nenda Kwenye Tovuti"
+
+msgid "Good day"
+msgstr "Habari za asubuhi"
+
+msgid "Healthy Crops Detected"
+msgstr "Mazao Yenye Afya Yamegunduliwa"
+
+msgid "Healthy Leaves"
+msgstr "Majani Yenye Afya"
+
+msgid "Help us improve AmaranthusAI by sharing your experience."
+msgstr "Tusaidie kuboresha MchichaAI kwa kushiriki uzoefu wako."
+
+msgid "High Risk Areas"
+msgstr "Maeneo ya Hatari Kubwa"
+
+msgid "IP Address"
+msgstr "Anwani ya IP"
+
+msgid "Image"
+msgstr "Picha"
+
+msgid "Increase Crop Yield"
+msgstr "Ongeza Mavuno ya Mazao"
+
+msgid "Instant Disease Recognition"
+msgstr "Utambuzi wa Papo Hapo wa Magonjwa"
+
+msgid "Join Thousands of Farmers"
+msgstr "Jiunge na Maelfu ya Wakulima"
+
+msgid "Joined"
+msgstr "Alijiunga"
+
+msgid "Language"
+msgstr "Lugha"
+
+msgid "Level"
+msgstr "Kiwango"
+
+msgid "Location"
+msgstr "Mahali"
+
+msgid "Login — Amaranthus AI"
+msgstr "Ingia — Mchicha AI"
+
+msgid "Logout"
+msgstr "Toka"
+
+msgid "Logs"
+msgstr "Kumbukumbu"
+
+msgid "Male"
+msgstr "Kiume"
+
+msgid "Manage Farmers"
+msgstr "Simamia Wakulima"
+
+msgid "Mark all as read"
+msgstr "Weka yote kuwa imesomwa"
+
+msgid "Mark as Resolved"
+msgstr "Weka kama Imetatuliwa"
+
+msgid "Medium"
+msgstr "Wastani"
+
+msgid "Message"
+msgstr "Ujumbe"
+
+msgid "Monthly Summary"
+msgstr "Muhtasari wa Kila Mwezi"
+
+msgid "Must be at least 8 characters."
+msgstr "Lazima iwe na herufi angalau 8."
+
+msgid "My Favorites"
+msgstr "Vipendwa Vyangu"
+
+msgid "My Profile"
+msgstr "Wasifu Wangu"
+
+msgid "New Password"
+msgstr "Nenosiri Jipya"
+
+msgid "Newest Farmers"
+msgstr "Wakulima Wapya Zaidi"
+
+msgid "Next"
+msgstr "Inayofuata"
+
+msgid "No Data"
+msgstr "Hakuna Data"
+
+msgid "No farmers found."
+msgstr "Hakuna wakulima waliopatikana."
+
+msgid "No farmers registered yet."
+msgstr "Hakuna wakulima waliosajiliwa bado."
+
+msgid "No favorites yet"
+msgstr "Hakuna vipendwa bado"
+
+msgid "No feedback entries found."
+msgstr "Hakuna maoni yaliyopatikana."
+
+msgid "No logs found."
+msgstr "Hakuna kumbukumbu zilizopatikana."
+
+msgid "No recent scans."
+msgstr "Hakuna uchunguzi wa hivi karibuni."
+
+msgid "No scans available."
+msgstr "Hakuna uchunguzi unaoweza kupatikana."
+
+msgid "No scans found"
+msgstr "Hakuna uchunguzi uliopatikana"
+
+msgid "No scans recorded yet."
+msgstr "Hakuna uchunguzi uliorekodiwa bado."
+
+msgid "No scans yet. Start by scanning a new leaf."
+msgstr "Hakuna uchunguzi bado. Anza kwa kuchunguza jani jipya."
+
+msgid "Notifications"
+msgstr "Arifa"
+
+msgid "OR"
+msgstr "AU"
+
+msgid "Once you delete your account, there is no going back. Please be certain."
+msgstr "Ukifuta akaunti yako, hakuna kurudi tena. Tafadhali hakikisha."
+
+msgid "Other"
+msgstr "Nyingine"
+
+msgid "Password"
+msgstr "Nenosiri"
+
+msgid "Password Reset Complete — Amaranthus AI"
+msgstr "Kuweka Upya Nenosiri Kukamilika — Mchicha AI"
+
+msgid "Password Updated!"
+msgstr "Nenosiri Imesasishwa!"
+
+msgid "Passwords do not match."
+msgstr "Maneno ya siri hayafanani."
+
+msgid "Pending"
+msgstr "Inasubiri"
+
+msgid "Percentage"
+msgstr "Asilimia"
+
+msgid "Permanently Delete My Account"
+msgstr "Futa Kabisa Akaunti Yangu"
+
+msgid "Personal Info"
+msgstr "Taarifa za Kibinafsi"
+
+msgid "Phone Number"
+msgstr "Nambari ya Simu"
+
+msgid "Please choose a username."
+msgstr "Tafadhali chagua jina la mtumiaji."
+
+msgid "Please enter a valid email address."
+msgstr "Tafadhali ingiza anwani sahihi ya barua pepe."
+
+msgid "Please enter your full name."
+msgstr "Tafadhali ingiza jina lako kamili."
+
+msgid "Please enter your new password below."
+msgstr "Tafadhali ingiza nenosiri lako jipya hapa chini."
+
+msgid "Please provide details..."
+msgstr "Tafadhali toa maelezo..."
+
+msgid "Preferences"
+msgstr "Mapendeleo"
+
+msgid "Previous"
+msgstr "Iliyotangulia"
+
+msgid "Profile"
+msgstr "Wasifu"
+
+msgid "Profile Completion"
+msgstr "Ukamilishaji wa Wasifu"
+
+msgid "Quick Actions"
+msgstr "Vitendo vya Haraka"
+
+msgid "Rate your experience"
+msgstr "Kadiria uzoefu wako"
+
+msgid "Rating"
+msgstr "Ukadiriaji"
+
+msgid "Recent Activity & Security Logs"
+msgstr "Shughuli za Hivi Karibuni na Kumbukumbu za Usalama"
+
+msgid "Recent Alerts"
+msgstr "Arifa za Hivi Karibuni"
+
+msgid "Recent Scans"
+msgstr "Uchunguzi wa Hivi Karibuni"
+
+msgid "Recent Scans by this Farmer"
+msgstr "Uchunguzi wa Hivi Karibuni na Mkulima Huyu"
+
+msgid "Register here"
+msgstr "Jiandikishe hapa"
+
+msgid "Register to access the platform"
+msgstr "Jiandikishe kupata ufikiaji wa jukwaa"
+
+msgid "Remember me"
+msgstr "Nikumbuke"
+
+msgid "Remove"
+msgstr "Ondoa"
+
+msgid "Reports"
+msgstr "Ripoti"
+
+msgid "Requires immediate attention"
+msgstr "Inahitaji umakini wa haraka"
+
+msgid "Reset Password"
+msgstr "Weka Upya Nenosiri"
+
+msgid "Reset Password — Amaranthus AI"
+msgstr "Weka Upya Nenosiri — Mchicha AI"
+
+msgid "Resolved"
+msgstr "Imetatuliwa"
+
+msgid "Return to Login"
+msgstr "Rudi kwenye Kuingia"
+
+msgid "Save Changes"
+msgstr "Hifadhi Mabadiliko"
+
+msgid "Scan History"
+msgstr "Historia ya Uchunguzi"
+
+msgid "Scan New Leaf"
+msgstr "Chunguza Jani Jipya"
+
+msgid "Scan Now"
+msgstr "Chunguza Sasa"
+
+msgid "Scans"
+msgstr "Uchunguzi"
+
+msgid "Scans Overview (Last 7 Days)"
+msgstr "Muhtasari wa Uchunguzi (Siku 7 Zilizopita)"
+
+msgid "Scans Today"
+msgstr "Uchunguzi wa Leo"
+
+msgid "Search farmers..."
+msgstr "Tafuta wakulima..."
+
+msgid "Search..."
+msgstr "Tafuta..."
+
+msgid "Secure Farmer Dashboard"
+msgstr "Dashibodi Salama ya Mkulima"
+
+msgid "Select Gender"
+msgstr "Chagua Jinsia"
+
+msgid "Select a category"
+msgstr "Chagua kategoria"
+
+msgid "Send Feedback"
+msgstr "Tuma Maoni"
+
+msgid "Send Reset Link"
+msgstr "Tuma Kiungo cha Kuweka Upya"
+
+msgid "Set New Password"
+msgstr "Weka Nenosiri Jipya"
+
+msgid "Set New Password — Amaranthus AI"
+msgstr "Weka Nenosiri Jipya — Mchicha AI"
+
+msgid "Sign In"
+msgstr "Ingia"
+
+msgid "Sign In Now"
+msgstr "Ingia Sasa"
+
+msgid "Sign in"
+msgstr "Ingia"
+
+msgid "Sign in to your account"
+msgstr "Ingia kwenye akaunti yako"
+
+msgid "Status"
+msgstr "Hali"
+
+msgid "Strong"
+msgstr "Nguvu"
+
+msgid "Subject"
+msgstr "Mada"
+
+msgid "Subject:"
+msgstr "Mada:"
+
+msgid "Submit Feedback"
+msgstr "Wasilisha Maoni"
+
+msgid "System Logs"
+msgstr "Kumbukumbu za Mfumo"
+
+msgid "This action is permanent. All your scan history and data will be deactivated. You cannot undo this."
+msgstr "Hatua hii ni ya kudumu. Historia yako yote ya uchunguzi na data itazimwa. Huwezi kutendea upya hii."
+
+msgid "Timestamp"
+msgstr "Wakati"
+
+msgid "Toggle Status"
+msgstr "Badilisha Hali"
+
+msgid "Top Disease"
+msgstr "Ugonjwa Mkuu"
+
+msgid "Total Farmers"
+msgstr "Wakulima Wote"
+
+msgid "Total Occurrences"
+msgstr "Jumla ya Matukio"
+
+msgid "Total Scans"
+msgstr "Jumla ya Uchunguzi"
+
+msgid "Total Scans (This Month)"
+msgstr "Jumla ya Uchunguzi (Mwezi Huu)"
+
+msgid "Trend"
+msgstr "Mwelekeo"
+
+msgid "Type your username"
+msgstr "Andika jina lako la mtumiaji"
+
+msgid "Update Password"
+msgstr "Sasisha Nenosiri"
+
+msgid "Update Status"
+msgstr "Sasisha Hali"
+
+msgid "User"
+msgstr "Mtumiaji"
+
+msgid "User Feedback"
+msgstr "Maoni ya Watumiaji"
+
+msgid "Username"
+msgstr "Jina la Mtumiaji"
+
+msgid "View All"
+msgstr "Ona Yote"
+
+msgid "View History"
+msgstr "Ona Historia"
+
+msgid "View Result"
+msgstr "Ona Matokeo"
+
+msgid "We value your feedback!"
+msgstr "Tunathamini maoni yako!"
+
+msgid "We've sent an email with instructions on how to reset your password. If you don't receive an email within a few minutes, please check your spam folder."
+msgstr "Tumetuma barua pepe yenye maelekezo ya kuweka upya nenosiri lako. Ikiwa hupokei barua pepe ndani ya dakika chache, tafadhali angalia folda yako ya spam."
+
+msgid "Weak"
+msgstr "Dhaifu"
+
+msgid "Welcome Back"
+msgstr "Karibu Tena"
+
+msgid "Welcome back to your AmaranthusAI dashboard."
+msgstr "Karibu tena kwenye dashibodi yako ya MchichaAI."
+
+msgid "You can save important scans to your favorites by clicking the heart icon on any scan result."
+msgstr "Unaweza kuhifadhi uchunguzi muhimu kwenye vipendwa vyako kwa kubonyeza ikoni ya moyo kwenye matokeo yoyote ya uchunguzi."
+
+msgid "You have"
+msgstr "Una"
+
+msgid "You have no notifications."
+msgstr "Huna arifa."
+
+msgid "You haven't scanned any leaves yet. Start your first scan!"
+msgstr "Bado hujachunguza majani yoyote. Anza uchunguzi wako wa kwanza!"
+
+msgid "Your password has been successfully reset. You can now use your new password to log in to your account."
+msgstr "Nenosiri lako limewekwa upya kwa mafanikio. Sasa unaweza kutumia nenosiri lako jipya kuingia kwenye akaunti yako."
+
+msgid "ago"
+msgstr "iliyopita"
+
+msgid "from last month"
+msgstr "kutoka mwezi uliopita"
+
+msgid "to confirm deletion:"
+msgstr "kuthibitisha ufutaji:"
+
+msgid "to confirm:"
+msgstr "kuthibitisha:"
+
+msgid "unread notifications."
+msgstr "arifa ambazo hazijasomwa."
