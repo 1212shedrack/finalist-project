@@ -1,23 +1,6 @@
 # ═══════════════════════════════════════════════════════════════════════════
-#  render.yaml  —  Render Blueprint for AmaranthusAI
-#
-#  Deploys:
-#    • 1 × Free Web Service  (Django + Gunicorn)
-#    • 1 × Free PostgreSQL   (auto-linked via DATABASE_URL)
-#
-#  On first deploy Render will:
-#    1. Provision the free Postgres instance
-#    2. Inject DATABASE_URL into the web service automatically
-#    3. Run migrations via buildCommand
-#    4. Start Gunicorn
+#  render.yaml  —  Render Blueprint for AmaranthusAI (Sharing cadts-db)
 # ═══════════════════════════════════════════════════════════════════════════
-
-databases:
-  - name: amaranthus-db
-    databaseName: amaranthusai
-    user: amaranthusai
-    plan: free
-    region: oregon
 
 services:
   - type: web
@@ -30,7 +13,8 @@ services:
     buildCommand: >-
       pip install -r requirements.txt &&
       python manage.py collectstatic --no-input &&
-      python manage.py migrate --run-syncdb
+      python manage.py migrate --run-syncdb &&
+      python create_admin.py
 
     # ── Start ────────────────────────────────────────────────────────────────
     startCommand: >-
@@ -42,6 +26,16 @@ services:
 
     # ── Environment Variables ────────────────────────────────────────────────
     envVars:
+
+      # Default Admin Superuser Credentials
+      - key: DJANGO_SUPERUSER_USERNAME
+        value: "admin"
+
+      - key: DJANGO_SUPERUSER_EMAIL
+        value: "admin@amaranthusai.com"
+
+      - key: DJANGO_SUPERUSER_PASSWORD
+        value: "Admin@2026!"
 
       # Django secret key — Render generates a unique value on first deploy
       - key: SECRET_KEY
@@ -69,11 +63,3 @@ services:
           type: web
           name: amaranthus-ai
           property: host
-
-      # ── DATABASE_URL (automatically injected by the linked database) ───────
-      # Render links the database above and sets DATABASE_URL for us.
-      # dj-database-url in settings.py reads this → no manual DSN needed.
-      - key: DATABASE_URL
-        fromDatabase:
-          name: amaranthus-db
-          property: connectionString
