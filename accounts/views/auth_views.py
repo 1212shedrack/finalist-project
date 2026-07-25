@@ -73,6 +73,12 @@ def login_view(request):
             remember_me = form.cleaned_data.get('remember_me', False)
             
             user = authenticate(request, username=username, password=password)
+            if user is None:
+                # Case-insensitive username lookup fallback
+                existing_user = User.objects.filter(username__iexact=username).first()
+                if existing_user:
+                    user = authenticate(request, username=existing_user.username, password=password)
+
             if user is not None:
                 if hasattr(user, 'profile') and not user.profile.is_active:
                     messages.error(request, 'Your account has been disabled.')
@@ -91,7 +97,7 @@ def login_view(request):
                     return redirect(next_url)
                 return redirect('accounts:dashboard')
             else:
-                messages.error(request, 'Invalid username or password.')
+                messages.error(request, _('Invalid username or password.'))
     else:
         form = LoginForm()
         

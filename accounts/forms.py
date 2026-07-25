@@ -56,6 +56,10 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
     remember_me = forms.BooleanField(required=False)
 
+    def clean_username(self):
+        username = self.cleaned_data.get('username', '')
+        return username.strip()
+
 class ProfileEditForm(forms.ModelForm):
     phone = forms.CharField(max_length=20, required=False)
     gender = forms.ChoiceField(choices=UserProfile.GENDER_CHOICES, required=False)
