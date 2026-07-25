@@ -174,7 +174,7 @@ AVATAR_MAX_SIZE = 5 * 1024 * 1024     # 5 MB
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # ── Authentication ────────────────────────────────────────────────────────────
-LOGIN_URL = '/accounts/login/'
+LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = '/'
 
